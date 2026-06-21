@@ -15,7 +15,7 @@
             "mode": "Survival",
             "modpack": {
                 "name": "Create: Ultimate Selection 2",
-                "url": "https://modrinth.com/modpack/create-ultimate-selection-2",
+                "url": "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0",
                 "version": "8.6.0"
             },
             "featuredMods": [
@@ -57,7 +57,7 @@
             "mode": "Creative",
             "modpack": {
                 "name": "Create: Ultimate Selection 2",
-                "url": "https://modrinth.com/modpack/create-ultimate-selection-2",
+                "url": "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0",
                 "version": "8.6.0"
             },
             "featuredMods": [
@@ -143,7 +143,8 @@
             "mode": "Survival",
             "modpack": {
                 "name": "Cobblemon Fabric",
-                "url": "https://modrinth.com/modpack/cobblemon-fabric"
+                "url": "https://modrinth.com/modpack/cobblemon-fabric/version/1.7.3",
+                "version": "1.7.3"
             },
             "featuredMods": [
                 {
@@ -185,7 +186,8 @@
             "mode": "Creative",
             "modpack": {
                 "name": "Reign of Nether (Optimized)",
-                "url": "https://modrinth.com/modpack/reign-of-nether-optimized"
+                "url": "https://modrinth.com/modpack/reign-of-nether-optimized/version/2.8.0",
+                "version": "2.8.0"
             },
             "featuredMods": [
                 {

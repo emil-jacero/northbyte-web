@@ -22,7 +22,7 @@ catalog: #Catalog & {
 			blurb:   "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled."
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
-				url:     "https://modrinth.com/modpack/create-ultimate-selection-2"
+				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0"
 				version: "8.6.0"
 			}
 			featuredMods: [
@@ -44,7 +44,7 @@ catalog: #Catalog & {
 			blurb:   "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces."
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
-				url:     "https://modrinth.com/modpack/create-ultimate-selection-2"
+				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0"
 				version: "8.6.0"
 			}
 			featuredMods: [
@@ -84,8 +84,9 @@ catalog: #Catalog & {
 			mode:    "Survival"
 			blurb:   "Catch, train, and battle Pokémon across a survival world. Fabric-powered, with a live BlueMap to track your journey."
 			modpack: {
-				name: "Cobblemon Fabric"
-				url:  "https://modrinth.com/modpack/cobblemon-fabric"
+				name:    "Cobblemon Fabric"
+				url:     "https://modrinth.com/modpack/cobblemon-fabric/version/1.7.3"
+				version: "1.7.3"
 			}
 			featuredMods: [
 				{name: "Cobblemon", kind: "mod", url: "https://modrinth.com/mod/cobblemon", blurb: "Pokémon catching, training and battling."},
@@ -106,8 +107,9 @@ catalog: #Catalog & {
 			mode:         "Creative"
 			blurb:        "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around."
 			modpack: {
-				name: "Reign of Nether (Optimized)"
-				url:  "https://modrinth.com/modpack/reign-of-nether-optimized"
+				name:    "Reign of Nether (Optimized)"
+				url:     "https://modrinth.com/modpack/reign-of-nether-optimized/version/2.8.0"
+				version: "2.8.0"
 			}
 			featuredMods: [
 				{name: "Reign of Nether", kind: "mod", url: "https://modrinth.com/mod/reignofnether", blurb: "RTS gameplay — command units and bases."},
