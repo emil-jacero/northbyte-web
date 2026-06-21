@@ -45,6 +45,17 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Atmosphere ------------------------------------------------------- */
 
+.site-bg {
+  position: fixed; inset: 0; z-index: -3; pointer-events: none;
+  background-image:
+    linear-gradient(180deg,
+      rgba(10,14,22,0.50) 0%,
+      rgba(10,14,22,0.78) 55%,
+      rgba(10,14,22,0.94) 100%),
+    image-set(url("/brand/hero-bg.webp") type("image/webp"),
+              url("/brand/hero-bg.jpg")  type("image/jpeg"));
+  background-size: cover; background-position: center 22%;
+}
 .bg-fx {
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
   filter: blur(80px) saturate(130%);
@@ -53,12 +64,12 @@ a { color: inherit; text-decoration: none; }
 .glow-warm {
   bottom: -16%; left: -10%; width: 60vw; height: 60vw;
   background: radial-gradient(circle at 40% 60%, var(--orange), transparent 62%);
-  opacity: 0.32;
+  opacity: 0.22;
 }
 .glow-cool {
   top: -18%; right: -12%; width: 56vw; height: 56vw;
   background: radial-gradient(circle at 60% 40%, var(--cyan), transparent 62%);
-  opacity: 0.26;
+  opacity: 0.18;
 }
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -93,13 +104,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
   padding: clamp(40px, 8vh, 90px) 24px clamp(56px, 12vh, 120px);
   text-align: center;
   overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0; z-index: -1;
-  background-image:
-    linear-gradient(180deg, rgba(10,14,22,0.45) 0%, rgba(10,14,22,0.7) 55%, var(--bg) 100%),
-    image-set(url("/brand/hero-bg.webp") type("image/webp"), url("/brand/hero-bg.jpg") type("image/jpeg"));
-  background-size: cover; background-position: center 30%;
 }
 .hero-inner { max-width: 720px; margin: 0 auto; }
 .hero-logo {
