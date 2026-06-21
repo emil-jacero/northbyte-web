@@ -1,0 +1,14 @@
+{{/* Swedish twin of _content.gotmpl — generates /sv/servers/<id>/ pages.
+     Identical logic; catalog data is shared and localized at render time in
+     layouts/servers/single.html. Keep in sync with _content.gotmpl. */}}
+{{ $cat := site.Data.catalog }}
+{{ range $id, $s := $cat.servers }}
+  {{ if not $s.hidden }}
+    {{ $.AddPage (dict
+      "path"   $id
+      "kind"   "page"
+      "title"  $s.title
+      "params" $s
+    ) }}
+  {{ end }}
+{{ end }}

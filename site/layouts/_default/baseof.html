@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.Language.Lang }}">
 <head>
   {{ partial "head.html" . }}
 </head>
@@ -19,9 +19,17 @@
 
   {{ partial "footer.html" . }}
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Address copied</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">{{ i18n "toast_copied" }}</div>
 
   <script>
+    // Remember a manual language pick so the auto-redirect (in head) honors it.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-setlang]');
+        if (a) { try { localStorage.setItem('nb-lang', a.getAttribute('data-setlang')); } catch (err) {} }
+      });
+    })();
+
     (function () {
       var toast = document.getElementById('toast'), timer;
       function ping() {
@@ -52,6 +60,8 @@
       var nodes = document.querySelectorAll('[data-mcstatus]');
       if (!nodes.length) return;
 
+      var T = window.NB_I18N || { online: 'Online', offline: 'Offline', error: 'Status unavailable' };
+
       function set(el, state, text, sub) {
         el.setAttribute('data-state', state);
         var t = el.querySelector('.live-text');
@@ -68,14 +78,14 @@
         })
           .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
           .then(function (d) {
-            if (!d || !d.online) { set(el, 'offline', 'Offline'); return; }
+            if (!d || !d.online) { set(el, 'offline', T.offline); return; }
             var p = d.players || {};
             var online = (typeof p.online === 'number') ? p.online : '–';
             var max = (typeof p.max === 'number') ? p.max : '–';
             var ver = (d.version && d.version.name_clean) ? d.version.name_clean : '';
-            set(el, 'online', 'Online · ' + online + ' / ' + max, ver);
+            set(el, 'online', T.online + ' · ' + online + ' / ' + max, ver);
           })
-          .catch(function () { set(el, 'error', 'Status unavailable'); });
+          .catch(function () { set(el, 'error', T.error); });
       });
     })();
   </script>

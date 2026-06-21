@@ -1,45 +1,46 @@
 {{ define "main" }}
 {{ $s := .Params }}
+{{ $lang := site.Language.Lang }}
 <article class="detail">
-  <a class="back" href="/#servers">← All servers</a>
+  <a class="back" href="{{ site.Home.RelPermalink }}#servers">{{ i18n "back_all" }}</a>
 
   <header class="detail-head">
     <div class="detail-title">
       {{ partial "type-icon.html" $s.type }}
-      <h1>{{ $s.title }}{{ if $s.experimental }}<span class="exp-chip">Experimental</span>{{ end }}</h1>
+      <h1>{{ $s.title }}{{ if $s.experimental }}<span class="exp-chip">{{ i18n "chip_experimental" }}</span>{{ end }}</h1>
     </div>
-    <p class="detail-blurb">{{ $s.blurb }}</p>
-    {{ with $s.tags }}<ul class="detail-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    <p class="detail-blurb">{{ index $s.blurb $lang }}</p>
+    {{ with $s.tags }}<ul class="detail-tags">{{ range . }}<li>{{ i18n (printf "tag_%s" (urlize .)) | default . }}</li>{{ end }}</ul>{{ end }}
   </header>
 
   <div class="detail-connect">
     <code class="addr">{{ $s.connect }}</code>
-    <button class="btn btn-copy" type="button" data-copy="{{ $s.connect }}" aria-label="Copy {{ $s.connect }}">
+    <button class="btn btn-copy" type="button" data-copy="{{ $s.connect }}" aria-label="{{ i18n "btn_copy_address" }} {{ $s.connect }}">
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
         <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
         <path d="M5 15V5a2 2 0 0 1 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span>Copy address</span>
+      <span>{{ i18n "btn_copy_address" }}</span>
     </button>
-    {{ with $s.mapURL }}<a class="btn btn-map" href="{{ . }}" target="_blank" rel="noopener">Live map ↗</a>{{ end }}
+    {{ with $s.mapURL }}<a class="btn btn-map" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "btn_live_map" }}</a>{{ end }}
   </div>
 
   {{ with $s.modpack }}
   <aside class="install-cta">
     <div class="install-text">
-      <h2>Modded server — install the modpack first</h2>
-      <p>Open <strong>{{ .name }}</strong>{{ with .version }} <span class="dim">v{{ . }}</span>{{ end }} in the Modrinth App (or Prism / ATLauncher), install it, then connect to <code>{{ $s.connect }}</code>.</p>
+      <h2>{{ i18n "install_heading" }}</h2>
+      <p>{{ i18n "install_body_pre" }} <strong>{{ .name }}</strong>{{ with .version }} <span class="dim">v{{ . }}</span>{{ end }} {{ i18n "install_body_post" }} <code>{{ $s.connect }}</code>.</p>
     </div>
-    {{ with .url }}<a class="btn btn-install" href="{{ . }}" target="_blank" rel="noopener">Get the modpack on Modrinth ↗</a>{{ end }}
+    {{ with .url }}<a class="btn btn-install" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "btn_install" }}</a>{{ end }}
   </aside>
   {{ end }}
 
   <section class="facts">
-    <div><dt>Version</dt><dd>{{ $s.version }}</dd></div>
-    <div><dt>Loader</dt><dd>{{ $s.loader }}</dd></div>
-    <div><dt>Mode</dt><dd>{{ $s.mode }}</dd></div>
+    <div><dt>{{ i18n "fact_version" }}</dt><dd>{{ $s.version }}</dd></div>
+    <div><dt>{{ i18n "fact_loader" }}</dt><dd>{{ $s.loader }}</dd></div>
+    <div><dt>{{ i18n "fact_mode" }}</dt><dd>{{ $s.mode }}</dd></div>
     {{ with $s.modpack }}
-      <div><dt>Modpack</dt><dd>
+      <div><dt>{{ i18n "fact_modpack" }}</dt><dd>
         {{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }} ↗</a>{{ else }}{{ .name }}{{ end }}
         {{ with .version }}<span class="dim">v{{ . }}</span>{{ end }}
       </dd></div>
@@ -48,15 +49,15 @@
 
   {{ with $s.featuredMods }}
   <section class="mods">
-    <h2>Mods &amp; plugins</h2>
-    {{ if $s.modpack }}<p class="mods-note">A few highlights — the <strong>{{ $s.modpack.name }}</strong> modpack bundles many more.</p>{{ end }}
+    <h2>{{ i18n "mods_heading" }}</h2>
+    {{ if $s.modpack }}<p class="mods-note">{{ i18n "mods_note_pre" }} <strong>{{ $s.modpack.name }}</strong> {{ i18n "mods_note_post" }}</p>{{ end }}
     <ul class="mod-list">
       {{ range . }}
       <li class="mod">
-        <span class="mod-kind mod-kind--{{ .kind }}">{{ .kind }}</span>
+        <span class="mod-kind mod-kind--{{ .kind }}">{{ i18n (printf "kind_%s" .kind) }}</span>
         <div class="mod-body">
           <div class="mod-name">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }} <span class="ext">↗</span></a>{{ else }}{{ .name }}{{ end }}</div>
-          {{ with .blurb }}<div class="mod-blurb">{{ . }}</div>{{ end }}
+          {{ with .blurb }}<div class="mod-blurb">{{ index . $lang }}</div>{{ end }}
         </div>
       </li>
       {{ end }}
@@ -65,15 +66,15 @@
   {{ end }}
 
   <section class="stats">
-    <h2>Statistics</h2>
+    <h2>{{ i18n "stats_heading" }}</h2>
     <div class="stat-live live" data-mcstatus="{{ $s.connect }}" data-state="loading">
       <span class="status-dot" aria-hidden="true"></span>
       <div class="stat-body">
-        <span class="live-text">Checking status…</span>
+        <span class="live-text">{{ i18n "stat_checking" }}</span>
         <span class="stat-sub"></span>
       </div>
     </div>
-    <p class="stat-note">Live status from the public server list ping. Player counts only — no names are collected.</p>
+    <p class="stat-note">{{ i18n "stat_note" }}</p>
   </section>
 </article>
 {{ end }}

@@ -1,13 +1,31 @@
 baseURL = "https://northbyte.gg/"
 title = "NorthByte"
-languageCode = "en"
 enableRobotsTXT = true
 
 # Single landing page — no taxonomies, terms, or feeds.
 disableKinds = ["taxonomy", "term", "RSS"]
 
+# Bilingual: English at /, Swedish at /sv/. A small client-side redirect
+# (see partials/head.html) sends Swedish-browser visitors to /sv/ on first
+# visit; the header switcher persists a manual choice in localStorage.
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
 [minify]
   minifyOutput = true
 
-[params]
-  description = "NorthByte — community Minecraft servers in the north. Survival, Create, Cobblemon and more."
+[languages.en]
+  languageCode = "en"
+  languageName = "English"
+  weight = 1
+  title = "NorthByte"
+  [languages.en.params]
+    description = "NorthByte — community Minecraft servers in the north. Survival, Create, Cobblemon and more."
+
+[languages.sv]
+  languageCode = "sv"
+  languageName = "Svenska"
+  weight = 2
+  title = "NorthByte"
+  [languages.sv.params]
+    description = "NorthByte — community-Minecraftservrar i norr. Survival, Create, Cobblemon med mera."

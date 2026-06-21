@@ -1,10 +1,24 @@
 {{ $cat := site.Data.catalog }}
 <header class="topbar">
-  <a class="wordmark" href="/">
+  <a class="wordmark" href="{{ site.Home.RelPermalink }}">
     <img class="logo" src="/brand/logo.svg" alt="" width="36" height="36">
     <span>{{ $cat.brand.name }}</span>
   </a>
   <nav class="topnav">
-    <a href="/#servers">Servers</a>
+    <a href="{{ site.Home.RelPermalink }}#servers">{{ i18n "nav_servers" }}</a>
+    {{- $page := . -}}
+    <span class="langswitch" role="group" aria-label="{{ i18n "lang_switch" }}">
+      {{- range site.Sites -}}
+        {{- $ls := . -}}
+        {{- $href := $ls.Home.RelPermalink -}}
+        {{- if eq $ls.Language.Lang $page.Language.Lang -}}
+          {{- $href = $page.RelPermalink -}}
+        {{- else -}}
+          {{- range $page.Translations -}}{{- if eq .Language.Lang $ls.Language.Lang -}}{{- $href = .RelPermalink -}}{{- end -}}{{- end -}}
+        {{- end -}}
+        <a href="{{ $href }}" hreflang="{{ $ls.Language.Lang }}" data-setlang="{{ $ls.Language.Lang }}"
+           {{- if eq $ls.Language.Lang $page.Language.Lang }} class="active" aria-current="true"{{ end }}>{{ $ls.Language.Lang | upper }}</a>
+      {{- end -}}
+    </span>
   </nav>
 </header>

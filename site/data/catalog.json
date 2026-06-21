@@ -1,14 +1,20 @@
 {
     "brand": {
         "name": "NorthByte",
-        "tagline": "A small fleet of community game servers in the north. Pick a world, copy the address, jump in."
+        "tagline": {
+            "en": "A small fleet of community game servers in the north. Pick a world, copy the address, jump in.",
+            "sv": "Välj en värld, kopiera adressen och hoppa in."
+        }
     },
     "servers": {
         "create-survival": {
             "id": "create-survival",
             "type": "minecraft",
             "title": "Create — Survival",
-            "blurb": "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled.",
+            "blurb": {
+                "en": "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled.",
+                "sv": "Survival med hela Create-teknikträdet — bygg maskinerier, automatisera allt och tämj världen för hand. Aeronautics aktiverat."
+            },
             "connect": "create-survival.mc.northbyte.gg",
             "version": "1.21.1",
             "loader": "NeoForge",
@@ -22,19 +28,28 @@
                 {
                     "name": "Create",
                     "kind": "mod",
-                    "blurb": "Mechanical contraptions, automation and aesthetics.",
+                    "blurb": {
+                        "en": "Mechanical contraptions, automation and aesthetics.",
+                        "sv": "Mekaniska maskinerier, automation och estetik."
+                    },
                     "url": "https://modrinth.com/mod/create"
                 },
                 {
                     "name": "Create: Aeronautics",
                     "kind": "mod",
-                    "blurb": "Buildable airships and flying machines.",
+                    "blurb": {
+                        "en": "Buildable airships and flying machines.",
+                        "sv": "Byggbara luftskepp och flygmaskiner."
+                    },
                     "url": "https://modrinth.com/mod/create-aeronautics"
                 },
                 {
                     "name": "LuckPerms",
                     "kind": "mod",
-                    "blurb": "Permissions & rank management.",
+                    "blurb": {
+                        "en": "Permissions & rank management.",
+                        "sv": "Behörigheter och ranghantering."
+                    },
                     "url": "https://modrinth.com/plugin/luckperms"
                 }
             ],
@@ -51,7 +66,10 @@
             "id": "create-creative",
             "type": "minecraft",
             "title": "Create — Creative",
-            "blurb": "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces.",
+            "blurb": {
+                "en": "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces.",
+                "sv": "Samma Create-modpaket utan broms — obegränsat med block och flygläge för att prototypa maskiner och paradnummer."
+            },
             "connect": "create-creative.mc.northbyte.gg",
             "version": "1.21.1",
             "loader": "NeoForge",
@@ -65,19 +83,28 @@
                 {
                     "name": "Create",
                     "kind": "mod",
-                    "blurb": "Mechanical contraptions, automation and aesthetics.",
+                    "blurb": {
+                        "en": "Mechanical contraptions, automation and aesthetics.",
+                        "sv": "Mekaniska maskinerier, automation och estetik."
+                    },
                     "url": "https://modrinth.com/mod/create"
                 },
                 {
                     "name": "Create: Aeronautics",
                     "kind": "mod",
-                    "blurb": "Buildable airships and flying machines.",
+                    "blurb": {
+                        "en": "Buildable airships and flying machines.",
+                        "sv": "Byggbara luftskepp och flygmaskiner."
+                    },
                     "url": "https://modrinth.com/mod/create-aeronautics"
                 },
                 {
                     "name": "LuckPerms",
                     "kind": "mod",
-                    "blurb": "Permissions & rank management.",
+                    "blurb": {
+                        "en": "Permissions & rank management.",
+                        "sv": "Behörigheter och ranghantering."
+                    },
                     "url": "https://modrinth.com/plugin/luckperms"
                 }
             ],
@@ -94,7 +121,10 @@
             "id": "vanilla",
             "type": "minecraft",
             "title": "Vanilla+",
-            "blurb": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
+            "blurb": {
+                "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
+                "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
+            },
             "connect": "vanilla.mc.northbyte.gg",
             "version": "1.21.x",
             "loader": "Paper",
@@ -103,25 +133,37 @@
                 {
                     "name": "BlueMap",
                     "kind": "plugin",
-                    "blurb": "Live 3D web map of the world.",
+                    "blurb": {
+                        "en": "Live 3D web map of the world.",
+                        "sv": "Live 3D-webbkarta över världen."
+                    },
                     "url": "https://modrinth.com/plugin/bluemap"
                 },
                 {
                     "name": "EssentialsX",
                     "kind": "plugin",
-                    "blurb": "Homes, warps, kits and core commands.",
+                    "blurb": {
+                        "en": "Homes, warps, kits and core commands.",
+                        "sv": "Hem, warpar, kit och grundkommandon."
+                    },
                     "url": "https://modrinth.com/plugin/essentialsx"
                 },
                 {
                     "name": "LuckPerms",
                     "kind": "plugin",
-                    "blurb": "Permissions & rank management.",
+                    "blurb": {
+                        "en": "Permissions & rank management.",
+                        "sv": "Behörigheter och ranghantering."
+                    },
                     "url": "https://modrinth.com/plugin/luckperms"
                 },
                 {
                     "name": "Multiverse",
                     "kind": "plugin",
-                    "blurb": "Multiple worlds with portals & per-world inventories.",
+                    "blurb": {
+                        "en": "Multiple worlds with portals & per-world inventories.",
+                        "sv": "Flera världar med portaler och separata inventarier per värld."
+                    },
                     "url": "https://modrinth.com/plugin/multiverse-core"
                 }
             ],
@@ -139,7 +181,10 @@
             "id": "cobblemon",
             "type": "minecraft",
             "title": "Cobblemon",
-            "blurb": "Catch, train, and battle Pokémon across a survival world. Fabric-powered, with a live BlueMap to track your journey.",
+            "blurb": {
+                "en": "Catch, train, and battle Pokémon across a survival world. Fabric-powered, with a live BlueMap to track your journey.",
+                "sv": "Fånga, träna och slåss med Pokémon i en survival-värld. Drivs av Fabric, med en live-BlueMap för att följa din resa."
+            },
             "connect": "cobblemon.mc.northbyte.gg",
             "version": "1.21.1",
             "loader": "Fabric",
@@ -153,19 +198,28 @@
                 {
                     "name": "Cobblemon",
                     "kind": "mod",
-                    "blurb": "Pokémon catching, training and battling.",
+                    "blurb": {
+                        "en": "Pokémon catching, training and battling.",
+                        "sv": "Fånga, träna och slåss med Pokémon."
+                    },
                     "url": "https://modrinth.com/mod/cobblemon"
                 },
                 {
                     "name": "BlueMap",
                     "kind": "mod",
-                    "blurb": "Live 3D web map of the world.",
+                    "blurb": {
+                        "en": "Live 3D web map of the world.",
+                        "sv": "Live 3D-webbkarta över världen."
+                    },
                     "url": "https://modrinth.com/plugin/bluemap"
                 },
                 {
                     "name": "LuckPerms",
                     "kind": "mod",
-                    "blurb": "Permissions & rank management.",
+                    "blurb": {
+                        "en": "Permissions & rank management.",
+                        "sv": "Behörigheter och ranghantering."
+                    },
                     "url": "https://modrinth.com/plugin/luckperms"
                 }
             ],
@@ -183,7 +237,10 @@
             "id": "ron",
             "type": "minecraft",
             "title": "Reign of Nether",
-            "blurb": "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around.",
+            "blurb": {
+                "en": "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around.",
+                "sv": "Ett realtidsstrategigrepp på Minecraft — för befäl över arméer och kämpa om Nether. En experimentell värld vi drar igång för att busa runt."
+            },
             "connect": "ron.mc.northbyte.gg",
             "version": "1.20.1",
             "loader": "Fabric",
@@ -197,7 +254,10 @@
                 {
                     "name": "Reign of Nether",
                     "kind": "mod",
-                    "blurb": "RTS gameplay — command units and bases.",
+                    "blurb": {
+                        "en": "RTS gameplay — command units and bases.",
+                        "sv": "RTS-spel — styr enheter och baser."
+                    },
                     "url": "https://modrinth.com/mod/reignofnether"
                 }
             ],

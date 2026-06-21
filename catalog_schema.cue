@@ -6,13 +6,21 @@
 // build. Hand-author catalog.cue from the public fields of that file.
 package northbyte
 
+// A player-facing string rendered in both site languages. The template picks
+// the field matching the active language (`index .field site.Language.Lang`).
+// UI chrome lives in site/i18n/*.toml instead; this is only for catalog prose.
+#I18n: {
+	en: string
+	sv: string
+}
+
 // A curated mod or plugin highlight shown on a server's Details page.
 // NOT an exhaustive dump of a modpack's contents — just the notable picks.
 #Mod: {
-	name:  string
-	kind:  "mod" | "plugin"
-	blurb?: string
-	url?:  string
+	name:   string
+	kind:   "mod" | "plugin"
+	blurb?: #I18n
+	url?:   string
 }
 
 // A single public game server. `type` is the extensibility seam — today only
@@ -27,8 +35,8 @@ package northbyte
 	// Display name, e.g. "Cobblemon".
 	title: string
 
-	// One or two sentence, player-facing description.
-	blurb: string
+	// One or two sentence, player-facing description (localized en/sv).
+	blurb: #I18n
 
 	// Public connect address (shown with a copy button).
 	connect: string
@@ -75,7 +83,7 @@ package northbyte
 	// Branding shown in the hero.
 	brand: {
 		name:    string | *"NorthByte"
-		tagline: string
+		tagline: #I18n
 	}
 	servers: [ID=string]: #Server & {id: ID}
 }

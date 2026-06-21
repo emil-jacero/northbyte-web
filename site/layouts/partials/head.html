@@ -1,19 +1,42 @@
 {{ $cat := site.Data.catalog }}
+{{ $lang := site.Language.Lang }}
+{{ $tagline := index $cat.brand.tagline $lang }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{ $title := cond .IsHome (printf "%s — Game Servers" $cat.brand.name) (printf "%s · %s" .Title $cat.brand.name) }}
+
+{{/* Auto-detect: send Swedish-browser visitors to /sv/ on first load. A manual
+     choice (header switcher) sets localStorage["nb-lang"] and wins thereafter.
+     Runs early to avoid a flash; only ever en→sv, so no redirect loop. */}}
+<script>
+(function(){try{
+  var cur="{{ $lang }}";
+  if(localStorage.getItem("nb-lang")) return;
+  var p=((navigator.languages&&navigator.languages[0])||navigator.language||"en").toLowerCase();
+  if(p.indexOf("sv")===0 && cur==="en"){ location.replace("/sv"+location.pathname+location.search); }
+}catch(e){}})();
+</script>
+
+{{ $title := cond .IsHome (printf "%s — %s" $cat.brand.name (i18n "title_suffix")) (printf "%s · %s" .Title $cat.brand.name) }}
 <title>{{ $title }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ $cat.brand.tagline }}{{ end }}">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ $tagline }}{{ end }}">
 <meta name="theme-color" content="#0a0e16">
 
 <meta property="og:type" content="website">
+<meta property="og:locale" content="{{ replace $lang "sv" "sv_SE" | replace "en" "en_US" }}">
 <meta property="og:title" content="{{ $title }}">
-<meta property="og:description" content="{{ $cat.brand.tagline }}">
+<meta property="og:description" content="{{ $tagline }}">
 <meta property="og:image" content="{{ "brand/og-card.jpg" | absURL }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta name="twitter:card" content="summary_large_image">
+
+{{/* Strings the client-side scripts (live status, copy toast) write at runtime. */}}
+<script>window.NB_I18N={{ (dict
+  "online"  (i18n "live_online")
+  "offline" (i18n "live_offline")
+  "error"   (i18n "live_error")
+  "copied"  (i18n "toast_copied")) | jsonify }};</script>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">

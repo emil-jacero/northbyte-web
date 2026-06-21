@@ -1,4 +1,7 @@
-{{/* Content adapter: generate one Details page per server from the catalog. */}}
+{{/* Content adapter: generate one Details page per server from the catalog.
+     Unsuffixed = default (en) language only — the Swedish twin lives in
+     _content.sv.gotmpl. Keep the two in sync. Catalog prose is localized at
+     render time in layouts/servers/single.html via site.Language.Lang. */}}
 {{ $cat := site.Data.catalog }}
 {{ range $id, $s := $cat.servers }}
   {{ if not $s.hidden }}

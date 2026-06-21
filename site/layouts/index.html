@@ -5,15 +5,15 @@
   <div class="hero-inner">
     <img class="hero-logo" src="/brand/logo.svg" alt="{{ $cat.brand.name }} logo" width="150" height="150">
     <h1 class="wordmark-xl">{{ $cat.brand.name }}</h1>
-    <p class="lede">{{ $cat.brand.tagline }}</p>
-    <a class="cta" href="#servers">Browse the servers <span aria-hidden="true">↓</span></a>
+    <p class="lede">{{ index $cat.brand.tagline site.Language.Lang }}</p>
+    <a class="cta" href="#servers">{{ i18n "hero_cta" }} <span aria-hidden="true">↓</span></a>
   </div>
 </section>
 
 <section id="servers" class="servers">
   {{ $servers := where (sort $cat.servers "order") "hidden" false }}
   {{ $types := slice "minecraft" "valheim" "other" }}
-  {{ $labels := dict "minecraft" "Minecraft" "valheim" "Valheim" "other" "Other" }}
+  {{ $labels := dict "minecraft" "Minecraft" "valheim" "Valheim" "other" (i18n "group_other") }}
   {{ range $i, $t := $types }}
     {{ $group := where $servers "type" $t }}
     {{ with $group }}
@@ -21,7 +21,7 @@
         <div class="group-head">
           {{ partial "type-icon.html" $t }}
           <h2>{{ index $labels $t }}</h2>
-          <span class="group-count">{{ len . }} server{{ if ne (len .) 1 }}s{{ end }}</span>
+          <span class="group-count">{{ i18n "server_count" (len .) }}</span>
         </div>
         <ul class="server-list">
           {{ range . }}{{ partial "server-row.html" . }}{{ end }}

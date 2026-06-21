@@ -1,0 +1,59 @@
+# English UI strings. Catalog prose (taglines, blurbs) is localized in catalog.cue
+# via #I18n, not here. Keys are referenced from templates with {{ i18n "key" }}.
+# NOTE: flat keys must precede any [table] in TOML — keep tables at the bottom.
+
+title_suffix   = "Game Servers"
+nav_servers    = "Servers"
+hero_cta       = "Browse the servers"
+footer_made    = "Made in the north"
+
+group_other    = "Other"
+
+# Server row + detail
+chip_experimental = "Experimental"
+btn_copy          = "Copy"
+btn_details       = "Details"
+btn_copy_address  = "Copy address"
+btn_live_map      = "Live map ↗"
+back_all          = "← All servers"
+
+# Modpack install call-to-action. The body wraps <strong>{name}</strong>:
+#   {install_body_pre} <strong>NAME</strong>{ vX} {install_body_post} <code>addr</code>.
+install_heading   = "Modded server — install the modpack first"
+install_body_pre  = "Open"
+install_body_post = "in the Modrinth App (or Prism / ATLauncher), install it, then connect to"
+btn_install       = "Get the modpack on Modrinth ↗"
+
+# Facts table
+fact_version = "Version"
+fact_loader  = "Loader"
+fact_mode    = "Mode"
+fact_modpack = "Modpack"
+
+# Mods section
+mods_heading   = "Mods & plugins"
+mods_note_pre  = "A few highlights — the"
+mods_note_post = "modpack bundles many more."
+kind_mod       = "mod"
+kind_plugin    = "plugin"
+
+# Statistics / live status
+stats_heading = "Statistics"
+stat_note     = "Live status from the public server list ping. Player counts only — no names are collected."
+live_checking = "Checking…"
+stat_checking = "Checking status…"
+live_online   = "Online"
+live_offline  = "Offline"
+live_error    = "Status unavailable"
+
+# Toast + type-icon titles
+toast_copied   = "Address copied"
+type_minecraft = "Minecraft server"
+type_valheim   = "Valheim server"
+
+# Language switcher (aria)
+lang_switch = "Language"
+
+[server_count]
+one   = "{{ .Count }} server"
+other = "{{ .Count }} servers"
