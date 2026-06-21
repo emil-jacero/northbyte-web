@@ -91,8 +91,19 @@ body::before {
 .wordmark { display: inline-flex; align-items: center; gap: 11px;
   font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.01em; }
 .wordmark .logo { filter: drop-shadow(0 2px 8px rgba(250, 95, 2, 0.4)); }
-.topnav a { color: var(--muted); font-size: 0.95rem; transition: color 0.2s; }
-.topnav a:hover { color: var(--cyan); }
+.topnav { display: flex; align-items: center; gap: 20px; }
+.topnav > a { color: var(--muted); font-size: 0.95rem; transition: color 0.2s; }
+.topnav > a:hover { color: var(--cyan); }
+.langswitch {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding-left: 18px; border-left: 1px solid var(--line-2);
+}
+.langswitch a {
+  color: var(--muted); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.04em; transition: color 0.2s;
+}
+.langswitch a:hover { color: var(--cyan); }
+.langswitch a.active { color: var(--ink); }
 
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
