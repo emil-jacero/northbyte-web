@@ -7,6 +7,65 @@
         }
     },
     "servers": {
+        "vanilla": {
+            "id": "vanilla",
+            "type": "minecraft",
+            "title": "Vanilla+",
+            "blurb": {
+                "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
+                "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
+            },
+            "connect": "vanilla.mc.northbyte.gg",
+            "version": "26.1.2",
+            "loader": "Paper",
+            "mode": "Survival",
+            "featuredMods": [
+                {
+                    "name": "BlueMap",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Live 3D web map of the world.",
+                        "sv": "Live 3D-webbkarta över världen."
+                    },
+                    "url": "https://modrinth.com/plugin/bluemap"
+                },
+                {
+                    "name": "EssentialsX",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Homes, warps, kits and core commands.",
+                        "sv": "Hem, warpar, kit och grundkommandon."
+                    },
+                    "url": "https://modrinth.com/plugin/essentialsx"
+                },
+                {
+                    "name": "LuckPerms",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Permissions & rank management.",
+                        "sv": "Behörigheter och ranghantering."
+                    },
+                    "url": "https://modrinth.com/plugin/luckperms"
+                },
+                {
+                    "name": "Multiverse",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Multiple worlds with portals & per-world inventories.",
+                        "sv": "Flera världar med portaler och separata inventarier per värld."
+                    },
+                    "url": "https://modrinth.com/plugin/multiverse-core"
+                }
+            ],
+            "tags": [
+                "Survival",
+                "Multiverse",
+                "BlueMap"
+            ],
+            "experimental": false,
+            "hidden": false,
+            "order": 10
+        },
         "create-survival": {
             "id": "create-survival",
             "type": "minecraft",
@@ -60,7 +119,7 @@
             ],
             "experimental": false,
             "hidden": false,
-            "order": 10
+            "order": 20
         },
         "create-creative": {
             "id": "create-creative",
@@ -112,65 +171,6 @@
                 "Modded",
                 "Create",
                 "Creative"
-            ],
-            "experimental": false,
-            "hidden": false,
-            "order": 20
-        },
-        "vanilla": {
-            "id": "vanilla",
-            "type": "minecraft",
-            "title": "Vanilla+",
-            "blurb": {
-                "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
-                "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
-            },
-            "connect": "vanilla.mc.northbyte.gg",
-            "version": "1.21.x",
-            "loader": "Paper",
-            "mode": "Survival",
-            "featuredMods": [
-                {
-                    "name": "BlueMap",
-                    "kind": "plugin",
-                    "blurb": {
-                        "en": "Live 3D web map of the world.",
-                        "sv": "Live 3D-webbkarta över världen."
-                    },
-                    "url": "https://modrinth.com/plugin/bluemap"
-                },
-                {
-                    "name": "EssentialsX",
-                    "kind": "plugin",
-                    "blurb": {
-                        "en": "Homes, warps, kits and core commands.",
-                        "sv": "Hem, warpar, kit och grundkommandon."
-                    },
-                    "url": "https://modrinth.com/plugin/essentialsx"
-                },
-                {
-                    "name": "LuckPerms",
-                    "kind": "plugin",
-                    "blurb": {
-                        "en": "Permissions & rank management.",
-                        "sv": "Behörigheter och ranghantering."
-                    },
-                    "url": "https://modrinth.com/plugin/luckperms"
-                },
-                {
-                    "name": "Multiverse",
-                    "kind": "plugin",
-                    "blurb": {
-                        "en": "Multiple worlds with portals & per-world inventories.",
-                        "sv": "Flera världar med portaler och separata inventarier per värld."
-                    },
-                    "url": "https://modrinth.com/plugin/multiverse-core"
-                }
-            ],
-            "tags": [
-                "Survival",
-                "Multiverse",
-                "BlueMap"
             ],
             "experimental": false,
             "hidden": false,
@@ -241,7 +241,7 @@
             },
             "connect": "ron.mc.northbyte.gg",
             "version": "1.20.1",
-            "loader": "Fabric",
+            "loader": "Forge",
             "mode": "Creative",
             "modpack": {
                 "name": "Reign of Nether (Optimized)",

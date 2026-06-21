@@ -18,6 +18,27 @@ catalog: #Catalog & {
 	}
 
 	servers: {
+		"vanilla": {
+			type:    "minecraft"
+			title:   "Vanilla+"
+			connect: "vanilla.mc.northbyte.gg"
+			version: "26.1.2"
+			loader:  "Paper"
+			mode:    "Survival"
+			blurb: {
+				en: "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world."
+				sv: "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
+			}
+			featuredMods: [
+				{name: "BlueMap", kind: "plugin", url: "https://modrinth.com/plugin/bluemap", blurb: {en: "Live 3D web map of the world.", sv: "Live 3D-webbkarta över världen."}},
+				{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
+				{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
+				{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
+			]
+			tags: ["Survival", "Multiverse", "BlueMap"]
+			order: 10
+		}
+
 		"create-survival": {
 			type:    "minecraft"
 			title:   "Create — Survival"
@@ -40,7 +61,7 @@ catalog: #Catalog & {
 				{name: "LuckPerms", kind: "mod", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 			]
 			tags: ["Modded", "Create", "Tech"]
-			order: 10
+			order: 20
 		}
 
 		"create-creative": {
@@ -65,27 +86,6 @@ catalog: #Catalog & {
 				{name: "LuckPerms", kind: "mod", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 			]
 			tags: ["Modded", "Create", "Creative"]
-			order: 20
-		}
-
-		"vanilla": {
-			type:    "minecraft"
-			title:   "Vanilla+"
-			connect: "vanilla.mc.northbyte.gg"
-			version: "1.21.x"
-			loader:  "Paper"
-			mode:    "Survival"
-			blurb: {
-				en: "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world."
-				sv: "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
-			}
-			featuredMods: [
-				{name: "BlueMap", kind: "plugin", url: "https://modrinth.com/plugin/bluemap", blurb: {en: "Live 3D web map of the world.", sv: "Live 3D-webbkarta över världen."}},
-				{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
-				{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
-				{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
-			]
-			tags: ["Survival", "Multiverse", "BlueMap"]
 			order: 30
 		}
 
@@ -120,7 +120,7 @@ catalog: #Catalog & {
 			title:   "Reign of Nether"
 			connect: "ron.mc.northbyte.gg"
 			version: "1.20.1"
-			loader:  "Fabric"
+			loader:  "Forge"
 			mode:    "Creative"
 			blurb: {
 				en: "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around."

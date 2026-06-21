@@ -45,7 +45,7 @@ package northbyte
 	version: string
 
 	// Server platform / mod loader.
-	loader: "Vanilla" | "Paper" | "Fabric" | "NeoForge"
+	loader: "Vanilla" | "Paper" | "Fabric" | "Forge" | "NeoForge"
 
 	// Primary game mode.
 	mode: "Survival" | "Creative" | "Adventure"
