@@ -1,0 +1,207 @@
+{
+    "brand": {
+        "name": "NorthByte",
+        "tagline": "A small fleet of community game servers in the north. Pick a world, copy the address, jump in."
+    },
+    "servers": {
+        "create-survival": {
+            "id": "create-survival",
+            "type": "minecraft",
+            "title": "Create — Survival",
+            "blurb": "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled.",
+            "connect": "create-survival.mc.northbyte.gg",
+            "version": "1.21.1",
+            "loader": "NeoForge",
+            "mode": "Survival",
+            "modpack": {
+                "name": "Create: Ultimate Selection 2",
+                "url": "https://modrinth.com/modpack/create-ultimate-selection-2",
+                "version": "8.6.0"
+            },
+            "featuredMods": [
+                {
+                    "name": "Create",
+                    "kind": "mod",
+                    "blurb": "Mechanical contraptions, automation and aesthetics.",
+                    "url": "https://modrinth.com/mod/create"
+                },
+                {
+                    "name": "Create: Aeronautics",
+                    "kind": "mod",
+                    "blurb": "Buildable airships and flying machines.",
+                    "url": "https://modrinth.com/mod/create-aeronautics"
+                },
+                {
+                    "name": "LuckPerms",
+                    "kind": "mod",
+                    "blurb": "Permissions & rank management.",
+                    "url": "https://modrinth.com/plugin/luckperms"
+                }
+            ],
+            "tags": [
+                "Modded",
+                "Create",
+                "Tech"
+            ],
+            "experimental": false,
+            "order": 10
+        },
+        "create-creative": {
+            "id": "create-creative",
+            "type": "minecraft",
+            "title": "Create — Creative",
+            "blurb": "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces.",
+            "connect": "create-creative.mc.northbyte.gg",
+            "version": "1.21.1",
+            "loader": "NeoForge",
+            "mode": "Creative",
+            "modpack": {
+                "name": "Create: Ultimate Selection 2",
+                "url": "https://modrinth.com/modpack/create-ultimate-selection-2",
+                "version": "8.6.0"
+            },
+            "featuredMods": [
+                {
+                    "name": "Create",
+                    "kind": "mod",
+                    "blurb": "Mechanical contraptions, automation and aesthetics.",
+                    "url": "https://modrinth.com/mod/create"
+                },
+                {
+                    "name": "Create: Aeronautics",
+                    "kind": "mod",
+                    "blurb": "Buildable airships and flying machines.",
+                    "url": "https://modrinth.com/mod/create-aeronautics"
+                },
+                {
+                    "name": "LuckPerms",
+                    "kind": "mod",
+                    "blurb": "Permissions & rank management.",
+                    "url": "https://modrinth.com/plugin/luckperms"
+                }
+            ],
+            "tags": [
+                "Modded",
+                "Create",
+                "Creative"
+            ],
+            "experimental": false,
+            "order": 20
+        },
+        "vanilla": {
+            "id": "vanilla",
+            "type": "minecraft",
+            "title": "Vanilla+",
+            "blurb": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
+            "connect": "vanilla.mc.northbyte.gg",
+            "version": "1.21.x",
+            "loader": "Paper",
+            "mode": "Survival",
+            "featuredMods": [
+                {
+                    "name": "BlueMap",
+                    "kind": "plugin",
+                    "blurb": "Live 3D web map of the world.",
+                    "url": "https://modrinth.com/plugin/bluemap"
+                },
+                {
+                    "name": "EssentialsX",
+                    "kind": "plugin",
+                    "blurb": "Homes, warps, kits and core commands.",
+                    "url": "https://modrinth.com/plugin/essentialsx"
+                },
+                {
+                    "name": "LuckPerms",
+                    "kind": "plugin",
+                    "blurb": "Permissions & rank management.",
+                    "url": "https://modrinth.com/plugin/luckperms"
+                },
+                {
+                    "name": "Multiverse",
+                    "kind": "plugin",
+                    "blurb": "Multiple worlds with portals & per-world inventories.",
+                    "url": "https://modrinth.com/plugin/multiverse-core"
+                }
+            ],
+            "tags": [
+                "Survival",
+                "Multiverse",
+                "BlueMap"
+            ],
+            "mapURL": "https://map.vanilla.mc.larnet.eu",
+            "experimental": false,
+            "order": 30
+        },
+        "cobblemon": {
+            "id": "cobblemon",
+            "type": "minecraft",
+            "title": "Cobblemon",
+            "blurb": "Catch, train, and battle Pokémon across a survival world. Fabric-powered, with a live BlueMap to track your journey.",
+            "connect": "cobblemon.mc.northbyte.gg",
+            "version": "1.21.1",
+            "loader": "Fabric",
+            "mode": "Survival",
+            "modpack": {
+                "name": "Cobblemon Fabric",
+                "url": "https://modrinth.com/modpack/cobblemon-fabric"
+            },
+            "featuredMods": [
+                {
+                    "name": "Cobblemon",
+                    "kind": "mod",
+                    "blurb": "Pokémon catching, training and battling.",
+                    "url": "https://modrinth.com/mod/cobblemon"
+                },
+                {
+                    "name": "BlueMap",
+                    "kind": "mod",
+                    "blurb": "Live 3D web map of the world.",
+                    "url": "https://modrinth.com/plugin/bluemap"
+                },
+                {
+                    "name": "LuckPerms",
+                    "kind": "mod",
+                    "blurb": "Permissions & rank management.",
+                    "url": "https://modrinth.com/plugin/luckperms"
+                }
+            ],
+            "tags": [
+                "Modded",
+                "Pokémon",
+                "Fabric"
+            ],
+            "mapURL": "https://map.cobblemon.larnet.eu",
+            "experimental": false,
+            "order": 40
+        },
+        "ron": {
+            "id": "ron",
+            "type": "minecraft",
+            "title": "Reign of Nether",
+            "blurb": "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around.",
+            "connect": "ron.mc.northbyte.gg",
+            "version": "1.20.1",
+            "loader": "Fabric",
+            "mode": "Creative",
+            "modpack": {
+                "name": "Reign of Nether (Optimized)",
+                "url": "https://modrinth.com/modpack/reign-of-nether-optimized"
+            },
+            "featuredMods": [
+                {
+                    "name": "Reign of Nether",
+                    "kind": "mod",
+                    "blurb": "RTS gameplay — command units and bases.",
+                    "url": "https://modrinth.com/mod/reignofnether"
+                }
+            ],
+            "tags": [
+                "Modded",
+                "RTS",
+                "Experimental"
+            ],
+            "experimental": true,
+            "order": 50
+        }
+    }
+}

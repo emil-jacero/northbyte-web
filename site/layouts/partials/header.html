@@ -1,0 +1,10 @@
+{{ $cat := site.Data.catalog }}
+<header class="topbar">
+  <a class="wordmark" href="/">
+    <img class="logo" src="/brand/logo.svg" alt="" width="36" height="36">
+    <span>{{ $cat.brand.name }}</span>
+  </a>
+  <nav class="topnav">
+    <a href="/#servers">Servers</a>
+  </nav>
+</header>

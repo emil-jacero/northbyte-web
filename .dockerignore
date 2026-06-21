@@ -1,0 +1,6 @@
+site/public
+site/resources
+.git
+.task
+*.md
+Taskfile.yml

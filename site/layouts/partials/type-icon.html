@@ -1,0 +1,9 @@
+{{- /* Renders the server-type icon. Context (.) is the type string. */ -}}
+{{- $t := . -}}
+{{- if eq $t "minecraft" -}}
+<img class="type-icon" src="/icons/minecraft.svg" alt="Minecraft" title="Minecraft server" width="26" height="26">
+{{- else if eq $t "valheim" -}}
+<img class="type-icon" src="/icons/valheim.svg" alt="Valheim" title="Valheim server" width="26" height="26">
+{{- else -}}
+<span class="type-icon type-icon--generic" title="{{ $t }}" aria-hidden="true"></span>
+{{- end -}}

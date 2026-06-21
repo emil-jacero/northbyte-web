@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="bg-fx" aria-hidden="true">
+    <span class="glow glow-warm"></span>
+    <span class="glow glow-cool"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  {{ partial "header.html" . }}
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Address copied</div>
+
+  <script>
+    (function () {
+      var toast = document.getElementById('toast'), timer;
+      function ping() {
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('show'); }, 1600);
+      }
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-copy]');
+        if (!btn) return;
+        e.preventDefault();
+        var text = btn.getAttribute('data-copy');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(ping).catch(function () {});
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); ping(); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

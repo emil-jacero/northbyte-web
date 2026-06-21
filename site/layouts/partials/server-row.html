@@ -1,0 +1,27 @@
+{{- /* One server row in the list view. Context (.) is a server object. */ -}}
+<li class="srow{{ if .experimental }} srow--exp{{ end }}">
+  <a class="srow-main" href="/servers/{{ .id }}/">
+    {{ partial "type-icon.html" .type }}
+    <span class="srow-text">
+      <span class="srow-name">
+        {{ .title }}
+        {{ if .experimental }}<span class="exp-chip">Experimental</span>{{ end }}
+      </span>
+      <span class="srow-meta">
+        <span>{{ .loader }}</span><span class="dot">·</span><span>{{ .version }}</span><span class="dot">·</span><span>{{ .mode }}</span>
+        {{ with .modpack }}<span class="dot">·</span><span class="srow-pack">{{ .name }}</span>{{ end }}
+      </span>
+    </span>
+  </a>
+  <div class="srow-actions">
+    <code class="addr" title="{{ .connect }}">{{ .connect }}</code>
+    <button class="btn btn-copy" type="button" data-copy="{{ .connect }}" aria-label="Copy {{ .connect }}">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M5 15V5a2 2 0 0 1 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Copy</span>
+    </button>
+    <a class="btn btn-details" href="/servers/{{ .id }}/">Details</a>
+  </div>
+</li>

@@ -1,0 +1,19 @@
+{{ $cat := site.Data.catalog }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $title := cond .IsHome (printf "%s — Game Servers" $cat.brand.name) (printf "%s · %s" .Title $cat.brand.name) }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ $cat.brand.tagline }}{{ end }}">
+<meta name="theme-color" content="#0a0e16">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $cat.brand.tagline }}">
+<meta property="og:image" content="{{ "brand/hero-bg.jpg" | absURL }}">
+<meta property="og:url" content="{{ .Permalink }}">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">

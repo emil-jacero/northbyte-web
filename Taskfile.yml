@@ -1,0 +1,52 @@
+version: "3"
+
+vars:
+  # Override per environment, e.g. `IMAGE=ghcr.io/emil/northbyte-web:v0.1.0 task image`.
+  IMAGE: '{{.IMAGE | default "ghcr.io/CHANGEME/northbyte-web:dev"}}'
+
+tasks:
+  default:
+    cmds: [task: check]
+
+  generate:
+    desc: Export the public catalog (catalog.cue) to the Hugo data file.
+    sources: ["catalog.cue", "catalog_schema.cue"]
+    generates: ["site/data/catalog.json"]
+    cmds:
+      - cue vet ./...
+      - cue export -e catalog ./... > site/data/catalog.json
+
+  build:
+    desc: Generate data + build the static site into site/public.
+    deps: [generate]
+    cmds:
+      - hugo --source site --minify --gc
+
+  run:
+    desc: Live-reload dev server at http://localhost:1313.
+    deps: [generate]
+    cmds:
+      - hugo server --source site --bind 0.0.0.0 --buildDrafts
+
+  image:
+    desc: Build the nginx container image with the baked-in site.
+    deps: [build]
+    cmds:
+      - docker build -t {{.IMAGE}} .
+
+  push:
+    desc: Build and push the container image.
+    deps: [image]
+    cmds:
+      - docker push {{.IMAGE}}
+
+  check:
+    desc: Validate CUE and confirm the site builds cleanly.
+    deps: [generate]
+    cmds:
+      - hugo --source site --minify --gc --destination /tmp/northbyte-check
+      - echo "OK — catalog vetted and site builds."
+
+  clean:
+    cmds:
+      - rm -rf site/public site/resources /tmp/northbyte-check

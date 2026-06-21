@@ -1,0 +1,10 @@
+{{/* Content adapter: generate one Details page per server from the catalog. */}}
+{{ $cat := site.Data.catalog }}
+{{ range $id, $s := $cat.servers }}
+  {{ $.AddPage (dict
+    "path"   $id
+    "kind"   "page"
+    "title"  $s.title
+    "params" $s
+  ) }}
+{{ end }}

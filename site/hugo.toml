@@ -1,0 +1,13 @@
+baseURL = "https://northbyte.gg/"
+title = "NorthByte"
+languageCode = "en"
+enableRobotsTXT = true
+
+# Single landing page — no taxonomies, terms, or feeds.
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[minify]
+  minifyOutput = true
+
+[params]
+  description = "NorthByte — community Minecraft servers in the north. Survival, Create, Cobblemon and more."

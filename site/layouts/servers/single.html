@@ -1,0 +1,75 @@
+{{ define "main" }}
+{{ $s := .Params }}
+<article class="detail">
+  <a class="back" href="/#servers">← All servers</a>
+
+  <header class="detail-head">
+    <div class="detail-title">
+      {{ partial "type-icon.html" $s.type }}
+      <h1>{{ $s.title }}{{ if $s.experimental }}<span class="exp-chip">Experimental</span>{{ end }}</h1>
+    </div>
+    <p class="detail-blurb">{{ $s.blurb }}</p>
+    {{ with $s.tags }}<ul class="detail-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  </header>
+
+  <div class="detail-connect">
+    <code class="addr">{{ $s.connect }}</code>
+    <button class="btn btn-copy" type="button" data-copy="{{ $s.connect }}" aria-label="Copy {{ $s.connect }}">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M5 15V5a2 2 0 0 1 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Copy address</span>
+    </button>
+    {{ with $s.mapURL }}<a class="btn btn-map" href="{{ . }}" target="_blank" rel="noopener">Live map ↗</a>{{ end }}
+  </div>
+
+  {{ with $s.modpack }}
+  <aside class="install-cta">
+    <div class="install-text">
+      <h2>Modded server — install the modpack first</h2>
+      <p>Open <strong>{{ .name }}</strong>{{ with .version }} <span class="dim">v{{ . }}</span>{{ end }} in the Modrinth App (or Prism / ATLauncher), install it, then connect to <code>{{ $s.connect }}</code>.</p>
+    </div>
+    {{ with .url }}<a class="btn btn-install" href="{{ . }}" target="_blank" rel="noopener">Get the modpack on Modrinth ↗</a>{{ end }}
+  </aside>
+  {{ end }}
+
+  <section class="facts">
+    <div><dt>Version</dt><dd>{{ $s.version }}</dd></div>
+    <div><dt>Loader</dt><dd>{{ $s.loader }}</dd></div>
+    <div><dt>Mode</dt><dd>{{ $s.mode }}</dd></div>
+    {{ with $s.modpack }}
+      <div><dt>Modpack</dt><dd>
+        {{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }} ↗</a>{{ else }}{{ .name }}{{ end }}
+        {{ with .version }}<span class="dim">v{{ . }}</span>{{ end }}
+      </dd></div>
+    {{ end }}
+  </section>
+
+  {{ with $s.featuredMods }}
+  <section class="mods">
+    <h2>Mods &amp; plugins</h2>
+    {{ if $s.modpack }}<p class="mods-note">A few highlights — the <strong>{{ $s.modpack.name }}</strong> modpack bundles many more.</p>{{ end }}
+    <ul class="mod-list">
+      {{ range . }}
+      <li class="mod">
+        <span class="mod-kind mod-kind--{{ .kind }}">{{ .kind }}</span>
+        <div class="mod-body">
+          <div class="mod-name">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }} <span class="ext">↗</span></a>{{ else }}{{ .name }}{{ end }}</div>
+          {{ with .blurb }}<div class="mod-blurb">{{ . }}</div>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section class="stats">
+    <h2>Statistics</h2>
+    <div class="soon">
+      <span class="soon-dot"></span>
+      <p>Live player counts &amp; uptime — <strong>coming soon</strong>.</p>
+    </div>
+  </section>
+</article>
+{{ end }}

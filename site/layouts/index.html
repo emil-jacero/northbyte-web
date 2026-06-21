@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $cat := site.Data.catalog }}
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="/brand/logo.svg" alt="{{ $cat.brand.name }} logo" width="150" height="150">
+    <h1 class="wordmark-xl">{{ $cat.brand.name }}</h1>
+    <p class="lede">{{ $cat.brand.tagline }}</p>
+    <a class="cta" href="#servers">Browse the servers <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section id="servers" class="servers">
+  {{ $servers := sort $cat.servers "order" }}
+  {{ $types := slice "minecraft" "valheim" "other" }}
+  {{ $labels := dict "minecraft" "Minecraft" "valheim" "Valheim" "other" "Other" }}
+  {{ range $i, $t := $types }}
+    {{ $group := where $servers "type" $t }}
+    {{ with $group }}
+      <div class="server-group {{ if eq (mod $i 2) 0 }}accent-warm{{ else }}accent-cool{{ end }}">
+        <div class="group-head">
+          {{ partial "type-icon.html" $t }}
+          <h2>{{ index $labels $t }}</h2>
+          <span class="group-count">{{ len . }} server{{ if ne (len .) 1 }}s{{ end }}</span>
+        </div>
+        <ul class="server-list">
+          {{ range . }}{{ partial "server-row.html" . }}{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  {{ end }}
+</section>
+{{ end }}
