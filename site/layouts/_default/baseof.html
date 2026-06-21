@@ -43,6 +43,40 @@
         }
       });
     })();
+
+    // Live Minecraft status via the public Server List Ping (api.mcstatus.io).
+    // No secrets, no backend: same data the multiplayer screen shows. Player
+    // counts only — never names.
+    (function () {
+      var nodes = document.querySelectorAll('[data-mcstatus]');
+      if (!nodes.length) return;
+
+      function set(el, state, text, sub) {
+        el.setAttribute('data-state', state);
+        var t = el.querySelector('.live-text');
+        if (t) t.textContent = text;
+        var s = el.querySelector('.stat-sub');
+        if (s) s.textContent = sub || '';
+      }
+
+      Array.prototype.forEach.call(nodes, function (el) {
+        var host = el.getAttribute('data-mcstatus');
+        if (!host) return;
+        fetch('https://api.mcstatus.io/v2/status/java/' + encodeURIComponent(host), {
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+          .then(function (d) {
+            if (!d || !d.online) { set(el, 'offline', 'Offline'); return; }
+            var p = d.players || {};
+            var online = (typeof p.online === 'number') ? p.online : '–';
+            var max = (typeof p.max === 'number') ? p.max : '–';
+            var ver = (d.version && d.version.name_clean) ? d.version.name_clean : '';
+            set(el, 'online', 'Online · ' + online + ' / ' + max, ver);
+          })
+          .catch(function () { set(el, 'error', 'Status unavailable'); });
+      });
+    })();
   </script>
 </body>
 </html>

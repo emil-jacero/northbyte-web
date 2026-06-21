@@ -44,6 +44,7 @@
                 "Tech"
             ],
             "experimental": false,
+            "hidden": false,
             "order": 10
         },
         "create-creative": {
@@ -86,6 +87,7 @@
                 "Creative"
             ],
             "experimental": false,
+            "hidden": false,
             "order": 20
         },
         "vanilla": {
@@ -130,6 +132,7 @@
             ],
             "mapURL": "https://map.vanilla.mc.larnet.eu",
             "experimental": false,
+            "hidden": false,
             "order": 30
         },
         "cobblemon": {
@@ -173,6 +176,7 @@
             ],
             "mapURL": "https://map.cobblemon.larnet.eu",
             "experimental": false,
+            "hidden": true,
             "order": 40
         },
         "ron": {
@@ -203,6 +207,7 @@
                 "Experimental"
             ],
             "experimental": true,
+            "hidden": true,
             "order": 50
         }
     }

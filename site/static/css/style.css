@@ -295,22 +295,46 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .mod-name .ext { color: var(--muted); font-size: 0.8em; }
 .mod-blurb { color: var(--muted); font-size: 0.9rem; margin-top: 3px; }
 
-.stats .soon {
-  display: flex; align-items: center; gap: 14px; padding: 24px 22px;
-  border-radius: var(--radius); border: 1px dashed var(--line-2);
-  background: var(--panel); color: var(--muted);
+/* ---- Live status (Server List Ping) ----------------------------------- */
+
+/* Inline badge (homepage rows) + shared dot states. */
+.live { display: inline-flex; align-items: center; gap: 6px; }
+.live .status-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--muted);
 }
-.stats .soon p { margin: 0; }
-.stats .soon strong { color: var(--ink); }
-.soon-dot {
-  width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); flex: none;
+.live[data-state="online"] .status-dot {
+  background: var(--cyan);
   box-shadow: 0 0 0 0 rgba(29, 233, 188, 0.6); animation: pulse 2.4s ease-out infinite;
 }
+.live[data-state="loading"] .status-dot { background: var(--muted); opacity: 0.7; animation: blink 1.2s ease-in-out infinite; }
+.live[data-state="offline"] .status-dot { background: #5b6478; }
+.live[data-state="error"]   .status-dot { background: #5b6478; }
+.live[data-state="online"] .live-text { color: var(--cyan); }
+.live[data-state="offline"] .live-text,
+.live[data-state="error"]   .live-text { color: var(--muted); }
+
+/* Detail-page panel. */
+.stats .stat-live {
+  display: flex; align-items: center; gap: 14px; padding: 22px;
+  border-radius: var(--radius); border: 1px solid var(--line-2);
+  background: var(--panel);
+}
+.stats .stat-live .status-dot { width: 12px; height: 12px; }
+.stat-body { display: flex; flex-direction: column; gap: 2px; }
+.stat-body .live-text { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+.stat-live[data-state="online"] .live-text { color: var(--cyan); }
+.stat-live[data-state="offline"] .live-text,
+.stat-live[data-state="error"]   .live-text { color: var(--muted); }
+.stat-sub { color: var(--muted); font-size: 0.88rem; }
+.stat-sub:empty { display: none; }
+.stat-note { color: var(--muted); font-size: 0.82rem; margin: 12px 0 0; }
+
 @keyframes pulse {
   0%   { box-shadow: 0 0 0 0 rgba(29, 233, 188, 0.5); }
-  70%  { box-shadow: 0 0 0 12px rgba(29, 233, 188, 0); }
+  70%  { box-shadow: 0 0 0 10px rgba(29, 233, 188, 0); }
   100% { box-shadow: 0 0 0 0 rgba(29, 233, 188, 0); }
 }
+@keyframes blink { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.9; } }
 
 /* ---- Footer + toast --------------------------------------------------- */
 

@@ -62,6 +62,11 @@ package northbyte
 	// "Experimental" badge and a "world may reset" note.
 	experimental: bool | *false
 
+	// When true, the server is omitted from the homepage list AND no Details
+	// page is built for it. Use to take a server offline from the site without
+	// deleting its entry. Flip back to false to restore.
+	hidden: bool | *false
+
 	// Display order within its type group (ascending).
 	order: int | *50
 }

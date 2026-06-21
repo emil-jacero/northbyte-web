@@ -12,7 +12,7 @@
 </section>
 
 <section id="servers" class="servers">
-  {{ $servers := sort $cat.servers "order" }}
+  {{ $servers := where (sort $cat.servers "order") "hidden" false }}
   {{ $types := slice "minecraft" "valheim" "other" }}
   {{ $labels := dict "minecraft" "Minecraft" "valheim" "Valheim" "other" "Other" }}
   {{ range $i, $t := $types }}

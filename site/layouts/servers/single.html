@@ -66,10 +66,14 @@
 
   <section class="stats">
     <h2>Statistics</h2>
-    <div class="soon">
-      <span class="soon-dot"></span>
-      <p>Live player counts &amp; uptime — <strong>coming soon</strong>.</p>
+    <div class="stat-live live" data-mcstatus="{{ $s.connect }}" data-state="loading">
+      <span class="status-dot" aria-hidden="true"></span>
+      <div class="stat-body">
+        <span class="live-text">Checking status…</span>
+        <span class="stat-sub"></span>
+      </div>
     </div>
+    <p class="stat-note">Live status from the public server list ping. Player counts only — no names are collected.</p>
   </section>
 </article>
 {{ end }}

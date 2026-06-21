@@ -8,6 +8,7 @@
         {{ if .experimental }}<span class="exp-chip">Experimental</span>{{ end }}
       </span>
       <span class="srow-meta">
+        {{ if eq .type "minecraft" }}<span class="live" data-mcstatus="{{ .connect }}" data-state="loading"><span class="status-dot" aria-hidden="true"></span><span class="live-text">Checking…</span></span><span class="dot">·</span>{{ end }}
         <span>{{ .loader }}</span><span class="dot">·</span><span>{{ .version }}</span><span class="dot">·</span><span>{{ .mode }}</span>
         {{ with .modpack }}<span class="dot">·</span><span class="srow-pack">{{ .name }}</span>{{ end }}
       </span>

@@ -95,6 +95,7 @@ catalog: #Catalog & {
 			]
 			tags: ["Modded", "Pokémon", "Fabric"]
 			mapURL: "https://map.cobblemon.larnet.eu"
+			hidden: true
 			order:  40
 		}
 
@@ -116,6 +117,7 @@ catalog: #Catalog & {
 			]
 			tags: ["Modded", "RTS", "Experimental"]
 			experimental: true
+			hidden:       true
 			order:        50
 		}
 	}
