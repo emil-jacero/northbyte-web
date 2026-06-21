@@ -1,7 +1,38 @@
 # Deploying northbyte.gg
 
-The site is deployed to the **nas2** cluster as an OPM module behind the shared Istio
-gateway. Three pieces, in three repos:
+The site has **two hosts**:
+
+- **GitHub Pages — canonical**, at `https://northbyte.gg` + `https://www.northbyte.gg`.
+- **Kubernetes (nas2) — mirror**, at `https://mc.larnet.eu`.
+
+## GitHub Pages (canonical)
+
+Repo `github.com/emil-jacero/northbyte-web` (public). Every push to `main` runs
+`.github/workflows/gh-pages.yml` → builds Hugo → deploys to Pages. The custom domain is
+pinned by `site/static/CNAME` (`northbyte.gg`) and the repo's Pages settings
+(`cname=northbyte.gg`).
+
+**One-time DNS (Namecheap → Advanced DNS for the `northbyte.gg` zone):**
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `emil-jacero.github.io.` |
+
+(Optional AAAA `@` → `2606:50c0:8000::153` … `:8003::153`.) Replace the apex parking
+record; **leave `*.mc.northbyte.gg` untouched** (those are Minecraft connect addresses
+on the game LB, port 25565). Once DNS resolves, GitHub auto-issues a Let's Encrypt cert;
+then enable **Enforce HTTPS** (Settings → Pages, or
+`gh api repos/emil-jacero/northbyte-web/pages -X PUT -F https_enforced=true`).
+
+Content updates: edit `catalog.cue` → `task generate` → commit + push → Pages redeploys.
+
+## Kubernetes mirror (mc.larnet.eu)
+
+Deployed as an OPM module behind the shared Istio gateway. Three pieces, in three repos:
 
 | Piece | Path |
 | --- | --- |
