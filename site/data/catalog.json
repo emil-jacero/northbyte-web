@@ -172,7 +172,6 @@
                 "Multiverse",
                 "BlueMap"
             ],
-            "mapURL": "https://map.vanilla.mc.larnet.eu",
             "experimental": false,
             "hidden": false,
             "order": 30
@@ -228,7 +227,6 @@
                 "Pokémon",
                 "Fabric"
             ],
-            "mapURL": "https://map.cobblemon.larnet.eu",
             "experimental": false,
             "hidden": true,
             "order": 40

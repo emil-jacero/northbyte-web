@@ -14,7 +14,6 @@ chip_experimental = "Experimental"
 btn_copy          = "Copy"
 btn_details       = "Details"
 btn_copy_address  = "Copy address"
-btn_live_map      = "Live map ↗"
 back_all          = "← All servers"
 
 # Modpack install call-to-action. The body wraps <strong>{name}</strong>:

@@ -63,9 +63,6 @@ package northbyte
 	// Short descriptive tags rendered as chips.
 	tags: [...string]
 
-	// Public BlueMap web-map URL, where exposed.
-	mapURL?: string
-
 	// Ephemeral / not-persisted servers (e.g. emptyDir worlds). Renders an
 	// "Experimental" badge and a "world may reset" note.
 	experimental: bool | *false

@@ -14,7 +14,6 @@ chip_experimental = "Experimentell"
 btn_copy          = "Kopiera"
 btn_details       = "Detaljer"
 btn_copy_address  = "Kopiera adress"
-btn_live_map      = "Livekarta ↗"
 back_all          = "← Alla servrar"
 
 install_heading   = "Moddad server — installera modpaketet först"

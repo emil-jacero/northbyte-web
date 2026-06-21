@@ -86,8 +86,7 @@ catalog: #Catalog & {
 				{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
 			]
 			tags: ["Survival", "Multiverse", "BlueMap"]
-			mapURL: "https://map.vanilla.mc.larnet.eu"
-			order:  30
+			order: 30
 		}
 
 		"cobblemon": {
@@ -112,7 +111,6 @@ catalog: #Catalog & {
 				{name: "LuckPerms", kind: "mod", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 			]
 			tags: ["Modded", "Pokémon", "Fabric"]
-			mapURL: "https://map.cobblemon.larnet.eu"
 			hidden: true
 			order:  40
 		}

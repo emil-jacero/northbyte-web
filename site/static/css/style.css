@@ -224,8 +224,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .btn-copy:hover { background: var(--cyan); color: #042019; }
 .btn-details { color: var(--orange); background: transparent; border: 1px solid rgba(250, 95, 2, 0.5); }
 .btn-details:hover { background: var(--orange); color: #1a0a02; border-color: var(--orange); }
-.btn-map { color: var(--cyan); background: transparent; border: 1px solid rgba(29, 233, 188, 0.45); }
-.btn-map:hover { background: var(--cyan); color: #042019; }
 
 /* ---- Detail page ------------------------------------------------------ */
 
