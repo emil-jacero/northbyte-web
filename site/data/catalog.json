@@ -12,23 +12,14 @@
             "type": "minecraft",
             "title": "Vanilla+",
             "blurb": {
-                "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, Multiverse, and a live BlueMap of the world.",
-                "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms, Multiverse och en live-BlueMap över världen."
+                "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, and Multiverse.",
+                "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms och Multiverse."
             },
             "connect": "vanilla.mc.northbyte.gg",
             "version": "26.1.2",
             "loader": "Paper",
             "mode": "Survival",
             "featuredMods": [
-                {
-                    "name": "BlueMap",
-                    "kind": "plugin",
-                    "blurb": {
-                        "en": "Live 3D web map of the world.",
-                        "sv": "Live 3D-webbkarta över världen."
-                    },
-                    "url": "https://modrinth.com/plugin/bluemap"
-                },
                 {
                     "name": "EssentialsX",
                     "kind": "plugin",
@@ -59,8 +50,7 @@
             ],
             "tags": [
                 "Survival",
-                "Multiverse",
-                "BlueMap"
+                "Multiverse"
             ],
             "experimental": false,
             "hidden": false,
