@@ -51,8 +51,8 @@ catalog: #Catalog & {
 			}
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
-				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0"
-				version: "8.6.0"
+				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/10.1.0"
+				version: "10.1.0"
 			}
 			featuredMods: [
 				{name: "Create", kind: "mod", url: "https://modrinth.com/mod/create", blurb: {en: "Mechanical contraptions, automation and aesthetics.", sv: "Mekaniska maskinerier, automation och estetik."}},
@@ -76,8 +76,8 @@ catalog: #Catalog & {
 			}
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
-				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/8.6.0"
-				version: "8.6.0"
+				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/10.1.0"
+				version: "10.1.0"
 			}
 			featuredMods: [
 				{name: "Create", kind: "mod", url: "https://modrinth.com/mod/create", blurb: {en: "Mechanical contraptions, automation and aesthetics.", sv: "Mekaniska maskinerier, automation och estetik."}},
