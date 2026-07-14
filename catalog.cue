@@ -127,8 +127,8 @@ catalog: #Catalog & {
 			}
 			modpack: {
 				name:    "Reign of Nether (Optimized)"
-				url:     "https://modrinth.com/modpack/reign-of-nether-optimized/version/2.8.0"
-				version: "2.8.0"
+				url:     "https://modrinth.com/modpack/reign-of-nether-optimized/version/2.9.0"
+				version: "2.9.0"
 			}
 			featuredMods: [
 				{name: "Reign of Nether", kind: "mod", url: "https://modrinth.com/mod/reignofnether", blurb: {en: "RTS gameplay — command units and bases.", sv: "RTS-spel — styr enheter och baser."}},
