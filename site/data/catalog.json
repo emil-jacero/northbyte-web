@@ -56,6 +56,56 @@
             "hidden": false,
             "order": 10
         },
+        "skyblock": {
+            "id": "skyblock",
+            "type": "minecraft",
+            "title": "SkyBlock",
+            "blurb": {
+                "en": "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once.",
+                "sv": "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
+            },
+            "connect": "skyblock.mc.northbyte.gg",
+            "version": "26.1.2",
+            "loader": "Paper",
+            "mode": "Survival",
+            "featuredMods": [
+                {
+                    "name": "BSkyBlock",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Classic skyblock — your own island to grow from nothing.",
+                        "sv": "Klassisk skyblock — en egen ö att bygga upp från ingenting."
+                    },
+                    "url": "https://modrinth.com/plugin/bskyblock"
+                },
+                {
+                    "name": "BentoBox",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Island protection, teams and settings.",
+                        "sv": "Öskydd, lag och inställningar."
+                    },
+                    "url": "https://modrinth.com/plugin/bentobox"
+                },
+                {
+                    "name": "EssentialsX",
+                    "kind": "plugin",
+                    "blurb": {
+                        "en": "Teleport requests and core commands.",
+                        "sv": "Teleportförfrågningar och grundkommandon."
+                    },
+                    "url": "https://modrinth.com/plugin/essentialsx"
+                }
+            ],
+            "tags": [
+                "Survival",
+                "SkyBlock",
+                "Islands"
+            ],
+            "experimental": false,
+            "hidden": false,
+            "order": 15
+        },
         "create-survival": {
             "id": "create-survival",
             "type": "minecraft",

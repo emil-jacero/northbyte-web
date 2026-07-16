@@ -38,6 +38,26 @@ catalog: #Catalog & {
 			order: 10
 		}
 
+		"skyblock": {
+			type:    "minecraft"
+			title:   "SkyBlock"
+			connect: "skyblock.mc.northbyte.gg"
+			version: "26.1.2"
+			loader:  "Paper"
+			mode:    "Survival"
+			blurb: {
+				en: "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once."
+				sv: "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
+			}
+			featuredMods: [
+				{name: "BSkyBlock", kind: "plugin", url: "https://modrinth.com/plugin/bskyblock", blurb: {en: "Classic skyblock — your own island to grow from nothing.", sv: "Klassisk skyblock — en egen ö att bygga upp från ingenting."}},
+				{name: "BentoBox", kind: "plugin", url: "https://modrinth.com/plugin/bentobox", blurb: {en: "Island protection, teams and settings.", sv: "Öskydd, lag och inställningar."}},
+				{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Teleport requests and core commands.", sv: "Teleportförfrågningar och grundkommandon."}},
+			]
+			tags: ["Survival", "SkyBlock", "Islands"]
+			order: 15
+		}
+
 		"create-survival": {
 			type:    "minecraft"
 			title:   "Create — Survival"
