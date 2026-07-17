@@ -2,8 +2,8 @@
 
 The site has **two hosts**:
 
-- **GitHub Pages — canonical**, at `https://northbyte.gg` + `https://www.northbyte.gg`.
-- **Kubernetes (nas2) — mirror**, at `https://mc.larnet.eu`.
+- **GitHub Pages - canonical**, at `https://northbyte.gg` + `https://www.northbyte.gg`.
+- **Kubernetes (nas2) - mirror**, at `https://mc.larnet.eu`.
 
 ## GitHub Pages (canonical)
 
@@ -60,7 +60,7 @@ Deployed as an OPM module behind the shared Istio gateway. Three pieces, in thre
    Watch the two different larnet LBs:
    - `mc.larnet.eu` (the website) must point at the **HTTP ingress** above.
    - `*.mc.larnet.eu` (e.g. `vanilla.mc.larnet.eu`) are **Minecraft connect**
-     addresses pointing at the *Minecraft router* LB on :25565 — leave those alone.
+     addresses pointing at the *Minecraft router* LB on :25565 - leave those alone.
    - `*.mc.northbyte.gg` likewise point at the Minecraft router, not the website.
 
    Before applying, confirm nothing else already serves HTTP on bare `mc.larnet.eu`:

@@ -1,4 +1,4 @@
-# northbyte.gg — repo guide
+# northbyte.gg - repo guide
 
 Public website for **NorthByte** game servers. Static Hugo site rendered from a
 secret-free CUE catalog, served by nginx, deployed to the nas2 cluster as the
@@ -16,11 +16,11 @@ secret-free CUE catalog, served by nginx, deployed to the nas2 cluster as the
 
 ## Layout
 
-- `catalog.cue` / `catalog_schema.cue` — content + its contract.
-- `site/` — Hugo: `hugo.toml`, `layouts/index.html` (single landing page),
+- `catalog.cue` / `catalog_schema.cue` - content + its contract.
+- `site/` - Hugo: `hugo.toml`, `layouts/index.html` (single landing page),
   `layouts/partials/server-card.html`, `static/css/style.css` (aurora theme).
-- `Dockerfile` / `nginx.conf` — bake built site into nginx.
-- `Taskfile.yml` — `generate`, `build`, `run`, `image`, `push`, `check`, `clean`.
+- `Dockerfile` / `nginx.conf` - bake built site into nginx.
+- `Taskfile.yml` - `generate`, `build`, `run`, `image`, `push`, `check`, `clean`.
 
 ## Commands
 
@@ -39,5 +39,5 @@ See `DEPLOY.md`. Deploy artifacts are in the OPM repos
 ## Design
 
 Visual identity is a deliberate dark "aurora/north" theme (Space Grotesk / Sora /
-Space Mono; deep navy + aurora teal→violet). Keep it distinctive — see the
+Space Mono; deep navy + aurora teal→violet). Keep it distinctive - see the
 `frontend-philosophy` guidance before restyling.

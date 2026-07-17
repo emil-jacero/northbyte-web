@@ -1,6 +1,6 @@
 # northbyte.gg
 
-The public website for **NorthByte** — a small fleet of community game servers.
+The public website for **NorthByte** - a small fleet of community game servers.
 A static [Hugo](https://gohugo.io) site, rendered from a secret-free CUE catalog and
 served by nginx. Deployed to the cluster as an OPM module behind the Istio gateway at
 `https://northbyte.gg`.
@@ -15,13 +15,13 @@ catalog.cue ──(cue export)──> site/data/catalog.json ──(hugo)──>
    ▲ curated, secret-free                                                              served at northbyte.gg
 ```
 
-- **`catalog.cue`** — the only content source. Hand-authored, public fields only.
+- **`catalog.cue`** - the only content source. Hand-authored, public fields only.
   Never put RCON/restic passwords, S3 keys, or ops UUIDs here; those stay in
   `opm-releases/nas2/minecraft/values.cue`.
-- **`catalog_schema.cue`** — the `#Catalog` / `#Server` / `#Service` contract.
-- **`site/`** — the Hugo site (config, the single landing template, the card partial,
+- **`catalog_schema.cue`** - the `#Catalog` / `#Server` / `#Service` contract.
+- **`site/`** - the Hugo site (config, the single landing template, the card partial,
   and the static aurora-theme CSS).
-- **`Dockerfile` / `nginx.conf`** — bake the built site into an nginx image.
+- **`Dockerfile` / `nginx.conf`** - bake the built site into an nginx image.
 
 ## Local development
 
