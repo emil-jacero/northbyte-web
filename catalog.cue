@@ -17,6 +17,17 @@ catalog: #Catalog & {
 		}
 	}
 
+	// Toggle `enabled` to show/hide this banner. Flip back to false once the
+	// servers are back online.
+	notice: {
+		enabled: false
+		level:   "warning"
+		message: {
+			en: "Our server hardware is currently offline due to a power outage. Servers will be unreachable until power is restored. Sorry for the inconvenience."
+			sv: "Vår serverhårdvara är just nu nere på grund av ett strömavbrott. Servrarna är otillgängliga tills strömmen är tillbaka. Vi ber om ursäkt för besväret."
+		}
+	}
+
 	servers: {
 		"vanilla": {
 			type:    "minecraft"

@@ -76,11 +76,20 @@ package northbyte
 	order: int | *50
 }
 
+// A site-wide operational notice banner (outages, maintenance, incidents).
+// Toggle `enabled` to show/hide it, flip back to false once resolved.
+#Notice: {
+	enabled: bool | *false
+	level:   "info" | "warning" | "critical" | *"warning"
+	message: #I18n
+}
+
 #Catalog: {
 	// Branding shown in the hero.
 	brand: {
 		name:    string | *"NorthByte"
 		tagline: #I18n
 	}
+	notice: #Notice | *{enabled: false, level: "warning", message: {en: "", sv: ""}}
 	servers: [ID=string]: #Server & {id: ID}
 }

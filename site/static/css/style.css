@@ -107,6 +107,26 @@ body::before {
 
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
+/* ---- Site notice ------------------------------------------------------- */
+
+.site-notice { position: relative; z-index: 1; border-bottom: 1px solid var(--line-2); }
+.site-notice-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 12px 24px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.92rem;
+}
+.site-notice-inner p { margin: 0; }
+.site-notice-icon { flex: none; font-size: 1rem; }
+
+.site-notice--info { background: var(--cyan-dim); border-bottom-color: rgba(29, 233, 188, 0.35); }
+.site-notice--info .site-notice-icon { color: var(--cyan); }
+
+.site-notice--warning { background: var(--orange-dim); border-bottom-color: rgba(250, 95, 2, 0.35); }
+.site-notice--warning .site-notice-icon { color: var(--orange); }
+
+.site-notice--critical { background: rgba(244, 63, 94, 0.14); border-bottom-color: rgba(244, 63, 94, 0.35); }
+.site-notice--critical .site-notice-icon { color: #f43f5e; }
+
 /* ---- Hero ------------------------------------------------------------- */
 
 .hero {

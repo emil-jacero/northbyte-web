@@ -1,0 +1,9 @@
+{{ $notice := site.Data.catalog.notice }}
+{{ if $notice.enabled }}
+<div class="site-notice site-notice--{{ $notice.level }}" role="status">
+  <div class="site-notice-inner">
+    <span class="site-notice-icon" aria-hidden="true">⚠</span>
+    <p>{{ index $notice.message site.Language.Lang }}</p>
+  </div>
+</div>
+{{ end }}
