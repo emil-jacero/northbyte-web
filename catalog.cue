@@ -57,10 +57,10 @@ catalog: #Catalog & {
 				]
 				tags: ["Survival", "Multiverse", "Hub"]
 				foxCommands: [
-					{name: "/sethome /home /delhome /renamehome", description: {en: "Set, teleport to, delete, and rename your home points.", sv: "Sätt, teleportera till, ta bort och byt namn på dina hempunkter."}},
-					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
-					{name: "/world /mv list /mvtp", description: {en: "List and teleport between the Multiverse worlds you have access to.", sv: "Lista och teleportera mellan de Multiverse-världar du har tillgång till."}},
-					{name: "/gamemode", description: {en: "Switch your own gamemode, restricted to the creative sandbox world.", sv: "Byt ditt eget spelläge, begränsat till den kreativa sandlådevärlden."}},
+					{names: ["/sethome", "/home", "/delhome", "/renamehome"], description: {en: "Set, teleport to, delete, and rename your home points.", sv: "Sätt, teleportera till, ta bort och byt namn på dina hempunkter."}},
+					{names: ["/tpa", "/tpahere", "/tpaccept", "/tpacancel"], description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
+					{names: ["/world", "/mv list", "/mvtp"], description: {en: "List and teleport between the Multiverse worlds you have access to.", sv: "Lista och teleportera mellan de Multiverse-världar du har tillgång till."}},
+					{names: ["/gamemode"], description: {en: "Switch your own gamemode, restricted to the creative sandbox world.", sv: "Byt ditt eget spelläge, begränsat till den kreativa sandlådevärlden."}},
 				]
 				order: 10
 			}
@@ -81,10 +81,10 @@ catalog: #Catalog & {
 				]
 				tags: ["Survival", "SkyBlock", "Islands"]
 				foxCommands: [
-					{name: "/island create", description: {en: "Create your starting island.", sv: "Skapa din startö."}},
-					{name: "/island sethome /island go", description: {en: "Set your island's home point and warp back to it. Used here instead of /sethome.", sv: "Sätt din ös hempunkt och varpa tillbaka dit. Används här istället för /sethome."}},
-					{name: "/island invite /island coop", description: {en: "Invite friends to your island or add them as a co-op member.", sv: "Bjud in vänner till din ö eller lägg till dem som co-op-medlem."}},
-					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
+					{names: ["/island create"], description: {en: "Create your starting island.", sv: "Skapa din startö."}},
+					{names: ["/island sethome", "/island go"], description: {en: "Set your island's home point and warp back to it. Used here instead of /sethome.", sv: "Sätt din ös hempunkt och varpa tillbaka dit. Används här istället för /sethome."}},
+					{names: ["/island invite", "/island coop"], description: {en: "Invite friends to your island or add them as a co-op member.", sv: "Bjud in vänner till din ö eller lägg till dem som co-op-medlem."}},
+					{names: ["/tpa", "/tpahere", "/tpaccept", "/tpacancel"], description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
 				]
 				order: 20
 			}
@@ -108,9 +108,9 @@ catalog: #Catalog & {
 				]
 				tags: ["Adventure", "Dungeons", "EliteMobs"]
 				foxCommands: [
-					{name: "/em help", description: {en: "List everything the EliteMobs command menu can do.", sv: "Lista allt EliteMobs kommandomeny kan göra."}},
-					{name: "/em class", description: {en: "View or choose your combat class and its abilities.", sv: "Visa eller välj din stridsklass och dess förmågor."}},
-					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you (shared network-wide).", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig (delas i hela nätverket)."}},
+					{names: ["/em help"], description: {en: "List everything the EliteMobs command menu can do.", sv: "Lista allt EliteMobs kommandomeny kan göra."}},
+					{names: ["/em class"], description: {en: "View or choose your combat class and its abilities.", sv: "Visa eller välj din stridsklass och dess förmågor."}},
+					{names: ["/tpa", "/tpahere", "/tpaccept", "/tpacancel"], description: {en: "Request to teleport to another player, or invite them to you (shared network-wide).", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig (delas i hela nätverket)."}},
 				]
 				order: 30
 			}

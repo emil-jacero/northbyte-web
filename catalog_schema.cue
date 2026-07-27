@@ -85,9 +85,11 @@ package northbyte
 }
 
 // A single command available to the Fox (regular player) permission tier,
-// shown in a backend's Commands tab on the network Details page.
+// shown in a backend's Commands tab on the network Details page. `names` is a
+// list, not one joined string, because some commands contain their own
+// spaces (e.g. "/mv list") and share one description with their aliases.
 #Command: {
-	name:        string
+	names:       [...string]
 	description: #I18n
 }
 

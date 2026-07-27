@@ -81,8 +81,8 @@
             <ul class="command-list">
               {{ range $b.foxCommands }}
               <li class="command">
-                <code class="command-name">{{ .name }}</code>
-                <span class="command-desc">{{ index .description $lang }}</span>
+                <p class="command-desc">{{ index .description $lang }}</p>
+                <pre class="command-block"><code>{{ range $i, $n := .names }}{{ if $i }}{{ "\n" }}{{ end }}{{ $n }}{{ end }}</code></pre>
               </li>
               {{ end }}
             </ul>
