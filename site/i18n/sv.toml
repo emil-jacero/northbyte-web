@@ -9,12 +9,22 @@ hero_cta       = "Bläddra bland servrarna"
 footer_made    = "Skapat i norr"
 
 group_other    = "Övriga"
+group_network  = "Nätverket"
+group_also     = "Även i flottan"
 
 chip_experimental = "Experimentell"
+chip_network      = "Nätverk"
 btn_copy          = "Kopiera"
 btn_details       = "Detaljer"
 btn_copy_address  = "Kopiera adress"
 back_all          = "← Alla servrar"
+
+# Network detail page
+backends_heading = "Servrar i nätverket"
+backends_note    = "Nås från navet via portal — ingen egen adress att hålla reda på."
+tab_overview      = "Översikt"
+tab_commands      = "Kommandon"
+commands_note     = "Det här kan Fox-nivån — alla, som standard — göra här."
 
 install_heading   = "Moddad server — installera modpaketet först"
 install_body_pre  = "Öppna"
@@ -59,3 +69,7 @@ tag_creative     = "Kreativt"
 [server_count]
 one   = "{{ .Count }} server"
 other = "{{ .Count }} servrar"
+
+[network_backend_count]
+one   = "{{ .Count }} värld"
+other = "{{ .Count }} världar"

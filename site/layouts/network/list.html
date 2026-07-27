@@ -1,0 +1,95 @@
+{{ define "main" }}
+{{ $net := site.Data.catalog.network }}
+{{ $lang := site.Language.Lang }}
+<article class="detail detail--network">
+  <a class="back" href="{{ site.Home.RelPermalink }}#servers">{{ i18n "back_all" }}</a>
+
+  <header class="detail-head">
+    <div class="detail-title">
+      {{ partial "type-icon.html" "minecraft" }}
+      <h1>{{ $net.title }}</h1>
+    </div>
+    <p class="detail-blurb">{{ index $net.blurb $lang }}</p>
+    {{ with $net.tags }}<ul class="detail-tags">{{ range . }}<li>{{ i18n (printf "tag_%s" (urlize .)) | default . }}</li>{{ end }}</ul>{{ end }}
+  </header>
+
+  <div class="detail-connect">
+    <code class="addr">{{ $net.connect }}</code>
+    <button class="btn btn-copy" type="button" data-copy="{{ $net.connect }}" aria-label="{{ i18n "btn_copy_address" }} {{ $net.connect }}">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M5 15V5a2 2 0 0 1 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>{{ i18n "btn_copy_address" }}</span>
+    </button>
+  </div>
+
+  <section class="stats">
+    <h2>{{ i18n "stats_heading" }}</h2>
+    <div class="stat-live live" data-mcstatus="{{ $net.connect }}" data-state="loading">
+      <span class="status-dot" aria-hidden="true"></span>
+      <div class="stat-body">
+        <span class="live-text">{{ i18n "stat_checking" }}</span>
+        <span class="stat-sub"></span>
+      </div>
+    </div>
+    <p class="stat-note">{{ i18n "stat_note" }}</p>
+  </section>
+
+  <section class="backends">
+    <h2>{{ i18n "backends_heading" }}</h2>
+    <p class="backends-note">{{ i18n "backends_note" }}</p>
+
+    {{ range sort $net.backends "order" }}
+      {{ $b := . }}
+      <div class="backend-card">
+        <div class="backend-head">
+          <h3>{{ $b.title }}</h3>
+          {{ with $b.tags }}<ul class="detail-tags">{{ range . }}<li>{{ i18n (printf "tag_%s" (urlize .)) | default . }}</li>{{ end }}</ul>{{ end }}
+        </div>
+        <p class="backend-blurb">{{ index $b.blurb $lang }}</p>
+
+        <div class="tabs">
+          <input type="radio" name="tabs-{{ $b.id }}" id="tab-overview-{{ $b.id }}" class="tab-input" checked>
+          <label class="tab-label" for="tab-overview-{{ $b.id }}">{{ i18n "tab_overview" }}</label>
+          <input type="radio" name="tabs-{{ $b.id }}" id="tab-commands-{{ $b.id }}" class="tab-input">
+          <label class="tab-label" for="tab-commands-{{ $b.id }}">{{ i18n "tab_commands" }}</label>
+
+          <div class="tab-panel tab-panel--overview">
+            <dl class="facts">
+              <div><dt>{{ i18n "fact_version" }}</dt><dd>{{ $b.version }}</dd></div>
+              <div><dt>{{ i18n "fact_loader" }}</dt><dd>{{ $b.loader }}</dd></div>
+              <div><dt>{{ i18n "fact_mode" }}</dt><dd>{{ $b.mode }}</dd></div>
+            </dl>
+            {{ with $b.featuredMods }}
+            <ul class="mod-list">
+              {{ range . }}
+              <li class="mod">
+                <span class="mod-kind mod-kind--{{ .kind }}">{{ i18n (printf "kind_%s" .kind) }}</span>
+                <div class="mod-body">
+                  <div class="mod-name">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }} <span class="ext">↗</span></a>{{ else }}{{ .name }}{{ end }}</div>
+                  {{ with .blurb }}<div class="mod-blurb">{{ index . $lang }}</div>{{ end }}
+                </div>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </div>
+
+          <div class="tab-panel tab-panel--commands">
+            <p class="commands-note">{{ i18n "commands_note" }}</p>
+            <ul class="command-list">
+              {{ range $b.foxCommands }}
+              <li class="command">
+                <code class="command-name">{{ .name }}</code>
+                <span class="command-desc">{{ index .description $lang }}</span>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </section>
+</article>
+{{ end }}

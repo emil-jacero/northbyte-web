@@ -1,6 +1,6 @@
 // NorthByte public catalog — the curated, secret-free source the website renders.
 //
-// Authored from the public fields of opm-releases/nas2/minecraft/values.cue.
+// Authored from the public fields of deployments/prod/*/values.cue.
 // `featuredMods` are HAND-CURATED highlights (edit freely) — not the full contents
 // of a modpack, which bundles many more. Update when servers change.
 //
@@ -28,47 +28,96 @@ catalog: #Catalog & {
 		}
 	}
 
+	// The Velocity network — one address (mc.northbyte.gg), three worlds
+	// reached by in-game portal from the hub. See northbyte-enhancements/0001
+	// (D21) for why this is one catalog entry instead of three.
+	network: {
+		title: "NorthByte Network"
+		blurb: {
+			en: "One address, three worlds. Connect once, land in the hub, and step through portals to reach everything below — SMP, SkyBlock, and Dungeons all share the same rank and permissions."
+			sv: "En adress, tre världar. Anslut en gång, landa i navet och gå genom portaler för att nå allt nedan — SMP, SkyBlock och Dungeons delar samma rang och behörigheter."
+		}
+		connect: "mc.northbyte.gg"
+		tags: ["Survival", "SkyBlock", "Dungeons", "Multiverse"]
+
+		backends: {
+			"smp": {
+				title:   "SMP"
+				version: "26.1.2"
+				loader:  "Paper"
+				mode:    "Survival"
+				blurb: {
+					en: "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, and Multiverse. This is the network's landing point: everyone arrives here first, then portals out."
+					sv: "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats: alla anländer hit först och portalar sedan vidare."
+				}
+				featuredMods: [
+					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
+					{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
+					{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
+				]
+				tags: ["Survival", "Multiverse", "Hub"]
+				foxCommands: [
+					{name: "/sethome /home /delhome /renamehome", description: {en: "Set, teleport to, delete, and rename your home points.", sv: "Sätt, teleportera till, ta bort och byt namn på dina hempunkter."}},
+					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
+					{name: "/world /mv list /mvtp", description: {en: "List and teleport between the Multiverse worlds you have access to.", sv: "Lista och teleportera mellan de Multiverse-världar du har tillgång till."}},
+					{name: "/gamemode", description: {en: "Switch your own gamemode, restricted to the creative sandbox world.", sv: "Byt ditt eget spelläge, begränsat till den kreativa sandlådevärlden."}},
+				]
+				order: 10
+			}
+
+			"skyblock": {
+				title:   "SkyBlock"
+				version: "26.1.2"
+				loader:  "Paper"
+				mode:    "Survival"
+				blurb: {
+					en: "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once."
+					sv: "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
+				}
+				featuredMods: [
+					{name: "BSkyBlock", kind: "plugin", url: "https://modrinth.com/plugin/bskyblock", blurb: {en: "Classic skyblock — your own island to grow from nothing.", sv: "Klassisk skyblock — en egen ö att bygga upp från ingenting."}},
+					{name: "BentoBox", kind: "plugin", url: "https://modrinth.com/plugin/bentobox", blurb: {en: "Island protection, teams and settings.", sv: "Öskydd, lag och inställningar."}},
+					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Teleport requests and core commands.", sv: "Teleportförfrågningar och grundkommandon."}},
+				]
+				tags: ["Survival", "SkyBlock", "Islands"]
+				foxCommands: [
+					{name: "/island create", description: {en: "Create your starting island.", sv: "Skapa din startö."}},
+					{name: "/island sethome /island go", description: {en: "Set your island's home point and warp back to it — used here instead of /sethome.", sv: "Sätt din ös hempunkt och varpa tillbaka dit — används här istället för /sethome."}},
+					{name: "/island invite /island coop", description: {en: "Invite friends to your island or add them as a co-op member.", sv: "Bjud in vänner till din ö eller lägg till dem som co-op-medlem."}},
+					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
+				]
+				order: 20
+			}
+
+			// NOTE: EliteMobs' exact Fox-tier command grants haven't been
+			// checked against the live LuckPerms DB — this list is a
+			// best-effort draft from EliteMobs' documented base commands.
+			// Review and correct before treating it as authoritative.
+			"dungeons": {
+				title:   "Dungeons"
+				version: "26.1.2"
+				loader:  "Paper"
+				mode:    "Adventure"
+				blurb: {
+					en: "A dedicated dungeon-crawl world built around EliteMobs — bespoke boss fights and instanced content in a tight, purpose-built play area."
+					sv: "En egen dungeon-värld byggd kring EliteMobs — skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
+				}
+				featuredMods: [
+					{name: "EliteMobs", kind: "plugin", url: "https://modrinth.com/plugin/elitemobs", blurb: {en: "Custom bosses, dungeons, and combat classes.", sv: "Egna bossar, dungeons och stridsklasser."}},
+					{name: "BetterStructures", kind: "plugin", url: "https://modrinth.com/plugin/betterstructures", blurb: {en: "Extra structure generation used by the dungeon content.", sv: "Extra strukturgenerering som används av dungeon-innehållet."}},
+				]
+				tags: ["Adventure", "Dungeons", "EliteMobs"]
+				foxCommands: [
+					{name: "/em help", description: {en: "List everything the EliteMobs command menu can do.", sv: "Lista allt EliteMobs kommandomeny kan göra."}},
+					{name: "/em class", description: {en: "View or choose your combat class and its abilities.", sv: "Visa eller välj din stridsklass och dess förmågor."}},
+					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you (shared network-wide).", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig (delas i hela nätverket)."}},
+				]
+				order: 30
+			}
+		}
+	}
+
 	servers: {
-		"vanilla": {
-			type:    "minecraft"
-			title:   "Vanilla+"
-			connect: "vanilla.mc.northbyte.gg"
-			version: "26.1.2"
-			loader:  "Paper"
-			mode:    "Survival"
-			blurb: {
-				en: "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, and Multiverse."
-				sv: "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms och Multiverse."
-			}
-			featuredMods: [
-				{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
-				{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
-				{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
-			]
-			tags: ["Survival", "Multiverse"]
-			order: 10
-		}
-
-		"skyblock": {
-			type:    "minecraft"
-			title:   "SkyBlock"
-			connect: "skyblock.mc.northbyte.gg"
-			version: "26.1.2"
-			loader:  "Paper"
-			mode:    "Survival"
-			blurb: {
-				en: "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once."
-				sv: "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
-			}
-			featuredMods: [
-				{name: "BSkyBlock", kind: "plugin", url: "https://modrinth.com/plugin/bskyblock", blurb: {en: "Classic skyblock — your own island to grow from nothing.", sv: "Klassisk skyblock — en egen ö att bygga upp från ingenting."}},
-				{name: "BentoBox", kind: "plugin", url: "https://modrinth.com/plugin/bentobox", blurb: {en: "Island protection, teams and settings.", sv: "Öskydd, lag och inställningar."}},
-				{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Teleport requests and core commands.", sv: "Teleportförfrågningar och grundkommandon."}},
-			]
-			tags: ["Survival", "SkyBlock", "Islands"]
-			order: 15
-		}
-
 		"create-survival": {
 			type:    "minecraft"
 			title:   "Create — Survival"

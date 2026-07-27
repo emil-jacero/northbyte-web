@@ -1,0 +1,27 @@
+{{- /* The network's row in the list view. Context (.) is site.Data.catalog.network. */ -}}
+<li class="srow srow--network">
+  <a class="srow-main" href="{{ site.Home.RelPermalink }}network/">
+    {{ partial "type-icon.html" "minecraft" }}
+    <span class="srow-text">
+      <span class="srow-name">
+        {{ .title }}
+        <span class="net-chip">{{ i18n "chip_network" }}</span>
+      </span>
+      <span class="srow-meta">
+        <span class="live" data-mcstatus="{{ .connect }}" data-state="loading"><span class="status-dot" aria-hidden="true"></span><span class="live-text">{{ i18n "live_checking" }}</span></span><span class="dot">·</span>
+        {{ index .blurb site.Language.Lang }}
+      </span>
+    </span>
+  </a>
+  <div class="srow-actions">
+    <code class="addr" title="{{ .connect }}">{{ .connect }}</code>
+    <button class="btn btn-copy" type="button" data-copy="{{ .connect }}" aria-label="{{ i18n "btn_copy" }} {{ .connect }}">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M5 15V5a2 2 0 0 1 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>{{ i18n "btn_copy" }}</span>
+    </button>
+    <a class="btn btn-details" href="{{ site.Home.RelPermalink }}network/">{{ i18n "btn_details" }}</a>
+  </div>
+</li>

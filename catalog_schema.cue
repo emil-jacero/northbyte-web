@@ -84,6 +84,70 @@ package northbyte
 	message: #I18n
 }
 
+// A single command available to the Fox (regular player) permission tier,
+// shown in a backend's Commands tab on the network Details page.
+#Command: {
+	name:        string
+	description: #I18n
+}
+
+// One Minecraft server sitting behind the Velocity proxy. Deliberately a
+// slimmed #Server — a backend has no address of its own (players reach it by
+// portal, not by connecting directly), but otherwise mirrors #Server's facts.
+#NetworkBackend: {
+	// Stable identifier (also the map key). Lowercase kebab-case.
+	id: string
+
+	// Display name, e.g. "Dungeons".
+	title: string
+
+	// One or two sentence, player-facing description (localized en/sv).
+	blurb: #I18n
+
+	// Version label, e.g. "26.1.2".
+	version: string
+
+	// Server platform / mod loader.
+	loader: "Vanilla" | "Paper" | "Fabric" | "Forge" | "NeoForge"
+
+	// Primary game mode.
+	mode: "Survival" | "Creative" | "Adventure"
+
+	// Hand-curated mod/plugin highlights for the Details page.
+	featuredMods?: [...#Mod]
+
+	// Short descriptive tags rendered as chips.
+	tags: [...string]
+
+	// Commands the Fox permission tier can run on this backend.
+	foxCommands: [...#Command]
+
+	// Display order among backends (ascending). Map iteration order isn't
+	// guaranteed, so the network Details page sorts by this explicitly.
+	order: int | *50
+}
+
+// The Velocity network: one public address fronting several backends that
+// players move between via in-game portals, not by reconnecting.
+#Network: {
+	// Display name, e.g. "NorthByte Network".
+	title: string
+
+	// One or two sentence, player-facing description of the hub+portal model
+	// and shared rank ladder (localized en/sv).
+	blurb: #I18n
+
+	// Public connect address (shown with a copy button). Single door in —
+	// every backend is reached from here via portal, never a separate address.
+	connect: string
+
+	// Short descriptive tags rendered as chips.
+	tags: [...string]
+
+	// Backends reachable from the hub, keyed by id.
+	backends: [ID=string]: #NetworkBackend & {id: ID}
+}
+
 #Catalog: {
 	// Branding shown in the hero.
 	brand: {
@@ -91,5 +155,10 @@ package northbyte
 		tagline: #I18n
 	}
 	notice: #Notice | *{enabled: false, level: "warning", message: {en: "", sv: ""}}
+
+	// The Velocity network — a single entry, not part of `servers` below.
+	network: #Network
+
+	// Standalone servers outside the network (router-direct, own address).
 	servers: [ID=string]: #Server & {id: ID}
 }

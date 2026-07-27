@@ -209,6 +209,12 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .srow:hover { transform: translateY(-2px); border-color: var(--line-2); }
 .srow:hover::before { opacity: 1; }
 .srow--exp::before { background: linear-gradient(var(--cyan), var(--cyan-deep)); }
+.srow--network::before { opacity: 1; }
+.net-chip {
+  font-family: "Space Mono", monospace; font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gold); padding: 3px 8px; border-radius: 6px;
+  border: 1px dashed rgba(250, 95, 2, 0.5);
+}
 
 .srow-main { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; color: inherit; }
 .srow-text { min-width: 0; }
@@ -328,6 +334,55 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .mod-name .ext { color: var(--muted); font-size: 0.8em; }
 .mod-blurb { color: var(--muted); font-size: 0.9rem; margin-top: 3px; }
 
+/* ---- Network backends + tabs ------------------------------------------ */
+
+.backends { margin-bottom: 36px; }
+.backends h2 {
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.5rem;
+  letter-spacing: -0.02em; margin: 0 0 6px;
+}
+.backends-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 22px; }
+
+.backend-card {
+  padding: 22px 24px; border-radius: var(--radius); background: var(--panel-2);
+  border: 1px solid var(--line); margin-bottom: 20px;
+}
+.backend-card:last-child { margin-bottom: 0; }
+.backend-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.backend-head h3 {
+  font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.3rem;
+  letter-spacing: -0.01em; margin: 0;
+}
+.backend-blurb { color: var(--muted); font-size: 0.95rem; margin: 10px 0 18px; }
+
+/* CSS-only tabs: a checked radio reveals its matching panel, no JS. */
+.tabs { position: relative; }
+.tab-input { position: absolute; opacity: 0; pointer-events: none; }
+.tab-label {
+  display: inline-flex; cursor: pointer; padding: 8px 16px 10px; margin-right: 4px;
+  font-size: 0.85rem; font-weight: 600; color: var(--muted);
+  border-bottom: 2px solid transparent; transition: color 0.16s ease, border-color 0.16s ease;
+}
+.tab-label:hover { color: var(--ink); }
+.tab-input:focus-visible + .tab-label { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.tab-input:checked + .tab-label { color: var(--cyan); border-color: var(--cyan); }
+.tab-panel {
+  display: none; padding-top: 18px; margin-top: 2px; border-top: 1px solid var(--line);
+}
+.tab-input:first-of-type:checked ~ .tab-panel--overview { display: block; }
+.tab-input:last-of-type:checked ~ .tab-panel--commands { display: block; }
+.tab-panel--overview .facts { margin-bottom: 20px; }
+.tab-panel--overview .facts:last-child { margin-bottom: 0; }
+
+.commands-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 14px; }
+.command-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.command {
+  display: flex; gap: 6px 14px; align-items: baseline; flex-wrap: wrap;
+  padding: 12px 14px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line);
+}
+.command-name { font-family: "Space Mono", monospace; font-size: 0.86rem; color: var(--gold); flex: none; }
+.command-desc { color: var(--muted); font-size: 0.9rem; }
+
 /* ---- Live status (Server List Ping) ----------------------------------- */
 
 /* Inline badge (homepage rows) + shared dot states. */
@@ -394,4 +449,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
   .srow-actions { flex-wrap: wrap; }
   .srow-actions .addr { flex: 1; max-width: none; }
   .group-count { display: none; }
+  .backend-card { padding: 18px; }
+  .tab-label { padding: 8px 12px 10px; font-size: 0.8rem; }
 }

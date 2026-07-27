@@ -8,13 +8,23 @@ hero_cta       = "Browse the servers"
 footer_made    = "Made in the north"
 
 group_other    = "Other"
+group_network  = "The Network"
+group_also     = "Also on the fleet"
 
 # Server row + detail
 chip_experimental = "Experimental"
+chip_network      = "Network"
 btn_copy          = "Copy"
 btn_details       = "Details"
 btn_copy_address  = "Copy address"
 back_all          = "← All servers"
+
+# Network detail page
+backends_heading = "Servers in the network"
+backends_note    = "Reached from the hub by portal — no separate address to remember."
+tab_overview      = "Overview"
+tab_commands      = "Commands"
+commands_note     = "What the Fox tier — everyone, by default — can do here."
 
 # Modpack install call-to-action. The body wraps <strong>{name}</strong>:
 #   {install_body_pre} <strong>NAME</strong>{ vX} {install_body_post} <code>addr</code>.
@@ -56,3 +66,7 @@ lang_switch = "Language"
 [server_count]
 one   = "{{ .Count }} server"
 other = "{{ .Count }} servers"
+
+[network_backend_count]
+one   = "{{ .Count }} world"
+other = "{{ .Count }} worlds"

@@ -11,23 +11,29 @@
 </section>
 
 <section id="servers" class="servers">
+  <div class="server-group accent-warm">
+    <div class="group-head">
+      {{ partial "type-icon.html" "minecraft" }}
+      <h2>{{ i18n "group_network" }}</h2>
+      <span class="group-count">{{ i18n "network_backend_count" (len $cat.network.backends) }}</span>
+    </div>
+    <ul class="server-list">
+      {{ partial "network-row.html" $cat.network }}
+    </ul>
+  </div>
+
   {{ $servers := where (sort $cat.servers "order") "hidden" false }}
-  {{ $types := slice "minecraft" "valheim" "other" }}
-  {{ $labels := dict "minecraft" "Minecraft" "valheim" "Valheim" "other" (i18n "group_other") }}
-  {{ range $i, $t := $types }}
-    {{ $group := where $servers "type" $t }}
-    {{ with $group }}
-      <div class="server-group {{ if eq (mod $i 2) 0 }}accent-warm{{ else }}accent-cool{{ end }}">
-        <div class="group-head">
-          {{ partial "type-icon.html" $t }}
-          <h2>{{ index $labels $t }}</h2>
-          <span class="group-count">{{ i18n "server_count" (len .) }}</span>
-        </div>
-        <ul class="server-list">
-          {{ range . }}{{ partial "server-row.html" . }}{{ end }}
-        </ul>
+  {{ with $servers }}
+    <div class="server-group accent-cool">
+      <div class="group-head">
+        {{ partial "type-icon.html" "minecraft" }}
+        <h2>{{ i18n "group_also" }}</h2>
+        <span class="group-count">{{ i18n "server_count" (len .) }}</span>
       </div>
-    {{ end }}
+      <ul class="server-list">
+        {{ range . }}{{ partial "server-row.html" . }}{{ end }}
+      </ul>
+    </div>
   {{ end }}
 </section>
 {{ end }}
