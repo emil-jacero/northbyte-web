@@ -21,12 +21,12 @@ back_all          = "← Alla servrar"
 
 # Network detail page
 backends_heading = "Servrar i nätverket"
-backends_note    = "Nås från navet via portal — ingen egen adress att hålla reda på."
+backends_note    = "Nås från navet via portal, ingen egen adress att hålla reda på."
 tab_overview      = "Översikt"
 tab_commands      = "Kommandon"
-commands_note     = "Det här kan Fox-nivån — alla, som standard — göra här."
+commands_note     = "Det här kan Fox-nivån, alla som standard, göra här."
 
-install_heading   = "Moddad server — installera modpaketet först"
+install_heading   = "Moddad server, installera modpaketet först"
 install_body_pre  = "Öppna"
 install_body_post = "i Modrinth-appen (eller Prism / ATLauncher), installera det och anslut sedan till"
 btn_install       = "Hämta modpaketet på Modrinth ↗"
@@ -39,13 +39,13 @@ fact_modpack = "Modpaket"
 # Swedish word order puts the pack name after "modpaketet":
 #   Några höjdpunkter — modpaketet <strong>PACK</strong> innehåller många fler.
 mods_heading   = "Mods & tillägg"
-mods_note_pre  = "Några höjdpunkter — modpaketet"
+mods_note_pre  = "Några höjdpunkter, modpaketet"
 mods_note_post = "innehåller många fler."
 kind_mod       = "mod"
 kind_plugin    = "tillägg"
 
 stats_heading = "Statistik"
-stat_note     = "Livestatus via publik server-list-ping. Endast spelarantal — inga namn samlas in."
+stat_note     = "Livestatus via publik server-list-ping. Endast spelarantal, inga namn samlas in."
 live_checking = "Kollar…"
 stat_checking = "Kollar status…"
 live_online   = "Online"

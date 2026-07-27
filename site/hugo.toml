@@ -20,7 +20,7 @@ defaultContentLanguageInSubdir = false
   weight = 1
   title = "NorthByte"
   [languages.en.params]
-    description = "NorthByte — community Minecraft servers in the north. Survival, Create, Cobblemon and more."
+    description = "NorthByte, community Minecraft servers in the north. Survival, Create, Cobblemon and more."
 
 [languages.sv]
   languageCode = "sv"
@@ -28,4 +28,4 @@ defaultContentLanguageInSubdir = false
   weight = 2
   title = "NorthByte"
   [languages.sv.params]
-    description = "NorthByte — community-Minecraftservrar i norr. Survival, Create, Cobblemon med mera."
+    description = "NorthByte, community-Minecraftservrar i norr. Survival, Create, Cobblemon med mera."

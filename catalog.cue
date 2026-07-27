@@ -34,8 +34,8 @@ catalog: #Catalog & {
 	network: {
 		title: "NorthByte Network"
 		blurb: {
-			en: "One address, three worlds. Connect once, land in the hub, and step through portals to reach everything below — SMP, SkyBlock, and Dungeons all share the same rank and permissions."
-			sv: "En adress, tre världar. Anslut en gång, landa i navet och gå genom portaler för att nå allt nedan — SMP, SkyBlock och Dungeons delar samma rang och behörigheter."
+			en: "One address, three worlds. Connect once, land in the hub, and step through portals to reach everything below. SMP, SkyBlock, and Dungeons all share the same rank and permissions."
+			sv: "En adress, tre världar. Anslut en gång, landa i navet och gå genom portaler för att nå allt nedan. SMP, SkyBlock och Dungeons delar samma rang och behörigheter."
 		}
 		connect: "mc.northbyte.gg"
 		tags: ["Survival", "SkyBlock", "Dungeons", "Multiverse"]
@@ -47,8 +47,8 @@ catalog: #Catalog & {
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
-					en: "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, and Multiverse. This is the network's landing point: everyone arrives here first, then portals out."
-					sv: "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats: alla anländer hit först och portalar sedan vidare."
+					en: "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out."
+					sv: "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare."
 				}
 				featuredMods: [
 					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
@@ -71,18 +71,18 @@ catalog: #Catalog & {
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
-					en: "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once."
-					sv: "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
+					en: "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join, expand it, team up, and run up to three at once."
+					sv: "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in, bygg ut den, samarbeta och ha upp till tre öar igång."
 				}
 				featuredMods: [
-					{name: "BSkyBlock", kind: "plugin", url: "https://modrinth.com/plugin/bskyblock", blurb: {en: "Classic skyblock — your own island to grow from nothing.", sv: "Klassisk skyblock — en egen ö att bygga upp från ingenting."}},
+					{name: "BSkyBlock", kind: "plugin", url: "https://modrinth.com/plugin/bskyblock", blurb: {en: "Classic skyblock, your own island to grow from nothing.", sv: "Klassisk skyblock, en egen ö att bygga upp från ingenting."}},
 					{name: "BentoBox", kind: "plugin", url: "https://modrinth.com/plugin/bentobox", blurb: {en: "Island protection, teams and settings.", sv: "Öskydd, lag och inställningar."}},
 					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Teleport requests and core commands.", sv: "Teleportförfrågningar och grundkommandon."}},
 				]
 				tags: ["Survival", "SkyBlock", "Islands"]
 				foxCommands: [
 					{name: "/island create", description: {en: "Create your starting island.", sv: "Skapa din startö."}},
-					{name: "/island sethome /island go", description: {en: "Set your island's home point and warp back to it — used here instead of /sethome.", sv: "Sätt din ös hempunkt och varpa tillbaka dit — används här istället för /sethome."}},
+					{name: "/island sethome /island go", description: {en: "Set your island's home point and warp back to it. Used here instead of /sethome.", sv: "Sätt din ös hempunkt och varpa tillbaka dit. Används här istället för /sethome."}},
 					{name: "/island invite /island coop", description: {en: "Invite friends to your island or add them as a co-op member.", sv: "Bjud in vänner till din ö eller lägg till dem som co-op-medlem."}},
 					{name: "/tpa /tpahere /tpaccept /tpacancel", description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},
 				]
@@ -99,8 +99,8 @@ catalog: #Catalog & {
 				loader:  "Paper"
 				mode:    "Adventure"
 				blurb: {
-					en: "A dedicated dungeon-crawl world built around EliteMobs — bespoke boss fights and instanced content in a tight, purpose-built play area."
-					sv: "En egen dungeon-värld byggd kring EliteMobs — skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
+					en: "A dedicated dungeon-crawl world built around EliteMobs, with bespoke boss fights and instanced content in a tight, purpose-built play area."
+					sv: "En egen dungeon-värld byggd kring EliteMobs, med skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
 				}
 				featuredMods: [
 					{name: "EliteMobs", kind: "plugin", url: "https://modrinth.com/plugin/elitemobs", blurb: {en: "Custom bosses, dungeons, and combat classes.", sv: "Egna bossar, dungeons och stridsklasser."}},
@@ -120,14 +120,14 @@ catalog: #Catalog & {
 	servers: {
 		"create-survival": {
 			type:    "minecraft"
-			title:   "Create — Survival"
+			title:   "Create: Survival"
 			connect: "create-survival.mc.northbyte.gg"
 			version: "1.21.1"
 			loader:  "NeoForge"
 			mode:    "Survival"
 			blurb: {
-				en: "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled."
-				sv: "Survival med hela Create-teknikträdet — bygg maskinerier, automatisera allt och tämj världen för hand. Aeronautics aktiverat."
+				en: "Survival with the full Create tech tree. Build contraptions, automate everything, and tame the world by hand. Aeronautics enabled."
+				sv: "Survival med hela Create-teknikträdet. Bygg maskinerier, automatisera allt och tämj världen för hand. Aeronautics aktiverat."
 			}
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
@@ -145,14 +145,14 @@ catalog: #Catalog & {
 
 		"create-creative": {
 			type:    "minecraft"
-			title:   "Create — Creative"
+			title:   "Create: Creative"
 			connect: "create-creative.mc.northbyte.gg"
 			version: "1.21.1"
 			loader:  "NeoForge"
 			mode:    "Creative"
 			blurb: {
-				en: "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces."
-				sv: "Samma Create-modpaket utan broms — obegränsat med block och flygläge för att prototypa maskiner och paradnummer."
+				en: "The same Create modpack with the brakes off. Unlimited blocks and flight for prototyping machines and showpieces."
+				sv: "Samma Create-modpaket utan broms. Obegränsat med block och flygläge för att prototypa maskiner och paradnummer."
 			}
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
@@ -202,8 +202,8 @@ catalog: #Catalog & {
 			loader:  "Forge"
 			mode:    "Creative"
 			blurb: {
-				en: "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around."
-				sv: "Ett realtidsstrategigrepp på Minecraft — för befäl över arméer och kämpa om Nether. En experimentell värld vi drar igång för att busa runt."
+				en: "A real-time-strategy take on Minecraft. Command armies and fight for the Nether. An experimental world we spin up to mess around."
+				sv: "Ett realtidsstrategigrepp på Minecraft. Ta befäl över arméer och kämpa om Nether. En experimentell värld vi drar igång för att busa runt."
 			}
 			modpack: {
 				name:    "Reign of Nether (Optimized)"
@@ -211,7 +211,7 @@ catalog: #Catalog & {
 				version: "2.9.0"
 			}
 			featuredMods: [
-				{name: "Reign of Nether", kind: "mod", url: "https://modrinth.com/mod/reignofnether", blurb: {en: "RTS gameplay — command units and bases.", sv: "RTS-spel — styr enheter och baser."}},
+				{name: "Reign of Nether", kind: "mod", url: "https://modrinth.com/mod/reignofnether", blurb: {en: "RTS gameplay, command units and bases.", sv: "RTS-spel, styr enheter och baser."}},
 			]
 			tags: ["Modded", "RTS", "Experimental"]
 			experimental: true

@@ -17,8 +17,8 @@
     "network": {
         "title": "NorthByte Network",
         "blurb": {
-            "en": "One address, three worlds. Connect once, land in the hub, and step through portals to reach everything below — SMP, SkyBlock, and Dungeons all share the same rank and permissions.",
-            "sv": "En adress, tre världar. Anslut en gång, landa i navet och gå genom portaler för att nå allt nedan — SMP, SkyBlock och Dungeons delar samma rang och behörigheter."
+            "en": "One address, three worlds. Connect once, land in the hub, and step through portals to reach everything below. SMP, SkyBlock, and Dungeons all share the same rank and permissions.",
+            "sv": "En adress, tre världar. Anslut en gång, landa i navet och gå genom portaler för att nå allt nedan. SMP, SkyBlock och Dungeons delar samma rang och behörigheter."
         },
         "connect": "mc.northbyte.gg",
         "tags": [
@@ -32,8 +32,8 @@
                 "id": "smp",
                 "title": "SMP",
                 "blurb": {
-                    "en": "Classic survival on Paper with quality-of-life plugins — EssentialsX, LuckPerms, and Multiverse. This is the network's landing point: everyone arrives here first, then portals out.",
-                    "sv": "Klassisk survival på Paper med smidighetstillägg — EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats: alla anländer hit först och portalar sedan vidare."
+                    "en": "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out.",
+                    "sv": "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare."
                 },
                 "version": "26.1.2",
                 "loader": "Paper",
@@ -108,8 +108,8 @@
                 "id": "skyblock",
                 "title": "SkyBlock",
                 "blurb": {
-                    "en": "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join — expand it, team up, and run up to three at once.",
-                    "sv": "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in — bygg ut den, samarbeta och ha upp till tre öar igång."
+                    "en": "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join, expand it, team up, and run up to three at once.",
+                    "sv": "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in, bygg ut den, samarbeta och ha upp till tre öar igång."
                 },
                 "version": "26.1.2",
                 "loader": "Paper",
@@ -119,8 +119,8 @@
                         "name": "BSkyBlock",
                         "kind": "plugin",
                         "blurb": {
-                            "en": "Classic skyblock — your own island to grow from nothing.",
-                            "sv": "Klassisk skyblock — en egen ö att bygga upp från ingenting."
+                            "en": "Classic skyblock, your own island to grow from nothing.",
+                            "sv": "Klassisk skyblock, en egen ö att bygga upp från ingenting."
                         },
                         "url": "https://modrinth.com/plugin/bskyblock"
                     },
@@ -159,8 +159,8 @@
                     {
                         "name": "/island sethome /island go",
                         "description": {
-                            "en": "Set your island's home point and warp back to it — used here instead of /sethome.",
-                            "sv": "Sätt din ös hempunkt och varpa tillbaka dit — används här istället för /sethome."
+                            "en": "Set your island's home point and warp back to it. Used here instead of /sethome.",
+                            "sv": "Sätt din ös hempunkt och varpa tillbaka dit. Används här istället för /sethome."
                         }
                     },
                     {
@@ -184,8 +184,8 @@
                 "id": "dungeons",
                 "title": "Dungeons",
                 "blurb": {
-                    "en": "A dedicated dungeon-crawl world built around EliteMobs — bespoke boss fights and instanced content in a tight, purpose-built play area.",
-                    "sv": "En egen dungeon-värld byggd kring EliteMobs — skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
+                    "en": "A dedicated dungeon-crawl world built around EliteMobs, with bespoke boss fights and instanced content in a tight, purpose-built play area.",
+                    "sv": "En egen dungeon-värld byggd kring EliteMobs, med skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
                 },
                 "version": "26.1.2",
                 "loader": "Paper",
@@ -246,10 +246,10 @@
         "create-survival": {
             "id": "create-survival",
             "type": "minecraft",
-            "title": "Create — Survival",
+            "title": "Create: Survival",
             "blurb": {
-                "en": "Survival with the full Create tech tree — build contraptions, automate everything, and tame the world by hand. Aeronautics enabled.",
-                "sv": "Survival med hela Create-teknikträdet — bygg maskinerier, automatisera allt och tämj världen för hand. Aeronautics aktiverat."
+                "en": "Survival with the full Create tech tree. Build contraptions, automate everything, and tame the world by hand. Aeronautics enabled.",
+                "sv": "Survival med hela Create-teknikträdet. Bygg maskinerier, automatisera allt och tämj världen för hand. Aeronautics aktiverat."
             },
             "connect": "create-survival.mc.northbyte.gg",
             "version": "1.21.1",
@@ -301,10 +301,10 @@
         "create-creative": {
             "id": "create-creative",
             "type": "minecraft",
-            "title": "Create — Creative",
+            "title": "Create: Creative",
             "blurb": {
-                "en": "The same Create modpack with the brakes off — unlimited blocks and flight for prototyping machines and showpieces.",
-                "sv": "Samma Create-modpaket utan broms — obegränsat med block och flygläge för att prototypa maskiner och paradnummer."
+                "en": "The same Create modpack with the brakes off. Unlimited blocks and flight for prototyping machines and showpieces.",
+                "sv": "Samma Create-modpaket utan broms. Obegränsat med block och flygläge för att prototypa maskiner och paradnummer."
             },
             "connect": "create-creative.mc.northbyte.gg",
             "version": "1.21.1",
@@ -413,8 +413,8 @@
             "type": "minecraft",
             "title": "Reign of Nether",
             "blurb": {
-                "en": "A real-time-strategy take on Minecraft — command armies and fight for the Nether. An experimental world we spin up to mess around.",
-                "sv": "Ett realtidsstrategigrepp på Minecraft — för befäl över arméer och kämpa om Nether. En experimentell värld vi drar igång för att busa runt."
+                "en": "A real-time-strategy take on Minecraft. Command armies and fight for the Nether. An experimental world we spin up to mess around.",
+                "sv": "Ett realtidsstrategigrepp på Minecraft. Ta befäl över arméer och kämpa om Nether. En experimentell värld vi drar igång för att busa runt."
             },
             "connect": "ron.mc.northbyte.gg",
             "version": "1.20.1",
@@ -430,8 +430,8 @@
                     "name": "Reign of Nether",
                     "kind": "mod",
                     "blurb": {
-                        "en": "RTS gameplay — command units and bases.",
-                        "sv": "RTS-spel — styr enheter och baser."
+                        "en": "RTS gameplay, command units and bases.",
+                        "sv": "RTS-spel, styr enheter och baser."
                     },
                     "url": "https://modrinth.com/mod/reignofnether"
                 }

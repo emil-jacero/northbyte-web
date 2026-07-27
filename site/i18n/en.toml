@@ -21,14 +21,14 @@ back_all          = "← All servers"
 
 # Network detail page
 backends_heading = "Servers in the network"
-backends_note    = "Reached from the hub by portal — no separate address to remember."
+backends_note    = "Reached from the hub by portal, no separate address to remember."
 tab_overview      = "Overview"
 tab_commands      = "Commands"
-commands_note     = "What the Fox tier — everyone, by default — can do here."
+commands_note     = "What the Fox tier, everyone by default, can do here."
 
 # Modpack install call-to-action. The body wraps <strong>{name}</strong>:
 #   {install_body_pre} <strong>NAME</strong>{ vX} {install_body_post} <code>addr</code>.
-install_heading   = "Modded server — install the modpack first"
+install_heading   = "Modded server, install the modpack first"
 install_body_pre  = "Open"
 install_body_post = "in the Modrinth App (or Prism / ATLauncher), install it, then connect to"
 btn_install       = "Get the modpack on Modrinth ↗"
@@ -41,14 +41,14 @@ fact_modpack = "Modpack"
 
 # Mods section
 mods_heading   = "Mods & plugins"
-mods_note_pre  = "A few highlights — the"
+mods_note_pre  = "A few highlights, the"
 mods_note_post = "modpack bundles many more."
 kind_mod       = "mod"
 kind_plugin    = "plugin"
 
 # Statistics / live status
 stats_heading = "Statistics"
-stat_note     = "Live status from the public server list ping. Player counts only — no names are collected."
+stat_note     = "Live status from the public server list ping. Player counts only, no names are collected."
 live_checking = "Checking…"
 stat_checking = "Checking status…"
 live_online   = "Online"
