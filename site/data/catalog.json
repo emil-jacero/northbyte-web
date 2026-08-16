@@ -35,7 +35,7 @@
                     "en": "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out.",
                     "sv": "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare."
                 },
-                "version": "26.1.2",
+                "version": "26.2",
                 "loader": "Paper",
                 "mode": "Survival",
                 "featuredMods": [
@@ -127,7 +127,7 @@
                     "en": "Start on a tiny floating island with almost nothing and build outward. You get an island the moment you join, expand it, team up, and run up to three at once.",
                     "sv": "Börja på en liten flytande ö med nästan ingenting och bygg utåt. Du får en ö direkt när du hoppar in, bygg ut den, samarbeta och ha upp till tre öar igång."
                 },
-                "version": "26.1.2",
+                "version": "26.2",
                 "loader": "Paper",
                 "mode": "Survival",
                 "featuredMods": [
@@ -216,7 +216,7 @@
                     "en": "A dedicated dungeon-crawl world built around EliteMobs, with bespoke boss fights and instanced content in a tight, purpose-built play area.",
                     "sv": "En egen dungeon-värld byggd kring EliteMobs, med skräddarsydda bossstrider och instansat innehåll i ett litet, ändamålsenligt spelområde."
                 },
-                "version": "26.1.2",
+                "version": "26.2",
                 "loader": "Paper",
                 "mode": "Adventure",
                 "featuredMods": [

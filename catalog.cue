@@ -43,7 +43,7 @@ catalog: #Catalog & {
 		backends: {
 			"smp": {
 				title:   "SMP"
-				version: "26.1.2"
+				version: "26.2"
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
@@ -67,7 +67,7 @@ catalog: #Catalog & {
 
 			"skyblock": {
 				title:   "SkyBlock"
-				version: "26.1.2"
+				version: "26.2"
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
@@ -95,7 +95,7 @@ catalog: #Catalog & {
 			// Review and correct before treating it as authoritative.
 			"dungeons": {
 				title:   "Dungeons"
-				version: "26.1.2"
+				version: "26.2"
 				loader:  "Paper"
 				mode:    "Adventure"
 				blurb: {
