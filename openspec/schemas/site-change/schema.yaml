@@ -1,0 +1,140 @@
+name: site-change
+version: 1
+description: Site change workflow - proposal -> design -> tasks (no specs artifact)
+# Why a project-local schema: the site's content contract is `catalog_schema.cue` and its
+# content is `catalog.cue`. The definition plus the CUE that satisfies it already are the
+# specification, and `task check` is the gate that keeps them honest. A prose spec would be
+# a second copy nothing checks. This schema therefore has NO specs artifact. `openspec
+# validate` still asks for spec deltas regardless of schema, so every change's
+# .openspec.yaml sets `skip_specs: true`; the openspec-new-change and openspec-ff-change
+# skills write that marker at creation time.
+artifacts:
+  - id: proposal
+    generates: proposal.md
+    description: Why the change is needed and what it changes, with the catalog shape before and after
+    template: proposal.md
+    instruction: |
+      Create the proposal document that establishes WHY this change is needed.
+
+      Sections:
+      - **Why**: 1-2 sentences on the problem or opportunity. What is a visitor missing,
+        misled by, or unable to do? Why now?
+      - **What Changes**: Bullet list. Name every file the change touches (`catalog.cue`,
+        `catalog_schema.cue`, `site/layouts/...`, `site/static/css/style.css`,
+        `site/hugo.toml`, `nginx.conf`, `Dockerfile`). Mark schema changes with
+        **BREAKING** when existing `catalog.cue` entries would stop validating.
+      - **Before / After**: For a schema or catalog-shape change, the CUE shape as CUE,
+        not prose ("none" is the Before of a new field). For a layout or styling change,
+        describe what a visitor sees before and after. This block is the review surface -
+        it carries what a spec would have carried.
+      - **Accuracy**: The site is a public claim about servers that actually exist. If the
+        change states a version, modpack, address, or capability, name where in
+        `../deployments/prod/<release>/values.cue` that fact comes from. If the change is
+        the site catching up to a fleet change, say which one.
+      - **Impact**: Does this change the published schema (`catalog_schema.cue`)? Does it
+        need a Hugo version, theme, or dependency the build doesn't have? Does it affect
+        both languages? Does it change the container image or nginx config?
+      - **Enhancement**: When the change implements decisions from an entry in the
+        `northbyte-enhancements/` repo, cite the entry and decision numbers instead of
+        restating the design. Otherwise write "None."
+
+      This schema has no specs artifact. Do not add a Capabilities section and do not
+      create a `specs/` directory. The change's `.openspec.yaml` carries
+      `skip_specs: true`; if it is missing, add it before continuing.
+
+      Keep it concise (1 page for most changes). The "how" belongs in design.md.
+    requires: []
+
+  - id: design
+    generates: design.md
+    description: How to implement it, and which decisions outlive the change
+    template: design.md
+    instruction: |
+      Create the design document that explains HOW to implement the change.
+
+      Sections:
+      - **Context**: Only the current state and constraints needed to explain the
+        approach. Reference the proposal for motivation instead of restating it.
+      - **Goals / Non-Goals**: What this design achieves and explicitly excludes.
+      - **Decisions**: Key technical choices with rationale (why X over Y?), including
+        the alternatives considered. For anything touching the catalog contract, show the
+        CUE - the definition's shape IS the design.
+      - **Content and language**: Any player-visible string the change adds or edits, in
+        both Swedish and English. Swedish is the default and its diacritics are load
+        bearing: never ASCII-strip å/ä/ö. If the change adds a string that only exists in
+        one language, say so and say why.
+      - **Visual identity**: Required for any change touching layout, CSS, or imagery.
+        The dark aurora/north theme (Space Grotesk / Sora / Space Mono; deep navy with an
+        aurora teal-to-violet accent) is deliberate and distinctive. State how the change
+        fits it rather than diluting it. Write "None - no visual surface." if empty.
+      - **Research & Decisions**: Required when exploration was done. Use the format from
+        `openspec/config.yaml`.
+      - **Risks / Trade-offs**: Known limitations. Format: [Risk] -> Mitigation. Include
+        anything that could publish a wrong claim about a live server, break the build, or
+        regress one language only.
+      - **Durable decisions**: Every decision a FUTURE author needs to know, with where it
+        lands at archive time: a `CLAUDE.md` rule, `README.md`, `DEPLOY.md`, or "stays
+        with the change". An archived change must never be the only home of an authoring
+        rule. Write "None." if empty.
+      - **Open Questions**: Unknowns that can safely be answered later without changing
+        the approach or the task breakdown. Omit if none. A question that would change the
+        approach is not open; resolve it now by asking the user.
+
+      Content belongs in `catalog.cue`, never hardcoded into a template. If the design
+      wants a template to carry content, that is a signal the schema needs a field.
+    requires:
+      - proposal
+
+  - id: tasks
+    generates: tasks.md
+    description: Implementation checklist with trackable tasks
+    template: tasks.md
+    instruction: |
+      Create the task list that breaks down the implementation work.
+
+      Before writing tasks, check design.md for Open Questions. If any of them would
+      change what gets built, resolve them with the user first; do not bake an unstated
+      assumption into the task list.
+
+      **IMPORTANT: Follow the template below exactly.** The apply phase parses checkbox
+      format to track progress. Tasks not using `- [ ]` won't be tracked.
+
+      Guidelines:
+      - Group tasks by file, under ## numbered headings
+      - Each task MUST be a checkbox: `- [ ] X.Y Task description`
+      - A `catalog_schema.cue` change comes before the `catalog.cue` entries that rely on it
+      - Include both languages in the same task group as the string they belong to, so a
+        half-translated change cannot look finished
+      - Include a task that lands each durable decision from design.md in `CLAUDE.md`,
+        `README.md`, or `DEPLOY.md`
+      - `site/data/catalog.json` is generated by `task generate` and committed. Never hand-edit
+        it; regenerating it IS the task
+      - End with the validation gates
+
+      The gates:
+      ```
+      ## N. Verification
+
+      - [ ] N.1 `task check` (vets CUE and confirms the site builds)
+      - [ ] N.2 `task run` and confirm the change renders as intended, in both languages
+      - [ ] N.3 Confirm `site/data/catalog.json` is regenerated and committed
+      ```
+
+      NEVER include delivery operations as tasks: no committing, pushing, branching,
+      opening or merging PRs, tagging, cutting releases, image pushes, or commit-message
+      and PR-body hygiene checks. tasks.md covers implementation and verification only -
+      delivery and deployment happen afterwards under the repo's normal workflow
+      (`DEPLOY.md`). Sole exception: a change whose stated deliverable IS a deployment or
+      publishing operation; there those steps are the implementation.
+    requires:
+      - design
+
+apply:
+  requires: [tasks]
+  tracks: tasks.md
+  instruction: |
+    Read context files, work through pending tasks, mark complete as you go.
+
+    Never write a secret into `catalog.cue` - it is public. Never state a server fact the
+    fleet does not actually have; check `../deployments/prod/<release>/values.cue` rather
+    than assuming. Pause if you hit blockers or need clarification.

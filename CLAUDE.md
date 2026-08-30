@@ -41,3 +41,21 @@ See `DEPLOY.md`. Deploy artifacts are in the OPM repos
 Visual identity is a deliberate dark "aurora/north" theme (Space Grotesk / Sora /
 Space Mono; deep navy + aurora teal→violet). Keep it distinctive - see the
 `frontend-philosophy` guidance before restyling.
+
+## Change process (OpenSpec)
+
+Design-and-plan work runs through OpenSpec: `openspec/config.yaml` is the constitution
+and `openspec/schemas/site-change/` is this repo's project-local workflow -
+**proposal → design → tasks, with no specs artifact**. `catalog_schema.cue` plus the
+`catalog.cue` that satisfies it are the specification, and `task check` is the gate; a
+prose spec would be a second copy nothing checks. Every change carries
+`skip_specs: true` in its `.openspec.yaml`; never create an `openspec/specs/` directory.
+
+Use the repo-local `openspec-*` skills in `.claude/skills/`, not the generic ones - they
+are patched for this schema.
+
+**Not everything goes through OpenSpec.** Content edits inside the existing schema (a
+version bump, a blurb, a link, the notice banner) and anything `mc-website-sync` does as
+the tail of a fleet change: just edit and `task check`. OpenSpec is for schema changes,
+new content types, layout/theme work, new client-side behavior, and build or deploy
+changes. The full threshold is in `openspec/config.yaml`.

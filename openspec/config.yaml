@@ -1,0 +1,211 @@
+schema: site-change
+
+context: |
+  # northbyte.gg Development Constitution
+
+  ## What this repo is
+
+  The **public website** for the NorthByte community: a static Hugo site rendered from a
+  secret-free CUE catalog, baked into an nginx image, and served at `https://northbyte.gg`
+  behind the Istio gateway as the `northbyte_web` OPM module. It is the only NorthByte repo
+  whose output is read by strangers, and the only one where being wrong is a public claim
+  rather than a private bug.
+
+  ## Core Principles
+
+  ### I. The Catalog Is the Spec
+  `catalog_schema.cue` is the contract (`#Catalog` / `#Server` / `#Service`) and `catalog.cue`
+  is the content that satisfies it. `task check` vets the CUE and proves the site builds.
+  Those things are the specification and its gate.
+  - **This OpenSpec workspace deliberately has no specs artifact.** There is no
+    `openspec/specs/` directory and no delta specs. A prose spec describing what the catalog
+    contains would be a second copy of `catalog.cue`, kept honest by nothing.
+  - Every change's `.openspec.yaml` carries `skip_specs: true`; the `openspec-new-change` and
+    `openspec-ff-change` skills write it at creation time. Never create a `specs/` directory
+    inside a change.
+  - The proposal's **Before / After** block is where intended behavior is reviewed before code
+    exists. For a catalog or schema change, write it as CUE, not prose.
+
+  ### II. `catalog.cue` Is Public - Nothing Secret Ever Enters It
+  This repo is public. The fleet repo it mirrors (`../deployments/`) is private and holds
+  plaintext RCON passwords and restic S3 credentials.
+  - Author `catalog.cue` from the **public** fields of `../deployments/prod/<release>/values.cue`
+    only. Never RCON passwords, S3 keys, restic credentials, internal hostnames, ops UUIDs, or
+    cluster-internal service names.
+  - A rendered OPM release contains plaintext secrets. Never paste one into this repo, a
+    proposal, a design, or a commit message.
+  - When in doubt about whether a field is public, it is not.
+
+  ### III. Content Lives in the Catalog, Not in Templates
+  Adding or changing a server means editing `catalog.cue`, not a Hugo layout.
+  - A template that hardcodes a server name, version, or blurb is a defect. If a template needs
+    content the catalog cannot express, the fix is a new field in `catalog_schema.cue`.
+  - `site/data/catalog.json` is **generated** by `task generate` and committed so the Docker
+    build needs only Hugo. Never hand-edit it; regenerating it is the task.
+
+  ### IV. The Site Must Not Outrun the Fleet
+  Every version, modpack, address and capability on this site is a claim about a server that
+  actually exists in `../deployments/prod/`.
+  - A catalog fact MUST be traceable to a `values.cue`, not to memory or to what was planned.
+  - The site follows the fleet, never leads it. Do not publish a server, version, or feature
+    that is not deployed yet - "it's about to ship" is how a public page becomes a lie.
+  - The `mc-website-sync` skill is the sanctioned path for a fleet change reaching this repo.
+
+  ### V. Swedish Is the Default, and Both Languages Ship Together
+  The site is bilingual (Swedish default, English secondary) with automatic detection.
+  - **Never ASCII-strip å/ä/ö.** Swedish diacritics are load bearing; "Sverige" is not "Sverige"
+    with the dots removed, and a stripped string reads as broken to the primary audience.
+  - A string added in one language only is an unfinished change, not a follow-up. Both land in
+    the same commit.
+  - Player-facing copy avoids em dashes, per the existing convention in this repo's history.
+
+  ### VI. The Visual Identity Is Deliberate
+  A dark "aurora/north" theme: Space Grotesk / Sora / Space Mono, deep navy with an aurora
+  teal-to-violet accent, the scene as a fixed site-wide background.
+  - It is distinctive on purpose. Do not drift it toward a generic template look one component
+    at a time.
+  - Any change touching layout, CSS, or imagery states in design.md how it fits the theme.
+
+  ### VII. Simplicity & YAGNI
+  This is a single landing page for a small community fleet, maintained by one person.
+  - Prefer a Hugo partial and plain CSS over a framework, a build step, or a dependency.
+  - A catalog field that exists so something *could* be expressed, with nothing expressing it,
+    is surface without a consumer - leave it out.
+  - Every external asset is a third party who can break the page. Justify each one.
+
+  ### VIII. Small Batch Sizes (Iterative & Incremental Delivery)
+  All changes MUST be kept TINY. Small, incremental, independently verifiable steps are required.
+  - **WARNING & BLOCK**: If a user requests a change that is too large (e.g. restyling the site
+    while also reshaping the catalog schema and adding a new content type), the Agent MUST warn
+    the user, block the execution, and suggest a way to split the request into smaller,
+    sequential tasks.
+
+  ## Execution Gate (Agent Directive)
+  Before beginning ANY implementation, the Agent MUST evaluate the scope of the request against
+  the "Small Batch Sizes" principle.
+  If the request is too large, the Agent MUST reply with:
+  "🛑 **Scope Warning**: This request is too large for a single safe iteration. I suggest we split
+  it into the following smaller steps: [list 2-3 logical, tiny steps]. Should we start with step 1?"
+
+  ## When to Use OpenSpec - and When Not To
+
+  Most commits here are content edits: bump a modpack version, adjust a blurb. Putting those
+  through a three-artifact workflow is ceremony, and a process that feels like ceremony gets
+  bypassed entirely. The threshold is deliberate.
+
+  **Skip OpenSpec - just edit and `task check`:**
+  - Editing content within the existing schema: a version bump, a blurb, a link, a player count.
+  - A copy fix or translation correction.
+  - Toggling the notice banner.
+  - Anything the `mc-website-sync` skill does as the tail of a fleet change.
+
+  **Use OpenSpec:**
+  - A change to `catalog_schema.cue` - it is the contract every entry unifies against.
+  - A new content type or a new section of the site.
+  - A layout, theme, or navigation change beyond a single component's styling.
+  - New client-side behavior (the live status probe, i18n detection, anything fetching at runtime).
+  - A change to the build, the image, `nginx.conf`, or how the site is deployed.
+  - Anything implementing a `northbyte-enhancements/` entry.
+
+  When in doubt, ask the user which side of the line the request is on.
+
+  ## Validation Gates (before a change is done)
+
+  1. `task check` - vets the CUE and confirms the site builds cleanly.
+  2. `task run` - confirm it renders as intended, **in both languages**.
+  3. `site/data/catalog.json` regenerated and committed.
+
+  Deployment is separate and happens afterwards - see `DEPLOY.md`. The deploy artifacts live in
+  the OPM repos, not here.
+
+  ## Everything Else Lives in CLAUDE.md and README.md
+
+  Repo layout, commands, the deploy path, and the design guidance are in `CLAUDE.md`,
+  `README.md` and `DEPLOY.md`, which are not repeated here.
+
+rules:
+  proposal:
+    - "Focus: WHY we're doing this, WHAT's in/out of scope"
+    - "Updates when: Scope changes, intent clarifies, approach fundamentally shifts"
+    - Name every file the change touches.
+    - The Before / After section MUST show the CUE shape for any catalog or schema change, not
+      a prose description (Principle I). "none" is the Before of a new field. For a purely
+      visual change, describe what a visitor sees instead.
+    - Mark a `catalog_schema.cue` change **BREAKING** when existing `catalog.cue` entries would
+      stop validating.
+    - MUST include an Accuracy section tracing every server fact the change states back to
+      `../deployments/prod/<release>/values.cue` (Principle IV). Never publish ahead of the fleet.
+    - Never write a secret, an internal hostname, or an ops UUID into this repo (Principle II).
+    - Scope MUST be small enough to implement in a short session (Principle VIII).
+    - When the change implements a slice of an enhancement, cite the entry and the decision
+      numbers it satisfies rather than restating the design.
+    - "Never add a Capabilities section and never create a `specs/` directory; the change's `.openspec.yaml` MUST carry `skip_specs: true` (Principle I)."
+
+  design:
+    - "Focus: HOW we'll implement it technically"
+    - "Updates when: Implementation reveals better approach, constraints change"
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY).
+    - Show the CUE for anything touching the catalog contract - the definition's shape is the
+      design.
+    - MUST include a "Content and language" section giving every player-visible string in both
+      Swedish and English. Never ASCII-strip å/ä/ö (Principle V). Write "None." if empty.
+    - MUST include a "Visual identity" section for any change touching layout, CSS, or imagery,
+      stating how it fits the aurora theme rather than diluting it. Write "None - no visual
+      surface." if empty.
+    - MUST include a "Research & Decisions" section when exploration was done.
+    # Every entry in a rules list MUST be a plain string. OpenSpec drops the WHOLE artifact's
+    # rules with `Rules for 'design' must be an array of strings` if any entry is a mapping -
+    # so the familiar `- Format: |` block silently disables every design rule beside it. Keep
+    # this one a block scalar, not a `Format:` key.
+    - |
+      Format for that section:
+
+      ## Research & Decisions
+
+      ### [Topic]
+      **Context**: [Why this decision was needed]
+      **Explored**: [What was investigated - link to exploration notes]
+      **Decision**: [Chosen option]
+      **Rationale**: [Why this option was selected]
+    - Content belongs in `catalog.cue`. A design that puts content in a template MUST instead
+      add the field to `catalog_schema.cue` (Principle III).
+    - Justify every new external asset or dependency against Principle VII - each one is a third
+      party who can break the page.
+    - MUST include a "Durable decisions" section listing every decision a future author needs and
+      where it lands at archive (`CLAUDE.md`, `README.md`, `DEPLOY.md`, or "stays with the
+      change"). Write "None." when empty; never omit the section.
+
+  tasks:
+    - "Focus: STEPS to take for implementation"
+    - "Updates when: Tasks complete, new tasks discovered, blockers identified"
+    - "CRITICAL: Break tasks into TINY chunks (max 1-2 hours)."
+    - "CRITICAL: If the task list grows too long (>10 items), suggest splitting into a new
+      OpenSpec change."
+    - Group tasks by file.
+    - A `catalog_schema.cue` change comes before the `catalog.cue` entries that rely on it.
+    - Keep both languages in the same task group as the string they belong to, so a
+      half-translated change cannot look finished.
+    - "Never hand-edit `site/data/catalog.json` - it is generated by `task generate`.
+      Regenerating and committing it IS the task."
+    - Include one task per durable decision in design.md that lands it in `CLAUDE.md`,
+      `README.md`, or `DEPLOY.md`.
+    - "MUST end with the verification gates: `task check`, then `task run` confirmed in both
+      languages, then confirming `site/data/catalog.json` is regenerated and committed."
+    - "NEVER include delivery operations as tasks: no committing, pushing, branching, opening or
+      merging PRs, tagging, cutting releases, or image builds and pushes. tasks.md covers
+      implementation and verification only - delivery and deployment happen afterwards under the
+      repo's normal workflow (DEPLOY.md). Sole exception: a change whose stated deliverable IS a
+      deployment or publishing operation."
+
+operations:
+  apply:
+    guidance:
+      - "Never write a secret, internal hostname, or ops UUID into this repo - catalog.cue is public (Principle II)."
+      - "Never state a server fact the fleet does not have. Check ../deployments/prod/<release>/values.cue rather than assuming, and never publish ahead of what is deployed."
+      - "Confirm both Swedish and English render before calling a copy change done. Swedish is the default; never ASCII-strip å/ä/ö."
+
+  archive:
+    guidance:
+      - "Archive with `--skip-specs`: this workspace has no specs and the change declares skip_specs. Never let archive create an openspec/specs/ directory."
+      - "Before archiving, read design.md's Durable decisions section. Every entry marked for promotion MUST already be landed in CLAUDE.md, README.md, or DEPLOY.md; if one is not, stop and land it first. An archived change must not be the only home of an authoring rule."
+      - "Confirm `site/data/catalog.json` was regenerated and committed alongside the catalog change - a stale data file ships a stale site."
