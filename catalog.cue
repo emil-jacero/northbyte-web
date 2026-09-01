@@ -54,6 +54,7 @@ catalog: #Catalog & {
 					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
 					{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 					{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
+					{name: "AxGraves", kind: "plugin", url: "https://modrinth.com/plugin/axgraves", blurb: {en: "Die and your items and XP wait in a grave, yours alone, for two hours.", sv: "Dör du väntar dina föremål och din XP i en grav, bara din, i två timmar."}},
 				]
 				tags: ["Survival", "Multiverse", "Hub"]
 				foxCommands: [

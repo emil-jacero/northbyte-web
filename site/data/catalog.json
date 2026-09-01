@@ -65,6 +65,15 @@
                             "sv": "Flera världar med portaler och separata inventarier per värld."
                         },
                         "url": "https://modrinth.com/plugin/multiverse-core"
+                    },
+                    {
+                        "name": "AxGraves",
+                        "kind": "plugin",
+                        "blurb": {
+                            "en": "Die and your items and XP wait in a grave, yours alone, for two hours.",
+                            "sv": "Dör du väntar dina föremål och din XP i en grav, bara din, i två timmar."
+                        },
+                        "url": "https://modrinth.com/plugin/axgraves"
                     }
                 ],
                 "tags": [
