@@ -20,9 +20,9 @@ context: |
   - **This OpenSpec workspace deliberately has no specs artifact.** There is no
     `openspec/specs/` directory and no delta specs. A prose spec describing what the catalog
     contains would be a second copy of `catalog.cue`, kept honest by nothing.
-  - Every change's `.openspec.yaml` carries `skip_specs: true`; the `openspec-new-change` and
-    `openspec-ff-change` skills write it at creation time. Never create a `specs/` directory
-    inside a change.
+  - Every change's `.openspec.yaml` carries `skip_specs: true`. Since OpenSpec CLI 1.12.0 the
+    `openspec new change` command writes that marker itself for a schema with no specs
+    artifact; confirm it is present. Never create a `specs/` directory inside a change.
   - The proposal's **Before / After** block is where intended behavior is reviewed before code
     exists. For a catalog or schema change, write it as CUE, not prose.
 

@@ -7,7 +7,7 @@ compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
-  generatedBy: "1.9.0"
+  generatedBy: "1.12.0"
 ---
 
 Start a new change using the experimental artifact-driven approach.
@@ -29,28 +29,28 @@ Start a new change using the experimental artifact-driven approach.
 
 2. **Determine the workflow schema**
 
-   This repo's default is the project-local `site-change` schema (`openspec/config.yaml`),
-   which has NO specs artifact: proposal → design → tasks. Always omit `--schema`. Never select
-   `spec-driven` here, even if asked for "the default workflow"; explain that in this repo
-   `catalog_schema.cue` and `catalog.cue` are the spec (see `openspec/config.yaml` Principle I).
+   **🛑 REPO-LOCAL PATCH — always omit `--schema` in this repo.**
+   The default is the project-local `site-change` schema (`openspec/config.yaml`), which has
+   NO specs artifact: proposal → design → tasks. Never select `spec-driven`, even if the
+   user asks for "the default workflow" — here `catalog_schema.cue` and `catalog.cue` are the spec
+   (`openspec/config.yaml` Principle I). Since CLI 1.12.0 `openspec new change` writes
+   `skip_specs: true` into the change's `.openspec.yaml` itself; confirm it is there, and
+   never create a `specs/` directory inside a change.
+
+   Use the default schema (omit `--schema`) unless the user explicitly requests a different workflow.
+
+   **Use a different schema only if the user mentions:**
+   - A specific schema name → use `--schema <name>`
+   - "show workflows" or "what workflows" → run `openspec schemas --json` and let them choose
+
+   **Otherwise**: Omit `--schema` to use the default.
 
 3. **Create the change directory**
    ```bash
    openspec new change "<name>"
    ```
-   This creates a scaffolded change in the planning home resolved by the CLI, using this
-   repo's project-local `site-change` schema (proposal → design → tasks, NO specs artifact).
-   Never pass `--schema spec-driven`.
-
-   **Then, in the same step, write the change metadata (REPO-LOCAL PATCH, mandatory):**
-   `openspec validate` rejects a change without spec deltas unless its metadata says so, and
-   this schema never produces deltas. Overwrite `<changeRoot>/.openspec.yaml` with:
-   ```yaml
-   schema: site-change
-   created: <YYYY-MM-DD>
-   skip_specs: true
-   ```
-   Do not create a `specs/` directory inside the change, now or later.
+   Add `--schema <name>` only if the user requested a specific workflow.
+   This creates a scaffolded change in the planning home resolved by the CLI.
 
 4. **Show the artifact status**
    ```bash

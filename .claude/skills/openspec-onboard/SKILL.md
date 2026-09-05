@@ -7,7 +7,7 @@ compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
-  generatedBy: "1.9.0"
+  generatedBy: "1.12.0"
 ---
 
 Guide the user through their first complete OpenSpec workflow cycle. This is a teaching experience—you'll do real work in their codebase while explaining each step.
@@ -374,12 +374,12 @@ Here are the implementation tasks:
 
 ## 1. [Category or file]
 
-- [ ] 1.1 [Specific task]
-- [ ] 1.2 [Specific task]
+- [ ] 1.1 [Specific task] — verify: [test, command, observable behavior, or delivered artifact]
+- [ ] 1.2 [Specific task] — verify: [test, command, observable behavior, or delivered artifact]
 
-## 2. Verify
+## 2. Integration Verification
 
-- [ ] 2.1 [Verification step]
+- [ ] 2.1 Verify [broader integration or system behavior] with [end-to-end test or observable result]
 
 ---
 
@@ -488,7 +488,8 @@ This same rhythm works for any size change—a small fix or a major feature.
  |--------------------|----------------------------------------------------------|
  | `/openspec-new-change`      | Start a new change, step through artifacts one at a time |
  | `/openspec-continue-change` | Continue working on an existing change                   |
- | `/openspec-ff-change`       | Fast-forward: create all artifacts at once               |
+ | `/openspec-propose`         | Propose: create the change and all artifacts at once     |
+ | `/openspec-update-change`   | Revise an existing change's artifacts, keep them coherent |
  | `/openspec-verify-change`   | Verify implementation matches artifacts                  |
 
 ---
@@ -540,7 +541,8 @@ If the user says they just want to see the commands or skip the tutorial:
  |---------------------------|-------------------------------------|
  | `/openspec-new-change <name>`      | Start a new change, step by step    |
  | `/openspec-continue-change <name>` | Continue an existing change         |
- | `/openspec-ff-change <name>`       | Fast-forward: all artifacts at once |
+ | `/openspec-propose <name>`         | Propose: all artifacts at once      |
+ | `/openspec-update-change <name>`   | Revise artifacts, keep them coherent |
  | `/openspec-verify-change <name>`   | Verify implementation               |
 
 Try `/openspec-propose` to start your first change.

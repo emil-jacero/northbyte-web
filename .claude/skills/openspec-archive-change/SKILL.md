@@ -7,7 +7,7 @@ compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
-  generatedBy: "1.9.0"
+  generatedBy: "1.12.0"
 ---
 
 Archive a completed change in the experimental workflow.
@@ -88,7 +88,7 @@ Archive a completed change in the experimental workflow.
 
 4. **Assess delta spec sync state**
 
-   **REPO-LOCAL PATCH:** in this repo the `specs` entry is always missing (the
+   **🛑 REPO-LOCAL PATCH:** in this repo the `specs` entry is always missing (the
    `site-change` schema has no specs artifact, and every change declares
    `skip_specs: true`), so this step is a no-op: proceed without a sync prompt. The text
    below is kept for fidelity with the generated skill and applies only if a change

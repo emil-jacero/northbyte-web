@@ -6,8 +6,8 @@ description: Site change workflow - proposal -> design -> tasks (no specs artifa
 # specification, and `task check` is the gate that keeps them honest. A prose spec would be
 # a second copy nothing checks. This schema therefore has NO specs artifact. `openspec
 # validate` still asks for spec deltas regardless of schema, so every change's
-# .openspec.yaml sets `skip_specs: true`; the openspec-new-change and openspec-ff-change
-# skills write that marker at creation time.
+# .openspec.yaml sets `skip_specs: true`. Since CLI 1.12.0 `openspec new change` writes
+# that marker itself for a schema with no specs artifact.
 artifacts:
   - id: proposal
     generates: proposal.md
