@@ -157,12 +157,13 @@ catalog: #Catalog & {
 			}
 			modpack: {
 				name:    "Create: Ultimate Selection 2"
-				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/10.1.0"
-				version: "10.1.0"
+				url:     "https://modrinth.com/modpack/create-ultimate-selection-2/version/11.6.0"
+				version: "11.6.0"
 			}
 			featuredMods: [
 				{name: "Create", kind: "mod", url: "https://modrinth.com/mod/create", blurb: {en: "Mechanical contraptions, automation and aesthetics.", sv: "Mekaniska maskinerier, automation och estetik."}},
 				{name: "Create: Aeronautics", kind: "mod", url: "https://modrinth.com/mod/create-aeronautics", blurb: {en: "Buildable airships and flying machines.", sv: "Byggbara luftskepp och flygmaskiner."}},
+				{name: "MineColonies", kind: "mod", url: "https://modrinth.com/mod/minecolonies", blurb: {en: "Build and run a colony with citizens who work for you.", sv: "Bygg och styr en koloni med invånare som arbetar åt dig."}},
 				{name: "LuckPerms", kind: "mod", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 			]
 			tags: ["Modded", "Create", "Creative"]

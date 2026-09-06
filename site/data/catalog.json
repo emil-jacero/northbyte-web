@@ -359,8 +359,8 @@
             "mode": "Creative",
             "modpack": {
                 "name": "Create: Ultimate Selection 2",
-                "url": "https://modrinth.com/modpack/create-ultimate-selection-2/version/10.1.0",
-                "version": "10.1.0"
+                "url": "https://modrinth.com/modpack/create-ultimate-selection-2/version/11.6.0",
+                "version": "11.6.0"
             },
             "featuredMods": [
                 {
@@ -380,6 +380,15 @@
                         "sv": "Byggbara luftskepp och flygmaskiner."
                     },
                     "url": "https://modrinth.com/mod/create-aeronautics"
+                },
+                {
+                    "name": "MineColonies",
+                    "kind": "mod",
+                    "blurb": {
+                        "en": "Build and run a colony with citizens who work for you.",
+                        "sv": "Bygg och styr en koloni med invånare som arbetar åt dig."
+                    },
+                    "url": "https://modrinth.com/mod/minecolonies"
                 },
                 {
                     "name": "LuckPerms",
