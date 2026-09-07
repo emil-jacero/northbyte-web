@@ -52,6 +52,29 @@ Start a new change using the experimental artifact-driven approach.
    Add `--schema <name>` only if the user requested a specific workflow.
    This creates a scaffolded change in the planning home resolved by the CLI.
 
+   **Declare the enhancement now, not at archive time (REPO-LOCAL PATCH, mandatory when it applies):**
+   if the change implements decisions from an entry in the sibling `northbyte-enhancements/` repo,
+   write `<changeRoot>/enhancement.yaml` while the entry is still in context:
+   ```yaml
+   # Enhancement declaration, read by `task enhancements:delivery:log` at archive time.
+   # See northbyte-enhancements/schema.cue #ChangeDeclaration.
+   implements:
+     - enhancement: "NNNN"
+       decisions: [D1, D2]
+       resolves: []
+   ```
+   `northbyte-enhancements/schema.cue` `#ChangeDeclaration` validates it (`enhancement` is the
+   four-digit id, `decisions` are `Dn`, `resolves` are `OQn`, and the list must not be empty). This
+   file is the ONLY link between an OpenSpec change and the enhancement it implements: from the
+   workspace root, `task enhancements:delivery:log FROM=<change-dir>` reads it at archive time, and
+   `task enhancements:delivery:reconcile` reports every change that declared one and was never
+   logged. Written later, from an archived change, the context needed to get the decision numbers
+   right is gone. Write it even when the entry still has the pre-port shape (`[legacy]` in
+   `task enhancements:list`): logging waits for the rewrite pass, the declaration does not.
+
+   If the change genuinely implements no enhancement, omit the file entirely. That is a normal and
+   valid outcome that needs no note. Never write an empty `implements` list: the schema rejects it.
+
 4. **Show the artifact status**
    ```bash
    openspec status --change "<name>" --json

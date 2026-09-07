@@ -38,4 +38,4 @@
 ## Enhancement
 
 <!-- If this implements decisions from northbyte-enhancements/NNNN, cite the entry and decision
-     numbers here. Otherwise "None." -->
+     numbers here and create enhancement.yaml in this change directory. Otherwise "None." -->

@@ -140,6 +140,7 @@ rules:
     - When the change implements a slice of an enhancement, cite the entry and the decision
       numbers it satisfies rather than restating the design.
     - "Never add a Capabilities section and never create a `specs/` directory; the change's `.openspec.yaml` MUST carry `skip_specs: true` (Principle I)."
+    - "If this change implements decisions from an enhancement in the northbyte-enhancements/ repo, create enhancement.yaml in this change directory declaring it (implements: [{enhancement: \"NNNN\", decisions: [D1, ...], resolves: []}]). Write it at creation time, while the enhancement is in context; it is what makes archive-time delivery logging mechanical."
 
   design:
     - "Focus: HOW we'll implement it technically"
@@ -209,3 +210,4 @@ operations:
       - "Archive with `--skip-specs`: this workspace has no specs and the change declares skip_specs. Never let archive create an openspec/specs/ directory."
       - "Before archiving, read design.md's Durable decisions section. Every entry marked for promotion MUST already be landed in CLAUDE.md, README.md, or DEPLOY.md; if one is not, stop and land it first. An archived change must not be the only home of an authoring rule."
       - "Confirm `site/data/catalog.json` was regenerated and committed alongside the catalog change - a stale data file ships a stale site."
+      - "If this change directory contains enhancement.yaml, finish the archive by logging the landing: from the workspace root run `task enhancements:delivery:log FROM=northbyte.gg/openspec/changes/archive/<archived-change> SUMMARY=\"<one line: what landed>\"`. It appends a CUE-validated entry to each declared enhancement's delivery.yaml; confirm it printed 'logged' for every declared enhancement. If it refuses because the entry is [legacy] (pre-port shape), record 'declared NNNN, logging deferred to the rewrite pass' in the archive summary and continue. `task enhancements:delivery:reconcile` reports any archived change that declared an entry and was never logged."

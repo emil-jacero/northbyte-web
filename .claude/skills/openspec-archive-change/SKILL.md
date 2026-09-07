@@ -86,6 +86,25 @@ Archive a completed change in the experimental workflow.
 
    **If no tasks file exists:** Proceed without task-related warning.
 
+3c. **Log the landing in the enhancement (REPO-LOCAL PATCH, mandatory when declared)**
+
+   If `<changeRoot>/enhancement.yaml` exists, the archive is not finished until each
+   declared enhancement's `delivery.yaml` carries the landing. Do this AFTER the move in
+   step 5 (the log entry records the archived path), from the workspace root
+   `/var/home/emil/dev/northbyte/`:
+   ```bash
+   task enhancements:delivery:log FROM=northbyte.gg/openspec/changes/archive/<target-name> SUMMARY="<one line: what landed>"
+   ```
+   It appends a CUE-validated entry to every enhancement the file declares; confirm it
+   printed `logged` for each. If it fails validation, fix `enhancement.yaml` (decision
+   numbers must exist in the entry) and rerun. If it prints `REFUSED: NNNN has the pre-port
+   shape`, that entry is `[legacy]` and cannot be logged yet: record "declared NNNN, logging
+   deferred to the rewrite pass" in the summary and continue. `task enhancements:delivery:reconcile`
+   keeps listing such a change until the rewrite pass logs it, and reports any other archived
+   change that declared an entry and was never logged. This write into `northbyte-enhancements/`
+   is part of the archive, not a second repo's work. `operationGuidance` from
+   `openspec instructions archive` repeats this; it is advisory there, mandatory here.
+
 4. **Assess delta spec sync state**
 
    **🛑 REPO-LOCAL PATCH:** in this repo the `specs` entry is always missing (the
@@ -157,6 +176,7 @@ Archive a completed change in the experimental workflow.
    - Change name
    - Schema that was used
    - Archive location
+   - Enhancement delivery log entries written (step 3c), or "no enhancement declared", or "declared NNNN, logging deferred to the rewrite pass"
    - Whether specs were synced (if applicable)
    - Note about any warnings (incomplete artifacts/tasks)
 

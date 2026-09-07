@@ -8,6 +8,8 @@ description: Site change workflow - proposal -> design -> tasks (no specs artifa
 # validate` still asks for spec deltas regardless of schema, so every change's
 # .openspec.yaml sets `skip_specs: true`. Since CLI 1.12.0 `openspec new change` writes
 # that marker itself for a schema with no specs artifact.
+# A change that implements an enhancement also carries enhancement.yaml beside it,
+# written at creation time (see rules.proposal in openspec/config.yaml).
 artifacts:
   - id: proposal
     generates: proposal.md
@@ -36,7 +38,8 @@ artifacts:
         both languages? Does it change the container image or nginx config?
       - **Enhancement**: When the change implements decisions from an entry in the
         `northbyte-enhancements/` repo, cite the entry and decision numbers instead of
-        restating the design. Otherwise write "None."
+        restating the design, and create `enhancement.yaml` in this change directory now.
+        Otherwise write "None."
 
       This schema has no specs artifact. Do not add a Capabilities section and do not
       create a `specs/` directory. The change's `.openspec.yaml` carries

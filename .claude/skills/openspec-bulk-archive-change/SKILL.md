@@ -207,6 +207,19 @@ This skill allows you to batch-archive changes, handling spec conflicts intellig
       mv "<changeRoot>" "<planningHome.changesDir>/archive/<target-name>"
       ```
 
+   c2. **Log the landing in the enhancement (REPO-LOCAL PATCH, mandatory when declared)**:
+
+      If the archived change carries `enhancement.yaml`, run once per such change, from the
+      workspace root `/var/home/emil/dev/northbyte/`:
+      ```bash
+      task enhancements:delivery:log FROM=northbyte.gg/openspec/changes/archive/<target-name> SUMMARY="<one line: what landed>"
+      ```
+      Confirm it printed `logged` for every enhancement the file declares. A `REFUSED: NNNN has
+      the pre-port shape` line means the entry is `[legacy]`: record "declared NNNN, logging
+      deferred to the rewrite pass" for that change and continue; `task enhancements:delivery:reconcile`
+      keeps listing it until the rewrite pass logs it. A validation failure means a decision number
+      in `enhancement.yaml` does not exist in the entry: fix the file and rerun.
+
    d. **Track outcome** for each change:
       - Success: archived successfully
       - Failed: error during archive or spec verification (record error)
@@ -227,6 +240,11 @@ This skill allows you to batch-archive changes, handling spec conflicts intellig
 
    Skipped 1 change:
    - add-verify-skill (user chose not to archive incomplete)
+
+   Enhancement delivery log:
+   - add-oauth: logged to 0007 (D3, D4)
+   - project-config: declared 0001, logging deferred to the rewrite pass
+   - schema-management-cli: no enhancement declared
 
    Spec sync summary:
    - 4 delta specs synced to main specs
