@@ -77,6 +77,12 @@ Continue working on a change by creating the next artifact.
      - Otherwise use `template` as the structure - fill in its sections
      - Apply `context` and `rules` as constraints when writing - but do NOT copy them into the file
      - Write to the `resolvedOutputPath` specified in instructions. If it is a glob pattern, choose the concrete file path using the schema instruction and the change's context
+   - **Re-sync the enhancement declaration (REPO-LOCAL PATCH):** if the artifact just written cites a
+     `northbyte-enhancements/NNNN` entry (the proposal's `## Enhancement` section, or the proposal text
+     in a spec-driven repo), `<changeRoot>/enhancement.yaml` must exist and its `decisions` / `resolves`
+     must match what the artifact now claims. Add or remove numbers to match. A list that would become
+     empty means the change no longer implements the entry: delete the file. A proposal that says "None."
+     with a file beside it is the same defect in the other direction.
    - Show what was created and what's now unlocked
    - STOP after creating ONE artifact
 

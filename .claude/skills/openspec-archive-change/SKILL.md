@@ -86,11 +86,23 @@ Archive a completed change in the experimental workflow.
 
    **If no tasks file exists:** Proceed without task-related warning.
 
+3b. **Check durable decisions are landed (REPO-LOCAL PATCH, mandatory)**
+
+   This repo's `site-change` schema has no specs artifact; `design.md`'s
+   **Durable decisions** section is where a change declares what outlives it.
+   Read that section. For every entry marked for promotion to `CLAUDE.md`,
+   `README.md` or `DEPLOY.md`, confirm the target file already contains it. If any
+   entry is not landed, stop and land it first; an archived change must never be the
+   only home of an authoring rule. "None." is a valid section and needs no action.
+   A `design.md` without the section is a defect in the change: add it before archiving.
+
 3c. **Log the landing in the enhancement (REPO-LOCAL PATCH, mandatory when declared)**
 
    If `<changeRoot>/enhancement.yaml` exists, the archive is not finished until each
-   declared enhancement's `delivery.yaml` carries the landing. Do this AFTER the move in
-   step 5 (the log entry records the archived path), from the workspace root
+   declared enhancement's `delivery.yaml` carries the landing. Read it now; run it after
+   step 5 has moved the directory (the log entry records the archived path). First read
+   `../northbyte-enhancements/.claude/skills/delivery-log/SKILL.md` (the Skill tool cannot
+   see another repo's skills). Run from the workspace root
    `/var/home/emil/dev/northbyte/`:
    ```bash
    task enhancements:delivery:log FROM=northbyte.gg/openspec/changes/archive/<target-name> SUMMARY="<one line: what landed>"

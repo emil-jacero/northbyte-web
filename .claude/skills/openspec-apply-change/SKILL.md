@@ -168,6 +168,7 @@ What would you like to do?
 - Always read context files before starting (from the apply instructions output)
 - If task is ambiguous, pause and ask before implementing
 - If implementation reveals issues, pause and suggest artifact updates
+- **REPO-LOCAL PATCH:** if implementation shows a declared enhancement decision cannot stand, stop. Do not adjust it in `design.md` or narrow the task. The entry is amended first (a new `DN` with `**Amends:**` on an `accepted` entry, an in-place revision on a `draft`, via `northbyte-enhancements/.claude/skills/enhancements/SKILL.md`), then `enhancement.yaml` and the proposal follow the new number.
 - Keep code changes minimal and scoped to each task
 - Update task checkbox immediately after completing each task
 - Pause on errors, blockers, or unclear requirements - don't guess

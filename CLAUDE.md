@@ -57,5 +57,19 @@ are patched for this schema.
 **Not everything goes through OpenSpec.** Content edits inside the existing schema (a
 version bump, a blurb, a link, the notice banner) and anything `mc-website-sync` does as
 the tail of a fleet change: just edit and `task check`. OpenSpec is for schema changes,
-new content types, layout/theme work, new client-side behavior, and build or deploy
-changes. The full threshold is in `openspec/config.yaml`.
+new content types, layout/theme work, new client-side behavior, build or deploy
+changes, and anything implementing a `northbyte-enhancements/` entry. The full threshold
+is in `openspec/config.yaml`.
+
+## Working Style for Agents
+
+- Pick the right destination for new work:
+  - **Cross-repo design intent, a contract another repo relies on, a policy**: `../northbyte-enhancements/` (an entry, or a new `DN`/`OQN` on an existing one via its skills). Never a local `design.md`.
+  - **A repo-scoped slice of an entry**: an OpenSpec change here. Write `enhancement.yaml` at creation (`implements: [{enhancement: "NNNN", decisions: [D1], resolves: []}]`, validated by `../northbyte-enhancements/schema.cue` `#ChangeDeclaration`); the archive skill logs the landing with `task enhancements:delivery:log FROM=northbyte.gg/openspec/changes/archive/<name> SUMMARY="…"` from the workspace root, and `task enhancements:delivery:reconcile` catches a declared change never logged. A `[legacy]` entry defers the log to the rewrite pass. A change that implements no entry carries no file.
+  - **A repo-local authoring decision**: a `CLAUDE.md` rule, `README.md` or `DEPLOY.md`, declared in the change's `design.md` Durable decisions section and landed before archive.
+  - **A routine change**: a content edit inside the existing schema, or the tail of a fleet change via `mc-website-sync`. Edit and `task check`; no change directory.
+- The `openspec-*` skills under `.claude/skills/` are `openspec` 1.12.0 output plus repo-local patches (marked `REPO-LOCAL PATCH` in new-change, propose, continue-change, update-change, apply-change, verify-change, archive-change, bulk-archive-change, explore, onboard). `openspec init` / `openspec update` overwrite them: after either, re-apply from git history (`git checkout -- .claude/skills/`) and diff.
+
+### Source of truth precedence
+
+When guidance conflicts, the most-specific source wins: a loaded skill > `openspec/config.yaml` (normative) > this `CLAUDE.md` > the `northbyte-enhancements` entry a change declares, for intent and rationale. If implementation shows a live entry decision must change, amend the entry in the same batch; a reversal is a new `DN`, never an edit.

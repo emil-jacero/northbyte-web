@@ -198,12 +198,15 @@ rules:
       repo's normal workflow (DEPLOY.md). Sole exception: a change whose stated deliverable IS a
       deployment or publishing operation."
 
+# Operation hooks, served to the agent by `openspec instructions apply|archive --change <name> --json`
+# as operationGuidance. Advisory there; the repo-local openspec-* skills make them mandatory.
 operations:
   apply:
     guidance:
       - "Never write a secret, internal hostname, or ops UUID into this repo - catalog.cue is public (Principle II)."
       - "Never state a server fact the fleet does not have. Check ../deployments/prod/<release>/values.cue rather than assuming, and never publish ahead of what is deployed."
       - "Confirm both Swedish and English render before calling a copy change done. Swedish is the default; never ASCII-strip å/ä/ö."
+      - "If implementation shows a declared enhancement decision cannot stand, stop and amend the entry first (a new DN with Amends on an accepted entry, an in-place revision on a draft); then update enhancement.yaml and the proposal. Never adjust the decision inside design.md."
 
   archive:
     guidance:

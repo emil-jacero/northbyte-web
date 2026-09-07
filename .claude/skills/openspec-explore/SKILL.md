@@ -162,17 +162,20 @@ If the user mentions a change or you detect one is relevant:
 
     | Insight Type               | Where to Capture                    |
     |----------------------------|-------------------------------------|
-    | New requirement discovered | `specs/<capability-path>/spec.md` |
-    | Requirement changed        | `specs/<capability-path>/spec.md` |
+    | New requirement discovered | `design.md` and the declaration (`catalog_schema.cue` and `catalog.cue`): this repo has no specs (REPO-LOCAL PATCH) |
+    | Requirement changed        | same (REPO-LOCAL PATCH) |
     | Design decision made       | `design.md`                       |
+    | Mechanism decision (how this repo does it) | `design.md` (REPO-LOCAL PATCH) |
+    | Cross-repo design intent, a contract another repo relies on, a policy | `../northbyte-enhancements/NNNN/`: a new `DN` or `OQN` via its `enhancements` / `enhancement-open-questions` skills, never `design.md` (REPO-LOCAL PATCH) |
     | Scope changed              | `proposal.md`                     |
     | New work identified        | `tasks.md`                        |
     | Assumption invalidated     | Relevant artifact                   |
 
    Example offers:
    - "That's a design decision. Capture it in design.md?"
-   - "This is a new requirement. Add it to specs?"
+   - "This is a new requirement. Add it to design.md?" (REPO-LOCAL PATCH: no specs here)
    - "This changes scope. Update the proposal?"
+   - "That binds another repo. Record it as a decision on enhancement NNNN, then cite it here?" (REPO-LOCAL PATCH)
 
 4. **The user decides** - Offer and move on. Don't pressure. Don't auto-capture.
 

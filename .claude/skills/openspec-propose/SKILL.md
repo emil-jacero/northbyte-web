@@ -79,6 +79,22 @@ When the user is ready to implement, they must start the apply workflow explicit
    **Declare the enhancement now, not at archive time (REPO-LOCAL PATCH, mandatory when it applies):**
    if the change implements decisions from an entry in the sibling `northbyte-enhancements/` repo,
    write `<changeRoot>/enhancement.yaml` while the entry is still in context:
+
+   Read the entry before you write the file. The entry states intent and contract; `design.md`
+   decides mechanism. Three reads, from the workspace root `/var/home/emil/dev/northbyte/`:
+   1. `northbyte-enhancements/NNNN/03-decisions.md`: only live `### DN:` headings can be
+      declared; a tombstone (`### DN: (merged into …)`) is retired, not carried.
+   2. `northbyte-enhancements/NNNN/07-questions.md`: a question with
+      `Status: deferred-to-implementation` that this change answers goes in `resolves`. A
+      `[legacy]` entry keeps its register in `03-decisions.md ## Open Questions` and has no
+      deferral vocabulary, so `resolves` stays empty there.
+   3. `task enhancements:delivery:uncovered ID=NNNN`: the decisions no landed change carries yet.
+      Declare from that list; a decision already covered is declared again only when this change
+      carries it too.
+   A change that would contradict a live decision does not proceed. Amend the entry first, in the
+   same batch, via its `enhancements` skill (`northbyte-enhancements/.claude/skills/enhancements/SKILL.md`,
+   read the file; the Skill tool cannot see it): a new `DN` with `**Amends:**` when the entry is
+   `accepted`, an in-place revision when it is `draft`. Then declare the new number here.
    ```yaml
    # Enhancement declaration, read by `task enhancements:delivery:log` at archive time.
    # See northbyte-enhancements/schema.cue #ChangeDeclaration.

@@ -107,6 +107,15 @@ Verify that an implementation matches the change artifacts (specs, tasks, design
        - Recommendation: "Update implementation or revise design.md to match reality"
    - If no design.md: Skip design adherence check, note "No design.md to verify against"
 
+   **Enhancement Declaration (REPO-LOCAL PATCH)**:
+   - Read `<changeRoot>/enhancement.yaml` if present, and the proposal's enhancement citation.
+   - Proposal cites `northbyte-enhancements/NNNN` but no file: WARNING "no enhancement.yaml but proposal cites NNNN Dn"; recommendation "write enhancement.yaml declaring NNNN / [Dn]".
+   - File present but proposal says "None.": WARNING "enhancement.yaml declares NNNN but the proposal cites no entry"; recommendation "delete the file or cite the entry".
+   - For each declared `Dn`: it must be a live `### Dn:` heading in `../northbyte-enhancements/NNNN/03-decisions.md` (a tombstone or a missing heading is WARNING "Dn is not a live decision"), and a completed task or the diff must carry it (else WARNING "remove Dn: not carried by this change").
+   - For each `OQn` in `resolves`: `../northbyte-enhancements/NNNN/07-questions.md` must mark it `deferred-to-implementation` (else WARNING "OQn is not a deferred question; remove it from resolves").
+   - A decision the diff carries that the file does not declare: WARNING "add Dn to enhancement.yaml".
+   - `[legacy]` entry (`implementation:` key in its `config.yaml`): check headings in `03-decisions.md` only; skip the `resolves` check and say so.
+
    **Code Pattern Consistency**:
    - Review new code for consistency with project patterns
    - Check file naming, directory structure, coding style
@@ -126,6 +135,7 @@ Verify that an implementation matches the change artifacts (specs, tasks, design
    | Completeness | X/Y tasks, N reqs|
    | Correctness  | M/N reqs covered |
    | Coherence    | Followed/Issues  |
+   | Enhancement  | declared/carried |
    ```
 
    **Issues by Priority**:
@@ -138,6 +148,7 @@ Verify that an implementation matches the change artifacts (specs, tasks, design
    2. **WARNING** (Should fix):
       - Spec/design divergences
       - Missing scenario coverage
+      - Enhancement declaration mismatches (REPO-LOCAL PATCH)
       - Each with specific recommendation
 
    3. **SUGGESTION** (Nice to fix):

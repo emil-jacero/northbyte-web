@@ -435,6 +435,8 @@ The change is implemented! One more step—let's archive it.
 When a change is complete, we archive it. The archive path is derived from `planningHome.changesDir` and the date.
 
 Archived changes become your project's decision history—you can always find them later to understand why something was built a certain way.
+
+(REPO-LOCAL PATCH) A change that declared a `northbyte-enhancements/` entry in `enhancement.yaml` also logs its landing into that entry's `delivery.yaml` at archive; the `openspec-archive-change` skill's step 3b/3c does it, `openspec archive` alone does not.
 ```
 
 **DO:** Archive the change (`--yes` answers the confirmation prompts, which you cannot answer from a tool call):
