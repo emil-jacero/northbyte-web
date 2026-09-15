@@ -14,11 +14,11 @@ package northbyte
 	sv: string
 }
 
-// A curated mod or plugin highlight shown on a server's Details page.
+// A curated mod, plugin or datapack highlight shown on a server's Details page.
 // NOT an exhaustive dump of a modpack's contents — just the notable picks.
 #Mod: {
 	name:   string
-	kind:   "mod" | "plugin"
+	kind:   "mod" | "plugin" | "datapack"
 	blurb?: #I18n
 	url?:   string
 }

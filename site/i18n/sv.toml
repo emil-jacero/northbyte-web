@@ -43,6 +43,7 @@ mods_note_pre  = "Några höjdpunkter, modpaketet"
 mods_note_post = "innehåller många fler."
 kind_mod       = "mod"
 kind_plugin    = "tillägg"
+kind_datapack  = "datapaket"
 
 stats_heading = "Statistik"
 stat_note     = "Livestatus via publik server-list-ping. Endast spelarantal, inga namn samlas in."

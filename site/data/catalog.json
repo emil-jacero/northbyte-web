@@ -32,8 +32,8 @@
                 "id": "smp",
                 "title": "SMP",
                 "blurb": {
-                    "en": "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out.",
-                    "sv": "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare."
+                    "en": "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out. Head away from the settled areas and you reach fresh terrain: new biomes, villages and structures from a set of worldgen datapacks.",
+                    "sv": "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare. Går du bort från de bebodda områdena når du ny terräng: nya biomer, byar och byggnader från ett gäng datapaket för världsgenerering."
                 },
                 "version": "26.2",
                 "loader": "Paper",
@@ -74,12 +74,49 @@
                             "sv": "Dör du väntar dina föremål och din XP i en grav, bara din, i två timmar."
                         },
                         "url": "https://modrinth.com/plugin/axgraves"
+                    },
+                    {
+                        "name": "Towns and Towers",
+                        "kind": "datapack",
+                        "blurb": {
+                            "en": "Villages and outposts rebuilt, with new ones per biome.",
+                            "sv": "Ombyggda byar och utposter, plus nya sorter per biom."
+                        },
+                        "url": "https://modrinth.com/datapack/towns-and-towers"
+                    },
+                    {
+                        "name": "Dungeons and Taverns",
+                        "kind": "datapack",
+                        "blurb": {
+                            "en": "New dungeons, taverns and overhauled structures to find.",
+                            "sv": "Nya dungeons, värdshus och ombyggda byggnader att hitta."
+                        },
+                        "url": "https://modrinth.com/datapack/dungeons-and-taverns"
+                    },
+                    {
+                        "name": "Geophilic",
+                        "kind": "datapack",
+                        "blurb": {
+                            "en": "Vanilla biomes given more variety, without changing what they are.",
+                            "sv": "Vanilla-biomer får mer variation, utan att sluta vara sig själva."
+                        },
+                        "url": "https://modrinth.com/datapack/geophilic"
+                    },
+                    {
+                        "name": "Trek",
+                        "kind": "datapack",
+                        "blurb": {
+                            "en": "Bigger, more dramatic terrain shapes in newly generated land.",
+                            "sv": "Större och mer dramatisk terräng i nygenererad mark."
+                        },
+                        "url": "https://modrinth.com/datapack/trek"
                     }
                 ],
                 "tags": [
                     "Survival",
                     "Multiverse",
-                    "Hub"
+                    "Hub",
+                    "Worldgen"
                 ],
                 "foxCommands": [
                     {

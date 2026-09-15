@@ -47,16 +47,20 @@ catalog: #Catalog & {
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
-					en: "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out."
-					sv: "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare."
+					en: "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out. Head away from the settled areas and you reach fresh terrain: new biomes, villages and structures from a set of worldgen datapacks."
+					sv: "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare. Går du bort från de bebodda områdena når du ny terräng: nya biomer, byar och byggnader från ett gäng datapaket för världsgenerering."
 				}
 				featuredMods: [
 					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
 					{name: "LuckPerms", kind: "plugin", url: "https://modrinth.com/plugin/luckperms", blurb: {en: "Permissions & rank management.", sv: "Behörigheter och ranghantering."}},
 					{name: "Multiverse", kind: "plugin", url: "https://modrinth.com/plugin/multiverse-core", blurb: {en: "Multiple worlds with portals & per-world inventories.", sv: "Flera världar med portaler och separata inventarier per värld."}},
 					{name: "AxGraves", kind: "plugin", url: "https://modrinth.com/plugin/axgraves", blurb: {en: "Die and your items and XP wait in a grave, yours alone, for two hours.", sv: "Dör du väntar dina föremål och din XP i en grav, bara din, i två timmar."}},
+					{name: "Towns and Towers", kind: "datapack", url: "https://modrinth.com/datapack/towns-and-towers", blurb: {en: "Villages and outposts rebuilt, with new ones per biome.", sv: "Ombyggda byar och utposter, plus nya sorter per biom."}},
+					{name: "Dungeons and Taverns", kind: "datapack", url: "https://modrinth.com/datapack/dungeons-and-taverns", blurb: {en: "New dungeons, taverns and overhauled structures to find.", sv: "Nya dungeons, värdshus och ombyggda byggnader att hitta."}},
+					{name: "Geophilic", kind: "datapack", url: "https://modrinth.com/datapack/geophilic", blurb: {en: "Vanilla biomes given more variety, without changing what they are.", sv: "Vanilla-biomer får mer variation, utan att sluta vara sig själva."}},
+					{name: "Trek", kind: "datapack", url: "https://modrinth.com/datapack/trek", blurb: {en: "Bigger, more dramatic terrain shapes in newly generated land.", sv: "Större och mer dramatisk terräng i nygenererad mark."}},
 				]
-				tags: ["Survival", "Multiverse", "Hub"]
+				tags: ["Survival", "Multiverse", "Hub", "Worldgen"]
 				foxCommands: [
 					{names: ["/sethome", "/home", "/delhome", "/renamehome"], description: {en: "Set, teleport to, delete, and rename your home points.", sv: "Sätt, teleportera till, ta bort och byt namn på dina hempunkter."}},
 					{names: ["/tpa", "/tpahere", "/tpaccept", "/tpacancel"], description: {en: "Request to teleport to another player, or invite them to you.", sv: "Begär att teleportera till en annan spelare, eller bjud in dem till dig."}},

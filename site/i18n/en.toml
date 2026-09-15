@@ -45,6 +45,7 @@ mods_note_pre  = "A few highlights, the"
 mods_note_post = "modpack bundles many more."
 kind_mod       = "mod"
 kind_plugin    = "plugin"
+kind_datapack  = "datapack"
 
 # Statistics / live status
 stats_heading = "Statistics"

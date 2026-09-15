@@ -328,6 +328,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 }
 .mod-kind--mod { color: var(--orange); background: var(--orange-dim); border: 1px solid rgba(250, 95, 2, 0.35); }
 .mod-kind--plugin { color: var(--cyan); background: var(--cyan-dim); border: 1px solid rgba(29, 233, 188, 0.35); }
+.mod-kind--datapack { color: var(--gold); background: rgba(251, 195, 57, 0.14); border: 1px solid rgba(251, 195, 57, 0.35); }
 .mod-name { font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 1.05rem; }
 .mod-name a { color: var(--ink); }
 .mod-name a:hover { color: var(--cyan); }
