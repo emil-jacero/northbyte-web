@@ -166,7 +166,7 @@ If the user mentions a change or you detect one is relevant:
     | Requirement changed        | same (REPO-LOCAL PATCH) |
     | Design decision made       | `design.md`                       |
     | Mechanism decision (how this repo does it) | `design.md` (REPO-LOCAL PATCH) |
-    | Cross-repo design intent, a contract another repo relies on, a policy | `../northbyte-enhancements/NNNN/`: a new `DN` or `OQN` via its `enhancements` / `enhancement-open-questions` skills, never `design.md` (REPO-LOCAL PATCH) |
+    | Cross-repo design intent, a contract another repo relies on, a policy | `../enhancements/NNNN/`: a new `DN` or `OQN` via its `enhancements` / `enhancement-open-questions` skills, never `design.md` (REPO-LOCAL PATCH) |
     | Scope changed              | `proposal.md`                     |
     | New work identified        | `tasks.md`                        |
     | Assumption invalidated     | Relevant artifact                   |

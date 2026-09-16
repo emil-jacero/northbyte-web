@@ -101,7 +101,7 @@ Archive a completed change in the experimental workflow.
    If `<changeRoot>/enhancement.yaml` exists, the archive is not finished until each
    declared enhancement's `delivery.yaml` carries the landing. Read it now; run it after
    step 5 has moved the directory (the log entry records the archived path). First read
-   `../northbyte-enhancements/.claude/skills/delivery-log/SKILL.md` (the Skill tool cannot
+   `../enhancements/.claude/skills/delivery-log/SKILL.md` (the Skill tool cannot
    see another repo's skills). Run from the workspace root
    `/var/home/emil/dev/northbyte/`:
    ```bash
@@ -113,7 +113,7 @@ Archive a completed change in the experimental workflow.
    shape`, that entry is `[legacy]` and cannot be logged yet: record "declared NNNN, logging
    deferred to the rewrite pass" in the summary and continue. `task enhancements:delivery:reconcile`
    keeps listing such a change until the rewrite pass logs it, and reports any other archived
-   change that declared an entry and was never logged. This write into `northbyte-enhancements/`
+   change that declared an entry and was never logged. This write into `enhancements/`
    is part of the archive, not a second repo's work. `operationGuidance` from
    `openspec instructions archive` repeats this; it is advisory there, mandatory here.
 

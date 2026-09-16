@@ -37,7 +37,7 @@ artifacts:
         need a Hugo version, theme, or dependency the build doesn't have? Does it affect
         both languages? Does it change the container image or nginx config?
       - **Enhancement**: When the change implements decisions from an entry in the
-        `northbyte-enhancements/` repo, cite the entry and decision numbers instead of
+        `enhancements/` repo, cite the entry and decision numbers instead of
         restating the design, and create `enhancement.yaml` in this change directory now.
         Otherwise write "None."
 

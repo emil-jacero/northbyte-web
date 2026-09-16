@@ -105,7 +105,7 @@ context: |
   - A layout, theme, or navigation change beyond a single component's styling.
   - New client-side behavior (the live status probe, i18n detection, anything fetching at runtime).
   - A change to the build, the image, `nginx.conf`, or how the site is deployed.
-  - Anything implementing a `northbyte-enhancements/` entry.
+  - Anything implementing a `enhancements/` entry.
 
   When in doubt, ask the user which side of the line the request is on.
 
@@ -140,7 +140,7 @@ rules:
     - When the change implements a slice of an enhancement, cite the entry and the decision
       numbers it satisfies rather than restating the design.
     - "Never add a Capabilities section and never create a `specs/` directory; the change's `.openspec.yaml` MUST carry `skip_specs: true` (Principle I)."
-    - "If this change implements decisions from an enhancement in the northbyte-enhancements/ repo, create enhancement.yaml in this change directory declaring it (implements: [{enhancement: \"NNNN\", decisions: [D1, ...], resolves: []}]). Write it at creation time, while the enhancement is in context; it is what makes archive-time delivery logging mechanical."
+    - "If this change implements decisions from an enhancement in the enhancements/ repo, create enhancement.yaml in this change directory declaring it (implements: [{enhancement: \"NNNN\", decisions: [D1, ...], resolves: []}]). Write it at creation time, while the enhancement is in context; it is what makes archive-time delivery logging mechanical."
 
   design:
     - "Focus: HOW we'll implement it technically"

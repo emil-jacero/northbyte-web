@@ -29,7 +29,7 @@ catalog: #Catalog & {
 	}
 
 	// The Velocity network — one address (mc.northbyte.gg), three worlds
-	// reached by in-game portal from the hub. See northbyte-enhancements/0001
+	// reached by in-game portal from the hub. See enhancements/0001
 	// (D21) for why this is one catalog entry instead of three.
 	network: {
 		title: "NorthByte Network"

@@ -109,10 +109,10 @@ Verify that an implementation matches the change artifacts (specs, tasks, design
 
    **Enhancement Declaration (REPO-LOCAL PATCH)**:
    - Read `<changeRoot>/enhancement.yaml` if present, and the proposal's enhancement citation.
-   - Proposal cites `northbyte-enhancements/NNNN` but no file: WARNING "no enhancement.yaml but proposal cites NNNN Dn"; recommendation "write enhancement.yaml declaring NNNN / [Dn]".
+   - Proposal cites `enhancements/NNNN` but no file: WARNING "no enhancement.yaml but proposal cites NNNN Dn"; recommendation "write enhancement.yaml declaring NNNN / [Dn]".
    - File present but proposal says "None.": WARNING "enhancement.yaml declares NNNN but the proposal cites no entry"; recommendation "delete the file or cite the entry".
-   - For each declared `Dn`: it must be a live `### Dn:` heading in `../northbyte-enhancements/NNNN/03-decisions.md` (a tombstone or a missing heading is WARNING "Dn is not a live decision"), and a completed task or the diff must carry it (else WARNING "remove Dn: not carried by this change").
-   - For each `OQn` in `resolves`: `../northbyte-enhancements/NNNN/07-questions.md` must mark it `deferred-to-implementation` (else WARNING "OQn is not a deferred question; remove it from resolves").
+   - For each declared `Dn`: it must be a live `### Dn:` heading in `../enhancements/NNNN/03-decisions.md` (a tombstone or a missing heading is WARNING "Dn is not a live decision"), and a completed task or the diff must carry it (else WARNING "remove Dn: not carried by this change").
+   - For each `OQn` in `resolves`: `../enhancements/NNNN/07-questions.md` must mark it `deferred-to-implementation` (else WARNING "OQn is not a deferred question; remove it from resolves").
    - A decision the diff carries that the file does not declare: WARNING "add Dn to enhancement.yaml".
    - `[legacy]` entry (`implementation:` key in its `config.yaml`): check headings in `03-decisions.md` only; skip the `resolves` check and say so.
 

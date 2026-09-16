@@ -61,7 +61,7 @@ Revise a change's existing planning artifacts and keep them coherent. Never edit
    - Note everything that is now inconsistent, missing, or contradictory.
    - Revise only files that already exist (`existingOutputPaths`). Do NOT create artifacts that don't exist yet, and do NOT invent new files under a glob artifact - note them and point the user to `/openspec-continue-change` to create them.
    - **Re-sync the enhancement declaration (REPO-LOCAL PATCH):** if the artifact just written cites a
-     `northbyte-enhancements/NNNN` entry (the proposal's `## Enhancement` section, or the proposal text
+     `enhancements/NNNN` entry (the proposal's `## Enhancement` section, or the proposal text
      in a spec-driven repo), `<changeRoot>/enhancement.yaml` must exist and its `decisions` / `resolves`
      must match what the artifact now claims. Add or remove numbers to match. A list that would become
      empty means the change no longer implements the entry: delete the file. A proposal that says "None."
