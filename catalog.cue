@@ -47,8 +47,8 @@ catalog: #Catalog & {
 				loader:  "Paper"
 				mode:    "Survival"
 				blurb: {
-					en: "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. This is the network's landing point, everyone arrives here first, then portals out. Head away from the settled areas and you reach fresh terrain: new biomes, villages and structures from a set of worldgen datapacks."
-					sv: "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Det här är navets landningsplats, alla anländer hit först och portalar sedan vidare. Går du bort från de bebodda områdena når du ny terräng: nya biomer, byar och byggnader från ett gäng datapaket för världsgenerering."
+					en: "Classic survival on Paper with quality-of-life plugins, EssentialsX, LuckPerms, and Multiverse. You arrive in the hub and step through a portal to get here. Head away from the settled areas and you reach fresh terrain: new biomes, villages and structures from a set of worldgen datapacks."
+					sv: "Klassisk survival på Paper med smidighetstillägg, EssentialsX, LuckPerms och Multiverse. Du landar i navet och går genom en portal hit. Går du bort från de bebodda områdena når du ny terräng: nya biomer, byar och byggnader från ett gäng datapaket för världsgenerering."
 				}
 				featuredMods: [
 					{name: "EssentialsX", kind: "plugin", url: "https://modrinth.com/plugin/essentialsx", blurb: {en: "Homes, warps, kits and core commands.", sv: "Hem, warpar, kit och grundkommandon."}},
