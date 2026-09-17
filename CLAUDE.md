@@ -1,14 +1,25 @@
 # northbyte.gg - repo guide
 
 Public website for **NorthByte** game servers. Static Hugo site rendered from a
-secret-free CUE catalog, served by nginx, deployed to the nas2 cluster as the
-`northbyte_web` OPM module behind the Istio gateway.
+secret-free CUE catalog, **published to GitHub Pages** at `https://northbyte.gg` by
+`.github/workflows/gh-pages.yml` on every push to `main`.
+
+⚠️ **Corrected 2026-09-17.** This said the site was "served by nginx, deployed to the nas2 cluster
+as the `northbyte_web` OPM module behind the Istio gateway". **That deployment does not exist** -
+verified against the cluster on 2026-09-17: no HTTPRoute serves the site, and the release paths it
+named live in `opm-releases`, which was never migrated. The `Dockerfile`, `nginx.conf` and
+`task image` below are the leftovers of that plan and deploy nothing today.
 
 ## Golden rules
 
+- 🛑 **THE WHOLE REPO IS PUBLIC, not just `catalog.cue`.** Never write a secret, an internal
+  hostname, a cluster address or an LB IP into **any** file here - docs, comments and commit
+  messages included. Until 2026-09-17 `DEPLOY.md` named a private domain ten times, from the repo's
+  first commit; the rule was written for the catalog and nothing enforced it on the prose.
 - **`catalog.cue` is public.** Never copy secrets into it (no RCON/restic passwords,
   S3 keys, ops UUIDs). Author it from the *public* fields of
-  `../opm-releases/nas2/minecraft/values.cue`.
+  `../deployments/prod/<release>/values.cue` (⚠️ corrected 2026-09-17 - this said
+  `../opm-releases/nas2/minecraft/values.cue`, a path that predates the fleet split).
 - **Content lives in `catalog.cue`**, not in templates. Adding/removing a server =
   edit `catalog.cue` + rebuild. The schema is `catalog_schema.cue`.
 - **`site/data/catalog.json` is generated** (`task generate`) and committed so the
@@ -19,7 +30,9 @@ secret-free CUE catalog, served by nginx, deployed to the nas2 cluster as the
 - `catalog.cue` / `catalog_schema.cue` - content + its contract.
 - `site/` - Hugo: `hugo.toml`, `layouts/index.html` (single landing page),
   `layouts/partials/server-card.html`, `static/css/style.css` (aurora theme).
-- `Dockerfile` / `nginx.conf` - bake built site into nginx.
+- `Dockerfile` / `nginx.conf` - ⚠️ **vestigial.** Built for the container deployment that was
+  never stood up; nothing consumes them. Kept only because reviving a self-hosted mirror would
+  start from them.
 - `Taskfile.yml` - `generate`, `build`, `run`, `image`, `push`, `check`, `clean`.
 
 ## Commands
@@ -32,9 +45,13 @@ task image   # build container (IMAGE=... to set tag)
 
 ## Deploy
 
-See `DEPLOY.md`. Deploy artifacts are in the OPM repos
-(`modules/northbyte_web/`, `opm-releases/nas2/northbyte/`,
-`opm-releases/nas2/gateway/`), not here.
+**Push to `main`.** GitHub Pages builds and publishes; there is no other host and no manual step.
+`task check` before committing, and commit `site/data/catalog.json` together with `catalog.cue`.
+
+⚠️ **Corrected 2026-09-17.** This pointed at `DEPLOY.md` for "deploy artifacts in the OPM repos
+(`modules/northbyte_web/`, `opm-releases/nas2/northbyte/`, `opm-releases/nas2/gateway/`)". None of
+that is live, and `DEPLOY.md`'s mirror procedure was removed the same day - see its
+"Retired: the self-hosted mirror" section.
 
 ## Design
 
