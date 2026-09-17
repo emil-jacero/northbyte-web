@@ -1,9 +1,11 @@
 # Deploying northbyte.gg
 
-The site has **two hosts**:
+**The site has ONE host: GitHub Pages**, at `https://northbyte.gg` + `https://www.northbyte.gg`.
 
-- **GitHub Pages - canonical**, at `https://northbyte.gg` + `https://www.northbyte.gg`.
-- **Kubernetes (nas2) - mirror**, at `https://mc.larnet.eu`.
+🛑 **This repo is PUBLIC.** Never write an internal hostname, cluster address, LB IP or private
+domain into it - not in docs, not in a comment, not in a commit message. The catalog is authored
+secret-free for the same reason (`CLAUDE.md`); this file is held to the same rule and was not,
+until 2026-09-17.
 
 ## GitHub Pages (canonical)
 
@@ -30,90 +32,20 @@ then enable **Enforce HTTPS** (Settings → Pages, or
 
 Content updates: edit `catalog.cue` → `task generate` → commit + push → Pages redeploys.
 
-## Kubernetes mirror (mc.larnet.eu)
+## Retired: the self-hosted mirror
 
-Deployed as an OPM module behind the shared Istio gateway. Three pieces, in three repos:
+⚠️ **Removed from this file 2026-09-17.** The site was once also going to be served from the nas2
+Kubernetes cluster on an internal hostname, behind the shared Istio gateway, as an OPM module. The
+procedure for it lived here from the repo's first commit (2026-06-21).
 
-| Piece | Path |
-| --- | --- |
-| Module (how the image is deployed) | `open-platform-model/modules/northbyte_web/` |
-| Release (the actual deployment) | `opm-releases/nas2/northbyte/release.cue` |
-| Gateway hostnames (TLS + listener) | `opm-releases/nas2/gateway/release.cue` |
+**It was never deployed** - verified 2026-09-17: no HTTPRoute in the cluster serves that hostname,
+and the release paths the procedure named point at `opm-releases`, which was not migrated.
 
-## Prerequisites (one-time)
+It is gone from here because the instructions named a **private domain in a public repo**, and
+because they described a deployment that does not exist. The internal deployment notes, if the
+mirror is ever revived, belong in a private repo.
 
-1. **Container registry.** Pick a registry the cluster can pull from and replace
-   `ghcr.io/CHANGEME/northbyte-web` in both `opm-releases/nas2/northbyte/release.cue`
-   and `modules/northbyte_web/module.cue` (default). If private, add an
-   `imagePullSecret`.
+## Updating content
 
-2. **DNS.** Point all three site hostnames at the **Istio ingress** LB IP:
-   - `northbyte.gg`     → A → `<Istio ingress LB IP>`   (Cloudflare)
-   - `www.northbyte.gg` → A → `<Istio ingress LB IP>`   (Cloudflare)
-   - `mc.larnet.eu`     → A → `<Istio ingress LB IP>`   (larnet DNS)
-
-   Find the ingress IP:
-   ```bash
-   kubectl -n istio-ingress get svc istio-ingressgateway \
-     -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-   ```
-   Watch the two different larnet LBs:
-   - `mc.larnet.eu` (the website) must point at the **HTTP ingress** above.
-   - `*.mc.larnet.eu` (e.g. `vanilla.mc.larnet.eu`) are **Minecraft connect**
-     addresses pointing at the *Minecraft router* LB on :25565 - leave those alone.
-   - `*.mc.northbyte.gg` likewise point at the Minecraft router, not the website.
-
-   Before applying, confirm nothing else already serves HTTP on bare `mc.larnet.eu`:
-   ```bash
-   kubectl get httproute -A -o json \
-     | jq -r '.items[] | select(.spec.hostnames[]? == "mc.larnet.eu") | .metadata.namespace+"/"+.metadata.name'
-   ```
-
-## Build & publish the image
-
-```bash
-cd northbyte.gg
-IMAGE=<registry>/northbyte-web:v0.1.0 task push    # generate -> build -> docker build -> push
-```
-
-## Publish the module
-
-```bash
-cd open-platform-model/modules
-task check
-task publish:one MODULE=northbyte_web
-# then refresh release pins:
-cd .. && task update-deps
-```
-
-## Apply (gateway first, so the cert/listener exists)
-
-```bash
-cd opm-releases/nas2/gateway
-opm release apply release.cue --context=admin@gon1-nas2
-
-cd ../northbyte
-cue vet ./...
-opm release apply release.cue --context=admin@gon1-nas2 --dry-run
-opm release apply release.cue --context=admin@gon1-nas2
-```
-
-## Verify
-
-```bash
-# cert covers the apex (mc.larnet.eu is already covered by the existing cert)
-kubectl -n istio-ingress describe certificate cert-web | grep -A3 'DNS Names'
-
-# site is live with valid TLS on all three hostnames
-curl -I https://northbyte.gg
-curl -I https://www.northbyte.gg
-curl -I https://mc.larnet.eu
-```
-
-Then open `https://northbyte.gg` and confirm the cards render and the copy-address
-buttons work.
-
-## Updating content later
-
-Edit `catalog.cue`, then rebuild/push a new image tag, bump `values.image.tag` in the
-release, and re-apply. No module or gateway change needed for content-only updates.
+Edit `catalog.cue` → `task check` (vet + regenerate `site/data/catalog.json` + build) → commit
+**both** `catalog.cue` and the regenerated JSON → push. Pages redeploys on every push to `main`.
